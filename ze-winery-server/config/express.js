@@ -7,5 +7,5 @@ module.exports = (app) => {
 
     app.use(express.json());
     app.use(cookieParser(cookieSecret));
-    // app.use(express.static('static'))
+  
 }
