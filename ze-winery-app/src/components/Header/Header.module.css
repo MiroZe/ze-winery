@@ -1,0 +1,29 @@
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #041f60;
+    color:white;
+
+}
+
+.list-items {
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    padding: 0.5em;
+    gap: 0.5em;
+
+}
+
+.list-items li {
+    display: block;
+    color: white;
+    padding: 0.5em 1.3em;
+    background-color: #0476D0;
+}
+
+.list-items a {
+    color: white;
+    text-decoration: none;
+}

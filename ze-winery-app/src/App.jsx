@@ -1,16 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
-import LoginForm from './LoginForm/LoginForm'
+import LoginForm from './components/LoginForm/LoginForm';
+import Header from './components/Header/Header';
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
 
 
   return (
     <>
-    <LoginForm/>
+
+      <Header />
+      <Routes>
+        <Route path='/login' element={<LoginForm/>}/>
+
+
+      </Routes>
+
     </>
+
+
+
   )
 }
 
