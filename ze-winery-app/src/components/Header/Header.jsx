@@ -11,9 +11,10 @@ const Header = () => {
             </div>
             <ul className={styles['list-items']}>
                <li><Link to={'/'}>Home</Link></li>
+               <li><Link to={'/dashboard'}>Табло</Link></li>
                <li><Link to={'/login'}>Login</Link></li>
                <li><Link to={'/register'}>Register</Link></li>
-               <li><Link to={'/contacts'}>Contacts</Link></li>
+               <li><Link to={'/contacts'}>Контакти</Link></li>
             </ul>
 
        
