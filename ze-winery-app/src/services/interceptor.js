@@ -1,4 +1,4 @@
-const requester = async (method,url,data) => {
+const interceptor = async (method,url,data) => {
     const options = {credentials: 'include'};
 
     if (method !== 'GET') {
@@ -37,10 +37,10 @@ const requester = async (method,url,data) => {
 
 export const request =  {
      
-        get: requester.bind(null, 'GET'),
-        post: requester.bind(null, 'POST'),
-        put: requester.bind(null, 'PUT'),
-        patch: requester.bind(null, 'PATCH'),
-        delete: requester.bind(null, 'DELETE'),
+        get: interceptor.bind(null, 'GET'),
+        post: interceptor.bind(null, 'POST'),
+        put: interceptor.bind(null, 'PUT'),
+        patch: interceptor.bind(null, 'PATCH'),
+        delete: interceptor.bind(null, 'DELETE'),
     
 };
