@@ -7,7 +7,7 @@ const Footer = () => {
               <div className={styles['social-links']}>
                 <div>
                   <h3>Social Media</h3>
-                  <ul className="social-list">
+                  <ul className={styles['social-list']}>
                     <li>
                       <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
                         Facebook
