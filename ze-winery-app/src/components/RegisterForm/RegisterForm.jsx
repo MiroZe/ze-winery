@@ -1,13 +1,14 @@
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import styles from './RegisterForm.module.css'
 
 
 const RegisterForm = () => {
 
 
     return (
-        <div>
+        <div className={styles['register-form-container']}>
         <Form>
             <FloatingLabel
                 controlId="floatingInput"

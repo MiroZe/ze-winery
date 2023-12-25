@@ -1,0 +1,29 @@
+.dashboard-container {
+    flex-grow: 1;
+    max-width: 15em;
+    background-color: #041f60;
+}
+
+.aside-list-items {
+    
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+}
+
+.dashboard-container li {
+    display: block;
+    background-color:#0476D0 ;
+    padding: 0.5em;
+    width: 7em;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 0.3em;
+    
+}
+
+.dashboard-container li a {
+    text-decoration: none;
+    color: #fff;
+}
