@@ -13,7 +13,9 @@ return (
         <Card.Text>
           With supporting text below as a natural lead-in to additional content.
         </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        <Button variant="primary">Продукти</Button>
+        <Button variant="primary">Създай декларация</Button>
+        <Button variant="primary">Архив декларации</Button>
       </Card.Body>
     </Card>
 
