@@ -1,4 +1,4 @@
-const userCookieName = 'userCookie';
+const userCookieName = 'ZeUserCookie';
 
 
 module.exports = {userCookieName}
