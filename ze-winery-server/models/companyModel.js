@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema.Types;
 
 
-const companyModel = new mongoose.Schema({
+const companySchema = new mongoose.Schema({
 
     companyName : {
         type: String,
@@ -58,4 +58,4 @@ const companyModel = new mongoose.Schema({
 });
 
 
-module.exports = mongoose.model('Company', companyModel)
+module.exports = mongoose.model('Company', companySchema)
