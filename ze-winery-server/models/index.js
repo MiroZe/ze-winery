@@ -1,5 +1,6 @@
 const userModel = require('./userModel');
 const tokenBlacklistModel = require('./TokenBlacklistModel');
+const companyModel = require('./companyModel')
 
 
 
@@ -7,6 +8,7 @@ const tokenBlacklistModel = require('./TokenBlacklistModel');
 
 module.exports = {
     userModel,
-    tokenBlacklistModel
+    tokenBlacklistModel,
+    companyModel
 
 }
