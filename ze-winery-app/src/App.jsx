@@ -8,6 +8,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Footer from './components/Footer/Footer';
 import CreateCompany from './components/CreateCompany/CreateCompany';
 import MyCompanies from './components/MyCompanies/MyCompanies';
+import ProductsList from './components/Products/ProductsList';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
         <Route path='/dashboard' element={<Dashboard/>}/>
         <Route path='/create-company' element={<CreateCompany/>}/>
         <Route path='/my-companies' element={<MyCompanies/>}/>
+        <Route path='/products' element={<ProductsList/>}/>
 
 
       </Routes>
