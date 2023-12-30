@@ -3,11 +3,27 @@ const mongoose = require('mongoose');
 
 
 const productSchema = new mongoose.Schema({
-    productName : {
+    brandName : {
+        type: String,
+        required:true,
+        default:'A81304'
+    },
+    trademarkName : {
         type: String,
         required:true
     },
-    HScode: {
+    APCode: {
+        type: String,
+        required:true,
+        default: 'W200'
+    },
+    maeasure: {
+        type: Number,
+        required:true,
+        default:3
+    },
+
+    CNCode: {
         type: String,
         required:true
     },
@@ -15,21 +31,17 @@ const productSchema = new mongoose.Schema({
         type: String,
         required:true
     },
-    percentAlc: { 
-        type: Number,
-        required:true
-    },
     obligationBaseCode: {
         type: Number,
         required:true,
         default: 401
     },
-    volumeOfUnitPack : {
+    pieces : {
         type: Number,
         required:true,
         
     },
-    unit : {
+    quantityOfGoods : {
         type: String,
         required:true,
         
@@ -39,7 +51,7 @@ const productSchema = new mongoose.Schema({
         required:true,
         default: 10
     },
-    amountOfExcise : {
+    exciseDuty : {
         type: Number,
         required:true,
         default: 0

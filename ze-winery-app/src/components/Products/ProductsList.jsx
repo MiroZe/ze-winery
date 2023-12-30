@@ -3,6 +3,7 @@ import {mockProducts} from '../mockData/products';
 import { useEffect, useState } from 'react';
 import ProductItem from './ProductItem';
 import styles from './ProductsList.module.css'
+import { Link } from 'react-router-dom';
 
 
 
@@ -28,21 +29,17 @@ const ProductsList = () => {
           <tr>
             <th>#</th>
             <th>Наименование</th>
-            <th>Действителни количества</th>
             <th>Код по КН</th>
             <th>Допълнителен код</th>
-            <th>Алкохолен градус</th>
             <th>Вместимост</th>
-            <th>Брой потребителски опаковки</th>
-            <th>Мерна единица</th>
-            <th>Основание</th>
-            <th>Плащане</th>
-            <th>Размер на акциза</th>
+           
+          
+           
           </tr>
         </thead>
         <tbody>
         {products.map(p => <ProductItem key={p.id} {...p}/>)}
-        
+        <tr><td><Link>Създай нов</Link></td> </tr>
         </tbody>
       </Table>
       </div>

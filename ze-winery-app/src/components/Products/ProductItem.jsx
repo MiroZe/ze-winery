@@ -3,32 +3,21 @@
 
 const ProductItem = ({
     id,
-    productName,
-    quantity,
-    HScode,
-    additionalCode,
-    pureAlcDegree,
-    volume,
-    packs,
-    unit,
-    base,
-    payment,
-    exciseValue}) => {
+    trademarkName,
+    CNCode,
+   additionalCode,
+    pieces
+}) => {
 
 return (
     <tr>
     <td>{id}</td>
-    <td>{productName}</td>
-    <td>{quantity}</td>
-    <td>{HScode}</td>
+  
+    <td>{trademarkName}</td>
+    <td>{CNCode}</td>
     <td>{additionalCode}</td>
-    <td>{pureAlcDegree}</td>
-    <td>{volume}</td>
-    <td>{packs}</td>
-    <td>{unit}</td>
-    <td>{base}</td>
-    <td>{payment}</td>
-    <td>{exciseValue}</td>
+    <td>{pieces}</td>
+    
   </tr>
 
 )
