@@ -54,6 +54,12 @@ const companySchema = new mongoose.Schema({
             type: ObjectId, 
             ref: 'Product'
         }
+    ],
+    users : [
+        {
+            type: ObjectId, 
+            ref: 'User'
+        }
     ]
 });
 
