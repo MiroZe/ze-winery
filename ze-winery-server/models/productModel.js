@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { ObjectId } = mongoose.Schema.Types;
 
 
 
@@ -55,6 +56,10 @@ const productSchema = new mongoose.Schema({
         type: Number,
         required:true,
         default: 0
+    },
+    owner : {
+        type: ObjectId,
+        ref: 'Company'
     }
 
 

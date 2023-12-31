@@ -39,7 +39,7 @@ const ProductsList = () => {
         </thead>
         <tbody>
         {products.map(p => <ProductItem key={p.id} {...p}/>)}
-        <tr><td><Link>Създай нов</Link></td> </tr>
+        <tr><td><Link to={'/create-product'}>Създай нов</Link></td> </tr>
         </tbody>
       </Table>
       </div>

@@ -9,6 +9,7 @@ import Footer from './components/Footer/Footer';
 import CreateCompany from './components/CreateCompany/CreateCompany';
 import MyCompanies from './components/MyCompanies/MyCompanies';
 import ProductsList from './components/Products/ProductsList';
+import CreateProduct from './components/Products/CreateProduct/CreateProduct';
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
         <Route path='/create-company' element={<CreateCompany/>}/>
         <Route path='/my-companies' element={<MyCompanies/>}/>
         <Route path='/products' element={<ProductsList/>}/>
+        <Route path='/create-product' element={<CreateProduct/>}/>
 
 
       </Routes>
