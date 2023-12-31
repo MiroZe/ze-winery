@@ -6,8 +6,8 @@ import { Routes, Route } from 'react-router-dom';
 import RegisterForm from './components/RegisterForm/RegisterForm';
 import Dashboard from './components/Dashboard/Dashboard';
 import Footer from './components/Footer/Footer';
-import CreateCompany from './components/CreateCompany/CreateCompany';
-import MyCompanies from './components/MyCompanies/MyCompanies';
+import CreateCompany from './components/Companies/CreateCompany/CreateCompany';
+import MyCompanies from './components/Companies/MyCompanies/MyCompanies';
 import ProductsList from './components/Products/ProductsList';
 import CreateProduct from './components/Products/CreateProduct/CreateProduct';
 
