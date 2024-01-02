@@ -6,7 +6,7 @@ const config = {
     development : {
         port:process.env.PORT || 3000,
         dbURL:'mongodb://localhost:27017/ze-winery',
-        origin : ['http://127.0.0.1:5173'],
+        origin : ['http://localhost:5173'],
         
     },
     production : {

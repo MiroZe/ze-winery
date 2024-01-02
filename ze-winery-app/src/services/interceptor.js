@@ -3,6 +3,7 @@ const interceptor = async (method,url,data) => {
 
     if (method !== 'GET') {
         options.method = method;
+     
 
         if (data) {
             options.headers = {

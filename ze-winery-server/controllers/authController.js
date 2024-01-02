@@ -1,6 +1,6 @@
 const userCookieName = require('../config/app-config');
 const {userModel} = require('../models');
-const jwt = require('../utils')
+const utils = require('../utils')
 
 
 const bsonToJson = (data) => { return JSON.parse(JSON.stringify(data)) };
@@ -12,6 +12,8 @@ const removePassword = (data) => {
 
 const register = (req,res,next) => {
 
+    
+   
     const { username, email, password,rePassword} = req.body;
 
     if(password !== rePassword) {
@@ -23,7 +25,7 @@ const register = (req,res,next) => {
         createdUser = bsonToJson(createdUser);
         createdUser = removePassword(createdUser);
 
-        const token = jwt.createToken({ id: createdUser._id });
+        const token = utils.jwt.createToken({ id: createdUser._id });
         if (process.env.NODE_ENV === 'production') {
             res.cookie(userCookieName, token, { httpOnly: true, sameSite: 'none', secure: true })
         } else {
