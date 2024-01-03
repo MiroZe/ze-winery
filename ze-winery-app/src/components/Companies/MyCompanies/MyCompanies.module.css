@@ -1,0 +1,11 @@
+.companies-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    padding: 2em;
+}
+
+.companies-container a {
+    display: block;
+    margin: 0 auto;
+}

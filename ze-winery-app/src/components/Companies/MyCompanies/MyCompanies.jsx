@@ -1,28 +1,30 @@
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import {Link} from 'react-router-dom'
+
+import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { getMyCompanies } from '../../../services/companyService';
+import CompanyCard from './CompanyCard';
+import styles from './MyCompanies.module.css'
+
 
 const MyCompanies = () => {
 
+  const [myCompanies,setMyCompanies] = useState([])
+
+const {_id} = useSelector(state => state.user);
+useEffect(() => {
+  getMyCompanies(_id).then(setMyCompanies)
+  
+},[_id])
+
 return (
 
-    <div >
-    <Card>
-      <Card.Header as="h5">Featured</Card.Header>
-      <Card.Body>
-        <Card.Title>Special title treatment</Card.Title>
-        <Card.Text>
-          With supporting text below as a natural lead-in to additional content.
-        </Card.Text>
-        <Button as={Link} to={'/products'}  variant="primary">Продукти</Button>
-        <Button variant="primary">Създай декларация</Button>
-        <Button variant="primary">Архив декларации</Button>
-      </Card.Body>
-    </Card>
+    <div className={styles['companies-container']}>
+    {myCompanies.map( c => <CompanyCard key={c._id} {...c}/>)}
 
     </div>
   
 )
+
 
 
 }
