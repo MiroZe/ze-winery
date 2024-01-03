@@ -5,11 +5,14 @@ import styles from './RegisterForm.module.css'
 import { useForm } from '../../hooks/useForm';
 import { userRegister } from '../../services/authService';
 import{useNavigate} from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../reducers/users';
 
 
 const RegisterForm = () => {
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const dispatch = useDispatch()
 
     const{formValues,onChangeHandler} = useForm(
         {
@@ -26,7 +29,7 @@ const RegisterForm = () => {
 
         try {
             const user = await userRegister(formValues);
-            console.log(user);
+            dispatch((setUser(user)))
             navigate('/dashboard')
         } catch (error) {
             console.log(error);

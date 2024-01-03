@@ -12,6 +12,7 @@ import ProductsList from './components/Products/ProductsList';
 import CreateProduct from './components/Products/CreateProduct/CreateProduct';
 import { Provider } from 'react-redux';
 import store from './redux';
+import HomePage from './components/HomePage/HomePage';
 
 function App() {
 
@@ -21,6 +22,8 @@ function App() {
     <Provider store={store}>
       <Header />
       <Routes>
+
+        <Route path='/' element={<HomePage/>}/>
         <Route path='/login' element={<LoginForm/>}/>
         <Route path='/register' element={<RegisterForm/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>

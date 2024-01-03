@@ -6,7 +6,8 @@ import { errorSlice } from "./error";
 
 
 export default combineReducers({
-    users:userSlice.reducer,
+    user:userSlice.reducer,
     company:companySlice.reducer,
     error : errorSlice.reducer
 })
+
