@@ -3,8 +3,17 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Button from 'react-bootstrap/Button';
 import styles from './LoginForm.module.css'
 import { useForm } from '../../hooks/useForm';
+import  utils  from '../../utils'
+import { userLogin } from '../../services/authService';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../reducers/users';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
 
     const {formValues, onChangeHandler} = useForm( 
         {
@@ -13,8 +22,22 @@ const LoginForm = () => {
         }
     )
 
-    const onUserLoginHandler =(e) => {
+    const onUserLoginHandler = async(e) => {
         e.preventDefault();
+        if (utils.formFieldCheckFn(formValues)) return;
+
+        try {
+            const user = await userLogin(formValues);
+            console.log(user);
+            dispatch(setUser(user));
+            navigate('/dashboard')
+            
+        } catch (error) {
+            console.log(error);
+        }
+
+
+
     }
 
     return(

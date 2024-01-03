@@ -13,6 +13,7 @@ import CreateProduct from './components/Products/CreateProduct/CreateProduct';
 import { Provider } from 'react-redux';
 import store from './redux';
 import HomePage from './components/HomePage/HomePage';
+import Logout from './components/Logout/Logout';
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
 
         <Route path='/' element={<HomePage/>}/>
         <Route path='/login' element={<LoginForm/>}/>
+        <Route path='/logout' element={<Logout/>}/>
         <Route path='/register' element={<RegisterForm/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
         <Route path='/create-company' element={<CreateCompany/>}/>
