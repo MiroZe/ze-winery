@@ -10,13 +10,15 @@ import CreateCompany from './components/Companies/CreateCompany/CreateCompany';
 import MyCompanies from './components/Companies/MyCompanies/MyCompanies';
 import ProductsList from './components/Products/ProductsList';
 import CreateProduct from './components/Products/CreateProduct/CreateProduct';
+import { Provider } from 'react-redux';
+import store from './redux';
 
 function App() {
 
 
   return (
     <>
-
+    <Provider store={store}>
       <Header />
       <Routes>
         <Route path='/login' element={<LoginForm/>}/>
@@ -31,6 +33,7 @@ function App() {
       </Routes>
       <Footer/>
 
+    </Provider>
     </>
 
 
