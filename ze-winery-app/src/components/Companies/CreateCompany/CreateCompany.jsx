@@ -5,10 +5,13 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import { useForm } from '../../../hooks/useForm';
-
+import utils from '../../../utils';
+import { createCompany } from '../../../services/companyService';
+import { useSelector } from 'react-redux';
 
 const CreateCompany = () => {
 
+  const {_id} = useSelector(state => state.user);
 
 const {formValues, onChangeHandler} = useForm({
   companyName: '',
@@ -16,16 +19,22 @@ const {formValues, onChangeHandler} = useForm({
   companyId: '',
   exciseId: '',
   address: '',
-  address2: '',
   city: '',
   state:'',
   postalCode: ''
 
 })
 
-const createCompanySubmitHandler = (e) => {
-  e.preventDefault()
-  console.log(formValues);
+const createCompanySubmitHandler = async (e) => {
+  e.preventDefault();
+  if (utils.formFieldCheckFn(formValues)) return;
+  try {
+    const company = await createCompany({...formValues, userId:_id});
+    console.log(company);
+  } catch (error) {
+    console.log(error);
+    
+  }
 }
 
   return (
@@ -58,7 +67,7 @@ const createCompanySubmitHandler = (e) => {
           </Form.Group>
           <Form.Group as={Col} controlId="formGridPassword">
             <Form.Label>ИН</Form.Label>
-            <Form.Control type="number" placeholder="Идентификационен номер" name='exciseId' value={formValues.exciseId} onChange={(e) => onChangeHandler(e)} />
+            <Form.Control type="text" placeholder="Идентификационен номер" name='exciseId' value={formValues.exciseId} onChange={(e) => onChangeHandler(e)} />
           </Form.Group>
         </Row>
 
@@ -67,10 +76,6 @@ const createCompanySubmitHandler = (e) => {
           <Form.Control placeholder="ул.Примерна 2" name='address' value={formValues.address} onChange={(e) => onChangeHandler(e)}/>
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formGridAddress2">
-          <Form.Label>Адрес 2</Form.Label>
-          <Form.Control placeholder="апартамент,етаж," name='address2' value={formValues.address2} onChange={(e) => onChangeHandler(e)}/>
-        </Form.Group>
 
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formGridCity">

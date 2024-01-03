@@ -4,5 +4,5 @@ import { baseURL } from '../constants/URL';
 
 export const createCompany = (companyData) => {
 
-    return request.post(`${baseURL}/create-company`, companyData)
+    return request.post(`${baseURL}/company/create`, companyData)
 }

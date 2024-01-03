@@ -7,7 +7,7 @@ const companySchema = new mongoose.Schema({
     companyName : {
         type: String,
         required:true,
-        unique: true
+       
     },
     companyType : {
         type: String,
@@ -17,7 +17,8 @@ const companySchema = new mongoose.Schema({
         type: Number,
         required: true,
         minLength: [9, 'Company Id should be 9 digits long'],
-        maxLength: [9, 'Company Id should be 9 digits long']
+        maxLength: [9, 'Company Id should be 9 digits long'],
+        unique: true
     },
     exciseNumber : {
         type: String,

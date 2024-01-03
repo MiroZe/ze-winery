@@ -36,12 +36,6 @@ const userSchema = new mongoose.Schema({
         `${props.value} must contains only latin letters and digits!`,
     },
   },
-
-  comapanies : [
-    {type: ObjectId,
-    ref: 'Company'}
-
-  ],
  
   role : {
     type:String,

@@ -1,4 +1,4 @@
-const userCookieName = require('../config/app-config');
+const {userCookieName} = require('../config/app-config');
 const { userModel,tokenBlacklistModel } = require('../models');
 const utils = require('../utils')
 
