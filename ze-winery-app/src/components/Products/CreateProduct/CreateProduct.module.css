@@ -1,0 +1,6 @@
+.new-product-form-container {
+    flex-grow: 1;
+    max-width: 40em;
+    margin: 0 auto;
+    padding: 2em;
+}
