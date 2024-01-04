@@ -4,6 +4,8 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import styles from './CreateProduct.module.css'
 import { useForm } from '../../../hooks/useForm';
+import { createNewProduct } from '../../../services/productService';
+import { useSelector } from 'react-redux';
 
 
 const CreateProduct = () => {
@@ -17,9 +19,14 @@ const CreateProduct = () => {
 
   });
 
-  const onProductSubmitHandler = (e) => {
+  const {_id} = useSelector(state => state.company)
+
+  const onProductSubmitHandler = async (e) => {
     e.preventDefault();
-    
+
+    const product = await createNewProduct(_id,formValues);
+    console.log(product);
+
 
   }
 

@@ -5,7 +5,7 @@ const router = require('express').Router();
 
 
 
-router.post('/create', auth, productController.createProduct)
+router.post('/create', auth(), productController.createProduct)
 
 
 module.exports = router;

@@ -50,12 +50,6 @@ const companySchema = new mongoose.Schema({
             ref: 'Declaration'
         }
     ],
-    products : [
-        {
-            type: ObjectId, 
-            ref: 'Product'
-        }
-    ],
     users : [
         {
             type: ObjectId, 

@@ -42,11 +42,6 @@ const productSchema = new mongoose.Schema({
         required:true,
         
     },
-    quantityOfGoods : {
-        type: String,
-        required:true,
-        
-    },
     paymenCode: {
         type: Number,
         required:true,
