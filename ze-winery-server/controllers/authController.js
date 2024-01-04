@@ -31,7 +31,7 @@ const register = (req, res, next) => {
             } else {
                 res.cookie(userCookieName, token, { httpOnly: true })
             }
-            res.status(200)
+            res.status(201)
                 .send(createdUser);
         })
         .catch(err => {

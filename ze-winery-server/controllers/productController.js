@@ -20,7 +20,7 @@ if(Object.values(productData) === '') {
 
 try {
    const createdProduct = await productModel.create(productData)
-   return res.status(200).json(createdProduct)
+   return res.status(201).json(createdProduct)
 } catch (error) {
     next(error)
 }

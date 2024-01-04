@@ -20,7 +20,7 @@ const createCompany = async (req, res, next) => {
 
     try {
         const createdCompany = await companyModel.create(companyData);
-        return res.status(200).json(createdCompany)
+        return res.status(201).json(createdCompany)
 
     } catch (error) {
         next(error)
