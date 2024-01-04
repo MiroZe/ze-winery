@@ -43,7 +43,25 @@ const getMyCompanies = async(req,res,next) => {
 
 }
 
+const getCompanyById = async (req,res,next) => {
+    const {companyId} = req.params;
+    try {
+        const company = await companyModel.findById({_id: companyId});
+        console.log(company);
+
+        if(company) {
+            return res.status(200).json(company)
+        } else {
+            throw {error: 'Company not found'}
+        }
+    } catch (error) {
+        next(error)
+    }
+
+}
+
 module.exports = {
     createCompany,
-    getMyCompanies
+    getMyCompanies,
+    getCompanyById
 }

@@ -14,6 +14,7 @@ import { Provider } from 'react-redux';
 import store from './redux';
 import HomePage from './components/HomePage/HomePage';
 import Logout from './components/Logout/Logout';
+import CompanyDetails from './components/Companies/CompanyDetails/CompanyDetails';
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
         <Route path='/my-companies' element={<MyCompanies/>}/>
         <Route path='/products' element={<ProductsList/>}/>
         <Route path='/create-product' element={<CreateProduct/>}/>
+        <Route path='/my-companies/:companyId' element={<CompanyDetails/>}/>
 
 
       </Routes>

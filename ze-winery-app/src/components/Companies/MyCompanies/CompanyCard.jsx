@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom';
 
 const CompanyCard = ({
     // eslint-disable-next-line react/prop-types
-    _id, companyName, companyType, companyId, city
+    _id, companyName, companyType, companyId, city,hidebtn
 }) => {
 
 return (
@@ -18,10 +18,9 @@ return (
         <Card.Text>
        {city}
         </Card.Text>
+        {!hidebtn && 
         <Button as={Link} to={`/my-companies/${_id}`}>Избери</Button>
-        {/* <Button as={Link} to={'/products'}  variant="primary">Продукти</Button>
-        <Button variant="primary">Създай декларация</Button>
-        <Button variant="primary">Архив декларации</Button> */}
+        }
       </Card.Body>
     </Card>
 )
