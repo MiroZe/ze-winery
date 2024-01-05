@@ -41,7 +41,7 @@ const RegisterForm = () => {
 
     return (
         <div className={styles['register-form-container']}>
-        <Form onSubmit={onUserRegisterHandler}>
+        <Form onSubmit={onUserRegisterHandler} className={styles['form-container']}>
             <FloatingLabel
                 controlId="floatingInput"
                 label="Username"
@@ -58,7 +58,7 @@ const RegisterForm = () => {
             <FloatingLabel controlId="floatingRePassword" label="Repeat Password" className="mb-3">
                 <Form.Control type="password" placeholder="Repeat Password" name='rePassword' value={formValues.rePassword} onChange={(e) => onChangeHandler(e)}/>
             </FloatingLabel>
-            <Button variant="info" type='submit'>Register</Button>
+            <Button variant="info" type='submit' className={styles['submit-btn']}>Register</Button>
         </Form>
         </div>
     )
