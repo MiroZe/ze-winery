@@ -34,10 +34,10 @@ const CreateProduct = () => {
 
     <div className={styles['new-product-form-container']}>
 
-      <Form onSubmit={onProductSubmitHandler}>
+      <Form onSubmit={onProductSubmitHandler} className={styles['product-form']}>
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formGridName">
-            <Form.Label>Търговско наименвание</Form.Label>
+            <Form.Label>Търговско наименование</Form.Label>
             <Form.Control type="text" placeholder="Въведете име" 
             name='trademarkName'
             value={formValues.trademarkName}
@@ -76,7 +76,7 @@ const CreateProduct = () => {
 
         </Row>
 
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" className={styles['save-btn']}>
           Запази
         </Button>
       </Form>

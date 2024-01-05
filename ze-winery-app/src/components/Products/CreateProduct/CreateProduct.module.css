@@ -1,7 +1,19 @@
 .new-product-form-container {
     flex-grow: 1;
     max-width: 40em;
-    margin: 0 auto;
+    margin: 2em auto ;
     padding: 2em;
+    
+}
+
+.new-product-form-container .product-form {
+    padding: 2em;
+    height: 22em;
+    margin: auto 0;
     background-color: #f8f8f8;
+}
+
+.new-product-form-container .save-btn {
+    display: block;
+    margin: 20px auto;
 }
