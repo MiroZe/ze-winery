@@ -42,7 +42,7 @@ const LoginForm = () => {
 
     return(
         <div className={styles['login-form-container']}>
-        <Form onSubmit={onUserLoginHandler}>
+        <Form onSubmit={onUserLoginHandler} className={styles['form-container']}>
             <FloatingLabel
                 controlId="floatingInput"
                 label="Username"
@@ -53,7 +53,7 @@ const LoginForm = () => {
             <FloatingLabel controlId="floatingPassword" label="Password">
                 <Form.Control type="password" placeholder="Password" name='password' value={formValues.password} onChange={(e) => onChangeHandler(e)}/>
             </FloatingLabel>
-            <Button variant="info" type='submit'>Login</Button>
+            <Button variant="info" type='submit' className={styles['submit-btn']}>Login</Button>
         </Form>
         </div>
     )
