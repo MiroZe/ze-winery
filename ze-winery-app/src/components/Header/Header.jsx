@@ -4,8 +4,10 @@ import { useSelector } from 'react-redux';
 
 const Header = () => {
 
-    const {username} = useSelector(state => state.user);
-    
+    const {user} = useSelector(state => state.user);
+  
+    const username = user?.username;
+   
 
     return (
 

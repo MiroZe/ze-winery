@@ -28,7 +28,7 @@ const LoginForm = () => {
 
         try {
             const user = await userLogin(formValues);
-            console.log(user);
+           
             dispatch(setUser(user));
             navigate('/dashboard')
             
