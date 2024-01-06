@@ -9,7 +9,7 @@ import { useSearch } from '../../hooks/useSearch';
 
 
 
-const ProductsList = ({viewChooseBtn}) => {
+const ProductsList = ({viewChooseBtn, showQuantityModal}) => {
 
   const { companyId } = useParams();
 
@@ -46,7 +46,7 @@ const ProductsList = ({viewChooseBtn}) => {
           </tr>
         </thead>
         <tbody>
-          {found.map(p => <ProductItem key={p._id} {...p} viewChooseBtn={viewChooseBtn}/>)}
+          {found.map(p => <ProductItem key={p._id} {...p} viewChooseBtn={viewChooseBtn} showQuantityModal={showQuantityModal}/>)}
           <tr><td><Link to={'/create-product'}>Създай нов</Link></td> </tr>
         </tbody>
       </Table>
