@@ -1,4 +1,4 @@
-const { companyModel } = require('../models');
+const { companyModel, productModel } = require('../models');
 
 
 
@@ -47,7 +47,7 @@ const getCompanyById = async (req,res,next) => {
     const {companyId} = req.params;
     try {
         const company = await companyModel.findById({_id: companyId});
-        console.log(company);
+      
 
         if(company) {
             return res.status(200).json(company)
@@ -60,8 +60,22 @@ const getCompanyById = async (req,res,next) => {
 
 }
 
+const getCompanyProducts = async(req,res,next) => {
+
+    const {companyId} = req.params;
+    try {
+       const products = await productModel.find({owner:companyId})
+        return res.status(200).json(products)
+        
+    } catch (error) {
+        next(error)
+    }
+
+}
+
 module.exports = {
     createCompany,
     getMyCompanies,
-    getCompanyById
+    getCompanyById,
+    getCompanyProducts
 }

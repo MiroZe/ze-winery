@@ -10,11 +10,11 @@ const MyCompanies = () => {
 
   const [myCompanies,setMyCompanies] = useState([])
 
-const {_id} = useSelector(state => state.user);
+const {user} = useSelector(state => state.user);
 useEffect(() => {
-  getMyCompanies(_id).then(setMyCompanies)
+  getMyCompanies(user?._id).then(setMyCompanies)
   
-},[_id])
+},[user?._id])
 
 return (
 

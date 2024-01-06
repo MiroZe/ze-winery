@@ -1,22 +1,27 @@
 import Table from 'react-bootstrap/Table';
-import {mockProducts} from '../mockData/products';
 import { useEffect, useState } from 'react';
 import ProductItem from './ProductItem';
 import styles from './ProductsList.module.css'
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { getCompanyProducts } from '../../services/productService';
 
 
 
 const ProductsList = () => {
   
-
+ const {companyId} = useParams();
+ 
  
   const [products,setProducts] = useState([]);
 
   useEffect(() => {
+
+    getCompanyProducts(companyId)
+    .then(setProducts)
+    .catch(err => console.log(err))
     
-    setProducts(mockProducts)
-  },[])
+    
+  },[companyId])
 
 
     return (
@@ -38,7 +43,7 @@ const ProductsList = () => {
           </tr>
         </thead>
         <tbody>
-        {products.map(p => <ProductItem key={p.id} {...p}/>)}
+        {products.map(p => <ProductItem key={p._id} {...p}/>)}
         <tr><td><Link to={'/create-product'}>Създай нов</Link></td> </tr>
         </tbody>
       </Table>
