@@ -10,8 +10,8 @@ const ProductQuantityForm = ({showModal,closeModal}) => {
 
     return (
       <>
-      <Modal show={showModal} closeModal={closeModal}>
-      <Modal.Header closeButton>
+      <Modal show={showModal} >
+      <Modal.Header closeButton onClick={closeModal}>
         <Modal.Title>Modal heading</Modal.Title>
       </Modal.Header>
       <Modal.Body>
