@@ -6,6 +6,7 @@ import styles from './CreateProduct.module.css'
 import { useForm } from '../../../hooks/useForm';
 import { createNewProduct } from '../../../services/productService';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 
 const CreateProduct = () => {
@@ -19,13 +20,20 @@ const CreateProduct = () => {
 
   });
 
-  const {_id} = useSelector(state => state.company)
+  const {_id} = useSelector(state => state.company);
+  const navigate = useNavigate();
 
   const onProductSubmitHandler = async (e) => {
     e.preventDefault();
 
-    const product = await createNewProduct(_id,formValues);
-    console.log(product);
+    try {
+
+      await createNewProduct(_id,formValues);
+      navigate(`/my-companies/${_id}/products`)
+    } catch (error) {
+      console.log(error);
+    }
+  
 
 
   }

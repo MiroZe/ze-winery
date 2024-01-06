@@ -1,17 +1,22 @@
+import Button from 'react-bootstrap/Button';
 
 
 
 const ProductItem = ({
-    id,
-    trademarkName,
-    CNCode,
-   additionalCode,
-    pieces
+   
+   
+    trademarkName,CNCode,additionalCode,pieces,viewChooseBtn 
 }) => {
+
+
 
 return (
     <tr>
-    <td>{id}</td>
+    {viewChooseBtn &&
+    <td><Button>
+      Избери
+      </Button></td>
+      }
   
     <td>{trademarkName}</td>
     <td>{CNCode}</td>

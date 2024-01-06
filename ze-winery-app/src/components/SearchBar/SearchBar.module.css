@@ -1,0 +1,9 @@
+.search-container{
+    display: flex;
+    max-width: 30em;
+    margin: 0 auto;
+    padding: 2em 1em;
+}
+
+
+

@@ -4,52 +4,55 @@ import ProductItem from './ProductItem';
 import styles from './ProductsList.module.css'
 import { Link, useParams } from 'react-router-dom';
 import { getCompanyProducts } from '../../services/productService';
+import SearchBar from '../SearchBar/SearchBar';
+import { useSearch } from '../../hooks/useSearch';
 
 
 
-const ProductsList = () => {
+const ProductsList = ({viewChooseBtn}) => {
+
+  const { companyId } = useParams();
+
+
+  const [products, setProducts] = useState([]);
+  const {found, updateSearchValue, searchValue} = useSearch(products);
   
- const {companyId} = useParams();
- 
- 
-  const [products,setProducts] = useState([]);
 
   useEffect(() => {
 
     getCompanyProducts(companyId)
-    .then(setProducts)
-    .catch(err => console.log(err))
-    
-    
-  },[companyId])
+      .then(setProducts)
+      .catch(err => console.log(err))
 
 
-    return (
+  }, [companyId])
 
-      <div className={styles['products-container']}>
 
-     
-        <Table striped bordered hover>
+  return (
+
+    <div className={styles['products-container']}>
+
+      <SearchBar updateSearchValue={updateSearchValue} searchValue={searchValue} />
+      <Table striped bordered hover>
         <thead>
           <tr>
+            { viewChooseBtn && 
             <th>#</th>
+          }
             <th>Наименование</th>
             <th>Код по КН</th>
             <th>Допълнителен код</th>
             <th>Вместимост</th>
-           
-          
-           
           </tr>
         </thead>
         <tbody>
-        {products.map(p => <ProductItem key={p._id} {...p}/>)}
-        <tr><td><Link to={'/create-product'}>Създай нов</Link></td> </tr>
+          {found.map(p => <ProductItem key={p._id} {...p} viewChooseBtn={viewChooseBtn}/>)}
+          <tr><td><Link to={'/create-product'}>Създай нов</Link></td> </tr>
         </tbody>
       </Table>
-      </div>
-    ); 
-    
+    </div>
+  );
+
 
 
 };

@@ -37,7 +37,7 @@ const CompanyDetails = () => {
             <CompanyCard {...company} hidebtn={hidebtn} />
             <div className={styles['button-container']}>
                 <Button as={Link} to={`/my-companies/${companyId}/products`} variant="primary">Продукти</Button>
-                <Button variant="primary">Създай декларация</Button>
+                <Button as={Link} to={`/my-companies/${companyId}/create-declaration`}variant="primary">Създай декларация</Button>
                 <Button variant="primary">Архив декларации</Button>
             </div>
 

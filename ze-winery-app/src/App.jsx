@@ -15,6 +15,7 @@ import store from './redux';
 import HomePage from './components/HomePage/HomePage';
 import Logout from './components/Logout/Logout';
 import CompanyDetails from './components/Companies/CompanyDetails/CompanyDetails';
+import CreateDecration from './components/Declarations/CreateDeclaration/CreateDeclaration';
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
         <Route path='/my-companies/:companyId/products' element={<ProductsList/>}/>
         <Route path='/create-product' element={<CreateProduct/>}/>
         <Route path='/my-companies/:companyId' element={<CompanyDetails/>}/>
+        <Route path='/my-companies/:companyId/create-declaration' element={<CreateDecration/>}/>
 
 
       </Routes>
