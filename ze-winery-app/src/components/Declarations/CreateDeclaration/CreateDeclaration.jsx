@@ -9,17 +9,25 @@ import ProductQuantityForm from '../../Products/ProductQuantityForm/ProductQuant
 const CreateDecration = () => {
     const viewChooseBtn = true;
     const [declarationItems, setDeclarationItems] = useState([]);
-    const [showModal, setShowModal] = useState(false)
+    const [showModal, setShowModal] = useState(false);
+    const [currentItem,setCurrentItem] = useState({})
 
-    const showQuantityModal = () => {
-        setShowModal(true)
+    const showQuantityModal = (data) => {
+        setShowModal(true);
+        setCurrentItem(data)
+    }
+
+    const addItemTodeclaration = (data) => {
+
+        console.log(data);
+
     }
 
     const closeModal = () => setShowModal(false);
 return (
 
     <div className={styles['declaration-container']}>
-        {showModal && <ProductQuantityForm showModal={showModal} closeModal={closeModal}/>}
+        {showModal && <ProductQuantityForm showModal={showModal} closeModal={closeModal} currentItem={currentItem} />}
         <ProductsList viewChooseBtn={viewChooseBtn} showQuantityModal={showQuantityModal}/>
         <DeclarationItems/>
 

@@ -6,39 +6,34 @@ import Form from 'react-bootstrap/Form';
 
 
 
-const ProductQuantityForm = ({showModal,closeModal}) => {
+const ProductQuantityForm = ({showModal,closeModal ,currentItem}) => {
+
+  console.log(currentItem);
 
     return (
       <>
       <Modal show={showModal} >
       <Modal.Header closeButton onClick={closeModal}>
-        <Modal.Title>Modal heading</Modal.Title>
+        <Modal.Title>{currentItem.trademarkName} {currentItem.pieces}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label>Email address</Form.Label>
+            <Form.Label>Количество</Form.Label>
             <Form.Control
-              type="email"
-              placeholder="name@example.com"
+              type="text"
               autoFocus
             />
           </Form.Group>
-          <Form.Group
-            className="mb-3"
-            controlId="exampleForm.ControlTextarea1"
-          >
-            <Form.Label>Example textarea</Form.Label>
-            <Form.Control as="textarea" rows={3} />
-          </Form.Group>
+        
         </Form>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={closeModal}>
-          Close
+          Затвори
         </Button>
         <Button variant="primary" onClick={closeModal}>
-          Save Changes
+          Добави
         </Button>
       </Modal.Footer>
     </Modal>
