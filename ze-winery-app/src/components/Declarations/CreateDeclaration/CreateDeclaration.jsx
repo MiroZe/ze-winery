@@ -10,16 +10,20 @@ const CreateDecration = () => {
     const viewChooseBtn = true;
     const [declarationItems, setDeclarationItems] = useState([]);
     const [showModal, setShowModal] = useState(false);
-    const [currentItem,setCurrentItem] = useState({})
+    const [currentItem,setCurrentItem] = useState({});
+    const [isItemSelected,setisItemSelected] = useState(false);
 
     const showQuantityModal = (data) => {
         setShowModal(true);
         setCurrentItem(data)
     }
 
-    const addItemTodeclaration = (data) => {
+    const addItemTodeclaration = (itemQuantity) => {
 
-        console.log(data);
+        setisItemSelected(true);
+        setCurrentItem( prevState => ({...prevState, quantity:itemQuantity}));
+        console.log(currentItem);
+
 
     }
 
@@ -28,7 +32,7 @@ return (
 
     <div className={styles['declaration-container']}>
         {showModal && <ProductQuantityForm showModal={showModal} closeModal={closeModal} currentItem={currentItem} />}
-        <ProductsList viewChooseBtn={viewChooseBtn} showQuantityModal={showQuantityModal}/>
+        <ProductsList viewChooseBtn={viewChooseBtn} showQuantityModal={showQuantityModal} isItemSelected={isItemSelected}/>
         <DeclarationItems/>
 
 
