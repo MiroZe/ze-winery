@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import ProductsList from '../../Products/ProductsList'
-import DeclarationItems from '../DeclarationItems/DeclarationItems'
+import DeclarationList from '../DeclarationItems/DeclarationList'
 import styles from './CreateDeclaration.module.css'
 import ProductQuantityForm from '../../Products/ProductQuantityForm/ProductQuantityForm';
+import DeclarationList from '../DeclarationItems/DeclarationList';
 
 
 
@@ -18,22 +19,24 @@ const CreateDecration = () => {
         setCurrentItem(data)
     }
 
-    const addItemTodeclaration = (itemQuantity) => {
+    const addItemToDeclaration = (itemQuantity) => {
 
         setisItemSelected(true);
-        setCurrentItem( prevState => ({...prevState, quantity:itemQuantity}));
-        console.log(currentItem);
+        setCurrentItem( prevState => ({...prevState, quantity:+itemQuantity}));
+       
+        
 
 
     }
+  
 
     const closeModal = () => setShowModal(false);
 return (
 
     <div className={styles['declaration-container']}>
-        {showModal && <ProductQuantityForm showModal={showModal} closeModal={closeModal} currentItem={currentItem} />}
+        {showModal && <ProductQuantityForm showModal={showModal} closeModal={closeModal} currentItem={currentItem} addItemToDeclaration={addItemToDeclaration} />}
         <ProductsList viewChooseBtn={viewChooseBtn} showQuantityModal={showQuantityModal} isItemSelected={isItemSelected}/>
-        <DeclarationItems/>
+        <DeclarationList/>
 
 
     </div>

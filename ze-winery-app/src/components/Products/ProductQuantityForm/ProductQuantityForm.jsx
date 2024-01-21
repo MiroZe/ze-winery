@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 
 
-const ProductQuantityForm = ({showModal,closeModal ,currentItem}) => {
+const ProductQuantityForm = ({showModal,closeModal ,currentItem, addItemToDeclaration}) => {
 
  const [itemQuantity, setItemQuantity] = useState('')
 
@@ -20,8 +20,7 @@ const ProductQuantityForm = ({showModal,closeModal ,currentItem}) => {
  const onSubmitQuantityValue = (e) => {
  e.preventDefault();
  closeModal()
- console.log(itemQuantity);
- console.log(currentItem);
+ addItemToDeclaration(itemQuantity)
 
  }
 

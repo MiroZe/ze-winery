@@ -27,6 +27,7 @@ const ProductsList = ({viewChooseBtn, showQuantityModal,isItemSelected}) => {
 
   }, [companyId])
 
+  
 
   return (
 
