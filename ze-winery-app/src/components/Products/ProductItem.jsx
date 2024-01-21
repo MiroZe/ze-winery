@@ -3,14 +3,14 @@ import Button from 'react-bootstrap/Button';
 
 
 const ProductItem = ({
-  _id, trademarkName, CNCode, additionalCode, pieces, viewChooseBtn,showQuantityModal,isItemSelected
+  _id, trademarkName, CNCode, additionalCode, pieces, viewChooseBtn,showQuantityModal
 }) => {
 
 
 
   return (
     <tr>
-
+      
       <td>{trademarkName}</td>
       <td>{CNCode}</td>
       <td>{additionalCode}</td>
@@ -24,7 +24,7 @@ const ProductItem = ({
        
         
       }
-      {isItemSelected && <td>0</td>}
+      
     </tr>
 
   )

@@ -1,8 +1,11 @@
 import Table from 'react-bootstrap/Table';
 import styles from './DeclarationItems.module.css'
+import DeclarationItem from './DeclarationItem';
 
 
-const DeclarationList = () => {
+const DeclarationList = ({declarationItems}) => {
+
+ 
 
 return (
    
@@ -26,7 +29,7 @@ return (
           </tr>
         </thead>
         <tbody>
-          {/* {found.map(p => <DeclarationItem key={p._id} {...p} />)} */}
+           {declarationItems.map((p,index) => <DeclarationItem key={p._id} {...p} index={index}  />)} 
          
         </tbody>
       </Table>
