@@ -1,3 +1,6 @@
+import Button from 'react-bootstrap/Button';
+import styles from './DeclarationItems.module.css';
+
 
 
 
@@ -14,6 +17,12 @@ return (
     <td>{additionalCode}</td>
     <td>{pieces}</td>
     <td>{quantity}</td>
+    <td>
+        <div className={styles['button-container']}>
+        <Button variant="warning">Редактирай</Button>
+        <Button variant="danger">Изтрий</Button>
+        </div>
+    </td>
   </tr>
 )
 

@@ -1,0 +1,11 @@
+.declaration-container {
+    flex-grow: 1;
+    padding: 1.5em;
+    margin-top: 6em;
+}
+
+.button-container {
+    display: flex;
+   
+   gap:0.2em
+}

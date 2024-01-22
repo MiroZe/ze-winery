@@ -40,13 +40,13 @@ const CreateDecration = () => {
     }
     
   
-console.log(declarationItems);
+
     
       
     const closeModal = () => setShowModal(false);
 return (
 
-    <div className={styles['declaration-container']}>
+    <div className={styles['create-declaration-container']}>
         {showModal && <ProductQuantityForm showModal={showModal} closeModal={closeModal} currentItem={currentItem} addItemToDeclaration={addItemToDeclaration} />}
         <ProductsList viewChooseBtn={viewChooseBtn} showQuantityModal={showQuantityModal} isItemSelected={isItemSelected}/>
         <DeclarationList declarationItems= {declarationItems}/>
