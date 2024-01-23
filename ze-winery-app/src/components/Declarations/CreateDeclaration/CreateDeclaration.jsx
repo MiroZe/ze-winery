@@ -39,6 +39,10 @@ const CreateDecration = () => {
 
     }
     
+    const deleteItemFromDecalarationList(id) {
+
+        
+    }
   
 
     
