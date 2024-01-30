@@ -7,20 +7,29 @@ import { useState } from 'react';
 
 
 
-const ProductQuantityForm = ({showModal,closeModal ,currentItem, addItemToDeclaration}) => {
+const ProductQuantityForm = (
+  {showModal,
+    closeModal ,
+    currentItem, 
+    addItemToDeclaration,
+  
+  }) => {
 
+  
  const [itemQuantity, setItemQuantity] = useState('')
 
 
  const itemQuantityHandler = (e) => {
   setItemQuantity(e.target.value);
+ 
   
  }
 
  const onSubmitQuantityValue = (e) => {
  e.preventDefault();
- closeModal()
- addItemToDeclaration(itemQuantity)
+ closeModal();
+ addItemToDeclaration(itemQuantity);
+ 
 
  }
 
