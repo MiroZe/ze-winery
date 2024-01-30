@@ -39,8 +39,9 @@ const CreateDecration = () => {
 
     }
     
-    const deleteItemFromDecalarationList(id) {
-
+     const deleteItemFromDecalarationList = (id) => {
+        console.log(id);
+        setDeclarationItems(prevState => prevState.filter(f => f._id !== id))
         
     }
   
@@ -53,7 +54,7 @@ return (
     <div className={styles['create-declaration-container']}>
         {showModal && <ProductQuantityForm showModal={showModal} closeModal={closeModal} currentItem={currentItem} addItemToDeclaration={addItemToDeclaration} />}
         <ProductsList viewChooseBtn={viewChooseBtn} showQuantityModal={showQuantityModal} isItemSelected={isItemSelected}/>
-        <DeclarationList declarationItems= {declarationItems}/>
+        <DeclarationList declarationItems= {declarationItems} deleteItemFromDecalarationList={deleteItemFromDecalarationList}/>
 
 
     </div>

@@ -4,7 +4,7 @@ import DeclarationItem from './DeclarationItem';
 import Button from 'react-bootstrap/Button';
 
 
-const DeclarationList = ({declarationItems}) => {
+const DeclarationList = ({declarationItems, deleteItemFromDecalarationList}) => {
 
  
 
@@ -27,7 +27,7 @@ return (
           </tr>
         </thead>
         <tbody>
-           {declarationItems.map((p,index) => <DeclarationItem key={p._id} {...p} index={index}  />)} 
+           {declarationItems.map((p,index) => <DeclarationItem key={p._id} {...p} index={index} deleteItemFromDecalarationList={deleteItemFromDecalarationList} />)} 
          
         </tbody>
       </Table>

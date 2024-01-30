@@ -5,7 +5,7 @@ import styles from './DeclarationItems.module.css';
 
 
 
-const DeclarationItem = ({index, trademarkName,CNCode,additionalCode,pieces,quantity}) => {
+const DeclarationItem = ({index,_id, trademarkName,CNCode,additionalCode,pieces,quantity, deleteItemFromDecalarationList}) => {
 
 console.log(quantity);
 
@@ -20,7 +20,7 @@ return (
     <td>
         <div className={styles['button-container']}>
         <Button variant="warning">Редактирай</Button>
-        <Button variant="danger">Изтрий</Button>
+        <Button variant="danger" onClick={() => deleteItemFromDecalarationList(_id)}>Изтрий</Button>
         </div>
     </td>
   </tr>
