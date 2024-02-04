@@ -23,7 +23,7 @@ const CreateDecration = () => {
         setisItemSelected(true);
    
 
-        const alreadyAdded = declarationItems.some((f) => f.additionalCode === currentItem.additionalCode);
+        const alreadyAdded = declarationItems.some((f) => f._id === currentItem._id);
 
         if (alreadyAdded) {
             setDeclarationItems((prevD) =>

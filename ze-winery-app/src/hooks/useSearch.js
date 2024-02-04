@@ -4,6 +4,8 @@ export const useSearch = (initialState) => {
 
     const [searchValue, setSearchValue] = useState('')
 
+    console.log(initialState);
+
 
     const filterByName = (item, value) => {
       return Object.keys(item).some(
@@ -17,7 +19,8 @@ export const useSearch = (initialState) => {
     const filterByDigits = (item, value) => {
         return Object.keys(item).some(
           (key) =>
-            (key.includes('Id') &&
+        
+            (key.includes('additional') &&
             item[key] &&
             item[key].includes(value)))
         
@@ -27,7 +30,7 @@ export const useSearch = (initialState) => {
       if (searchValue === "") {
         return initialState;
       } else if (!isNaN(searchValue)){
-       
+       console.log('isNAN');
         return initialState.filter((x) => filterByDigits(x, searchValue));
       }
       else {
