@@ -5,10 +5,12 @@ const company = require('./company');
 const product = require('./product')
 
 
+
 router.use('/test', test);
 router.use('/auth', auth);
 router.use('/company', company);
-router.use('/products', product)
+router.use('/products', product);
+
 
 
 
