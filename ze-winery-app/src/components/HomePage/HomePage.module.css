@@ -26,4 +26,8 @@
   .get-started-button:hover {
     background-color: #041f60;
   }
+
+  .container img {
+    width: 40em;
+  }
   

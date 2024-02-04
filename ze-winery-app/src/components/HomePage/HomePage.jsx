@@ -1,4 +1,5 @@
 import styles from './HomePage.module.css'
+import logo from '../../assets/logo.png'
 
 const HomePage = () => {
 
@@ -14,7 +15,8 @@ const HomePage = () => {
         <p>
           Easily create customs declarations for wines and streamline your import/export process.
         </p>
-        <button className={styles["get-started-button"]}>Get Started</button>
+      
+        <img src={logo} alt="logo" />
       </section>
     </div>
   );

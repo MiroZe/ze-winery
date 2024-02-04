@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from './Header.module.css'
 import { useSelector } from 'react-redux';
+import logo from '../../assets/logo_transparent.png'
 
 const Header = () => {
 
@@ -12,10 +13,11 @@ const Header = () => {
     return (
 
         <div className={styles['header-container']}>
-            <div>
-                <p>logo</p>
-                
-            </div>
+             <div className="logo">
+            <Link to="/">
+            <img src={logo} alt="Logo" />
+            </Link>
+      </div>
             <p>Welcome { username || 'Guest'}</p>
             <ul className={styles['list-items']}>
                <li><Link to={'/'}>Home</Link></li>

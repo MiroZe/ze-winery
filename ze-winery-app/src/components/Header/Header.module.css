@@ -27,3 +27,10 @@
     color: white;
     text-decoration: none;
 }
+
+
+
+.header-container img {
+    width: 60px;
+    height: 60px;
+}
