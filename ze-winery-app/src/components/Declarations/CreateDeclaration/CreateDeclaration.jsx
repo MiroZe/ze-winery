@@ -3,6 +3,7 @@ import ProductsList from '../../Products/ProductsList'
 import DeclarationList from '../DeclarationItems/DeclarationList'
 import styles from './CreateDeclaration.module.css'
 import ProductQuantityForm from '../../Products/ProductQuantityForm/ProductQuantityForm';
+import MonthYPicker from '../../MonthYPicker/MonthYPicker';
 
 
 
@@ -56,12 +57,16 @@ const CreateDecration = () => {
                 currentItem={currentItem}
                 addItemToDeclaration={addItemToDeclaration}
               />}
+           
             <ProductsList viewChooseBtn={viewChooseBtn} showQuantityModal={showQuantityModal} isItemSelected={isItemSelected} />
+            <div className={styles['declaration-container']}>
+                <MonthYPicker/>
             <DeclarationList
                 declarationItems={declarationItems}
                 deleteItemFromDecalarationList={deleteItemFromDecalarationList}
                />
 
+               </div>
 
         </div>
 
