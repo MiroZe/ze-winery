@@ -4,6 +4,7 @@ import DeclarationItem from './DeclarationItem';
 import Button from 'react-bootstrap/Button';
 import MonthYPicker from '../../MonthYPicker/MonthYPicker';
 import { useState } from 'react';
+import { createDeclaration } from '../../../services/companyService';
 
 
 const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, editItemFromDeclarationList}) => {
@@ -14,7 +15,25 @@ const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, edit
     year: newDate.getFullYear()
   });
 
-  console.log(selectedMonthData);
+  
+
+  const handleDeclarationSubmit = async (declarationItems, dateData) => {
+
+    const declarationData = {
+      declarationItems,
+      year: dateData.year,
+      month: dateData.monthName
+      
+    }
+
+    try {
+      const result = await createDeclaration(declarationData);
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
+
+  }
  
 
 return (
@@ -47,7 +66,7 @@ return (
       </Table>
       
       <MonthYPicker  selectedMonthData={selectedMonthData} setSelectedMonthData={setSelectedMonthData}/>
-      <Button variant="success">Запази</Button>
+      <Button variant="success" onClick={ () => handleDeclarationSubmit(declarationItems,selectedMonthData)}>Запази</Button>
       
     </div>
   );

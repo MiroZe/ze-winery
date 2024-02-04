@@ -1,29 +1,39 @@
-const { declarationModel }= require('../models/declarationModel')
+const { declarationModel } = require('../models')
 
 
 
-const getAllDeclarations = async(req,res,next) => {
+const getAllDeclarations = async (req, res, next) => {
 
-    
+
     try {
         const declarations = await declarationModel.find({})
         return res.status(200).json(declarations)
-        
+
     } catch (error) {
         next(error)
     }
 
 }
 
-const createDeclaration = async (req,res,next) => {
+const createDeclaration = async (req, res, next) => {
 
-try {
+    try {
 
-    console.log('hello from declarations');
-    
-} catch (error) {
-    next(error)
-}
+        const { year, month, declarationItems } = req.body;
+
+
+
+        const result = await declarationModel.create({
+            year, month, products: declarationItems.map(({ _id, quantity }) => ({
+                product: _id,
+                quantity,
+            })),
+        })
+        console.log(result);
+
+    } catch (error) {
+        next(error)
+    }
 
 
 }

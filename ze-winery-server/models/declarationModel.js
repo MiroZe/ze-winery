@@ -2,7 +2,17 @@ const mongoose = require('mongoose');
 const { ObjectId } = mongoose.Schema.Types;
 
 
-
+const productSchema = new mongoose.Schema({
+    product: {
+      type: ObjectId,
+      ref: 'Product',
+      required: true,
+    },
+    quantity: {
+      type: Number,
+      required: true,
+    },
+  });
 
 const declarationSchema = new mongoose.Schema({
 
@@ -14,14 +24,7 @@ month : {
     type: String,
     required:true
 },
-products : [{
-    type: ObjectId,
-    ref: 'Product',
-    quantity: {
-        type: Number,
-        required:true
-    }
-}],
+products : [productSchema],
 createdAt: {
     type: Date,
     default: Date.now,
