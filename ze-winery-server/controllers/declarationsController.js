@@ -23,13 +23,13 @@ const createDeclaration = async (req, res, next) => {
 
 
 
-        const result = await declarationModel.create({
+        const createdDeclaration = await declarationModel.create({
             year, month, products: declarationItems.map(({ _id, quantity }) => ({
                 product: _id,
                 quantity,
             })),
         })
-        console.log(result);
+        return res.status(201).json(createdDeclaration)
 
     } catch (error) {
         next(error)
