@@ -2,10 +2,19 @@ import Table from 'react-bootstrap/Table';
 import styles from './DeclarationItems.module.css'
 import DeclarationItem from './DeclarationItem';
 import Button from 'react-bootstrap/Button';
+import MonthYPicker from '../../MonthYPicker/MonthYPicker';
+import { useState } from 'react';
 
 
 const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, editItemFromDeclarationList}) => {
 
+  let newDate = new Date()
+  const [selectedMonthData, setSelectedMonthData] = useState({
+    month: newDate.getMonth() + 1,
+    year: newDate.getFullYear()
+  });
+
+  console.log(selectedMonthData);
  
 
 return (
@@ -36,7 +45,10 @@ return (
          
         </tbody>
       </Table>
+      
+      <MonthYPicker  selectedMonthData={selectedMonthData} setSelectedMonthData={setSelectedMonthData}/>
       <Button variant="success">Запази</Button>
+      
     </div>
   );
 
