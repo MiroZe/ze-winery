@@ -57,7 +57,8 @@ const companySchema = new mongoose.Schema({
     users : [
         {
             type: ObjectId, 
-            ref: 'User'
+            ref: 'User',
+            required:true
         }
     ],
     owner : {
@@ -73,6 +74,21 @@ const companySchema = new mongoose.Schema({
               type: Number,
               required:true,
               unique:true,
+              minLength: [10, 'Невалидно ЕГН'],
+              maxLength: [10, 'Невалидно ЕГН']
+          }
+    } ,
+    declarer : {
+        declarerFirstName: {
+            type: String,
+            
+          },
+          declarerLastName: {
+            type: String,
+          
+          },
+          declarerId : {
+              type: Number,   
               minLength: [10, 'Невалидно ЕГН'],
               maxLength: [10, 'Невалидно ЕГН']
           }

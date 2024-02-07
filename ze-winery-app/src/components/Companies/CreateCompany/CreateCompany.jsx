@@ -9,11 +9,13 @@ import utils from '../../../utils';
 import { createCompany } from '../../../services/companyService';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const CreateCompany = () => {
 
-  const {_id} = useSelector(state => state.user);
-  const [isDeclarer,setIsDeclarer] = useState(false)
+  const {user} = useSelector(state => state.user);
+  const [isDeclarer,setIsDeclarer] = useState(false);
+  const navigate = useNavigate();
 
 const {formValues, onChangeHandler} = useForm({
   companyName: '',
@@ -26,16 +28,47 @@ const {formValues, onChangeHandler} = useForm({
   postalCode: '',
   firstName :'',
   lastName: '',
-  ownerId: ''
+  ownerId: '',
+  declarerFirstName: '',
+  declarerLastName:'',
+  declarerId: ''
 
 });
 
+
+
+
+
+
 const createCompanySubmitHandler = async (e) => {
   e.preventDefault();
-  if (utils.formFieldCheckFn(formValues)) return;
+
+  const companyData = {
+    companyName:formValues.companyName,
+    companyType:formValues.companyType,
+    companyId:formValues.companyId,
+    exciseId:formValues.exciseId,
+    address:formValues.address,
+    city:formValues.city,
+    state:formValues.state,
+    postalCode:formValues.postalCode,
+    owner : {
+      firstName: formValues.firstName,
+      lastName:formValues.lastName,
+      ownerId:formValues.ownerId
+    },
+    declarer: {
+      declarerFirstName: formValues.declarerFirstName,
+      declarerLastName:formValues.declarerLastName,
+      declarerId:formValues.declarerId
+    }
+  }
+  if (utils.formFieldCheckFn(companyData)) return;
   try {
-    const company = await createCompany({...formValues, userId:_id});
-    console.log(company);
+  
+    await createCompany({...companyData, userId:user._id});
+    navigate('/')
+   
   } catch (error) {
     console.log(error);
     
@@ -142,15 +175,15 @@ const onChangeDeclarerHandler = () => {
           <p>Декларатор</p>
           <Form.Group as ={Col }controlId="formGrid">
             <Form.Label>Собствено Име</Form.Label>
-            <Form.Control name='declarerFirstName' value={formValues.firstName} onChange={(e) => onChangeHandler(e)}/>
+            <Form.Control name='declarerFirstName' value={formValues.declarerFirstName} onChange={(e) => onChangeHandler(e)}/>
             </Form.Group>
             <Form.Group as ={Col }controlId="formGrid">
             <Form.Label>Фамилия</Form.Label>
-            <Form.Control name='declarerLastName' value={formValues.lastName} onChange={(e) => onChangeHandler(e)}/>
+            <Form.Control name='declarerLastName' value={formValues.declarerLastName} onChange={(e) => onChangeHandler(e)}/>
             </Form.Group>
             <Form.Group as ={Col }controlId="formGrid">
             <Form.Label>EГН</Form.Label>
-            <Form.Control  name='declarerId' type='number' value={formValues.ownerId} onChange={(e) => onChangeHandler(e)}/>
+            <Form.Control  name='declarerId' type='number' value={formValues.declarerId} onChange={(e) => onChangeHandler(e)}/>
             </Form.Group>
           </Row>
           }

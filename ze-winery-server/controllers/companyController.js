@@ -5,7 +5,9 @@ const { companyModel, productModel } = require('../models');
 
 const createCompany = async (req, res, next) => {
 
-    const { companyName, companyType, companyId, exciseId, address, city, state, postalCode, userId } = req.body;
+    
+    const { companyName, companyType, companyId, exciseId, address, city, state, postalCode, userId,owner,declarer } = req.body;
+    console.log(req.body);
     const companyData = {
         companyName,
         companyType,
@@ -15,7 +17,9 @@ const createCompany = async (req, res, next) => {
         city,
         state,
         postalCode,
-        users: [userId]
+        users: [userId],
+        owner,
+        declarer
     }
 
     try {
@@ -32,7 +36,7 @@ const createCompany = async (req, res, next) => {
 
 const getMyCompanies = async(req,res,next) => {
 
-    const userId = req.query['userId']
+    const userId = req.query['userId'];
     try {
         const companies = await companyModel.find({users : {$in: userId}})
         return res.status(200).json(companies)
