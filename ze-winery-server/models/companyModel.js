@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema.Types;
 
 
+
+
+
+
 const companySchema = new mongoose.Schema({
 
     companyName : {
@@ -55,7 +59,24 @@ const companySchema = new mongoose.Schema({
             type: ObjectId, 
             ref: 'User'
         }
-    ]
+    ],
+    owner : {
+        firstName: {
+            type: String,
+            required: true,
+          },
+          lastName: {
+            type: String,
+            required: true,
+          },
+          ownerId : {
+              type: String,
+              required:true,
+              unique:true,
+              minLength: [10, 'Невалидно ЕГН'],
+              maxLength: [10, 'Невалидно ЕГН']
+          }
+    } 
 });
 
 

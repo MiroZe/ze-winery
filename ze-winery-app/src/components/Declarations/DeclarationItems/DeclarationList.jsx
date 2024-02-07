@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import MonthYPicker from '../../MonthYPicker/MonthYPicker';
 import { useState } from 'react';
 import { createDeclaration } from '../../../services/companyService';
+import Declarer from '../Declarer/Declarer';
 
 
 const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, editItemFromDeclarationList}) => {
@@ -66,7 +67,9 @@ return (
       </Table>
       
       <MonthYPicker  selectedMonthData={selectedMonthData} setSelectedMonthData={setSelectedMonthData}/>
+      <Declarer/>
       <Button variant="success" onClick={ () => handleDeclarationSubmit(declarationItems,selectedMonthData)}>Запази</Button>
+
       
     </div>
   );
