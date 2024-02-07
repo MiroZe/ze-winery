@@ -70,7 +70,7 @@ const companySchema = new mongoose.Schema({
             required: true,
           },
           ownerId : {
-              type: String,
+              type: Number,
               required:true,
               unique:true,
               minLength: [10, 'Невалидно ЕГН'],

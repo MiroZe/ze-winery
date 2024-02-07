@@ -8,10 +8,12 @@ import { useForm } from '../../../hooks/useForm';
 import utils from '../../../utils';
 import { createCompany } from '../../../services/companyService';
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
 
 const CreateCompany = () => {
 
   const {_id} = useSelector(state => state.user);
+  const [isDeclarer,setIsDeclarer] = useState(false)
 
 const {formValues, onChangeHandler} = useForm({
   companyName: '',
@@ -21,9 +23,12 @@ const {formValues, onChangeHandler} = useForm({
   address: '',
   city: '',
   state:'',
-  postalCode: ''
+  postalCode: '',
+  firstName :'',
+  lastName: '',
+  ownerId: ''
 
-})
+});
 
 const createCompanySubmitHandler = async (e) => {
   e.preventDefault();
@@ -35,6 +40,11 @@ const createCompanySubmitHandler = async (e) => {
     console.log(error);
     
   }
+};
+
+const onChangeDeclarerHandler = () => {
+  setIsDeclarer(!isDeclarer);
+
 }
 
   return (
@@ -104,7 +114,47 @@ const createCompanySubmitHandler = async (e) => {
             <Form.Control name='postalCode' value={formValues.postalCode} onChange={(e) => onChangeHandler(e)}/>
           </Form.Group>
         </Row>
-        <Button variant="primary" type="submit">
+        <Row >
+          <p>МОЛ</p>
+          <Form.Group as ={Col }controlId="formGrid">
+            <Form.Label>Собствено Име</Form.Label>
+            <Form.Control name='firstName' value={formValues.firstName} onChange={(e) => onChangeHandler(e)}/>
+            </Form.Group>
+            <Form.Group as ={Col }controlId="formGrid">
+            <Form.Label>Фамилия</Form.Label>
+            <Form.Control name='lastName' value={formValues.lastName} onChange={(e) => onChangeHandler(e)}/>
+            </Form.Group>
+            <Form.Group as ={Col }controlId="formGrid">
+            <Form.Label>EГН</Form.Label>
+            <Form.Control  name='ownerId' type='number' value={formValues.ownerId} onChange={(e) => onChangeHandler(e)}/>
+            </Form.Group>
+          </Row>
+          <Form.Check 
+        type="switch"
+        id="custom-switch"
+        label="Декларатор"
+        name='isDeclarer'
+        onChange={onChangeDeclarerHandler}
+        value={isDeclarer}
+      />
+      {isDeclarer && 
+      <Row >
+          <p>Декларатор</p>
+          <Form.Group as ={Col }controlId="formGrid">
+            <Form.Label>Собствено Име</Form.Label>
+            <Form.Control name='declarerFirstName' value={formValues.firstName} onChange={(e) => onChangeHandler(e)}/>
+            </Form.Group>
+            <Form.Group as ={Col }controlId="formGrid">
+            <Form.Label>Фамилия</Form.Label>
+            <Form.Control name='declarerLastName' value={formValues.lastName} onChange={(e) => onChangeHandler(e)}/>
+            </Form.Group>
+            <Form.Group as ={Col }controlId="formGrid">
+            <Form.Label>EГН</Form.Label>
+            <Form.Control  name='declarerId' type='number' value={formValues.ownerId} onChange={(e) => onChangeHandler(e)}/>
+            </Form.Group>
+          </Row>
+          }
+        <Button variant="primary" type="submit" style={{marginTop:'10px'}}>
           Запази
         </Button>
       </Form>
