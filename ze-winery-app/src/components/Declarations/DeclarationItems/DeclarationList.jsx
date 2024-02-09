@@ -6,6 +6,7 @@ import MonthYPicker from '../../MonthYPicker/MonthYPicker';
 import { useState } from 'react';
 import { createDeclaration } from '../../../services/companyService';
 import Declarer from '../Declarer/Declarer';
+import { useSelector } from 'react-redux';
 
 
 const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, editItemFromDeclarationList}) => {
@@ -15,6 +16,17 @@ const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, edit
     month: newDate.getMonth() + 1,
     year: newDate.getFullYear()
   });
+
+  const currentCompany = useSelector(state => state.company)
+
+  const declarerData = {
+    ownerNames:`${currentCompany.owner.firstName} ${currentCompany.owner.lastName}`,
+    ownerId:currentCompany.owner.ownerId,
+    declarerNames:`${currentCompany.declarer.declarerFirstName} ${currentCompany.declarer.declarerLastName}`,
+    declarerId: currentCompany.declarer.declarerId,
+
+  }
+  
 
   
 
@@ -67,7 +79,7 @@ return (
       </Table>
       
       <MonthYPicker  selectedMonthData={selectedMonthData} setSelectedMonthData={setSelectedMonthData}/>
-      <Declarer/>
+      <Declarer declarerData = {declarerData}/>
       <Button variant="success" onClick={ () => handleDeclarationSubmit(declarationItems,selectedMonthData)}>Запази</Button>
 
       

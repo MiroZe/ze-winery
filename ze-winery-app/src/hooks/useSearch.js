@@ -4,7 +4,7 @@ export const useSearch = (initialState) => {
 
     const [searchValue, setSearchValue] = useState('')
 
-    console.log(initialState);
+  
 
 
     const filterByName = (item, value) => {
@@ -30,7 +30,7 @@ export const useSearch = (initialState) => {
       if (searchValue === "") {
         return initialState;
       } else if (!isNaN(searchValue)){
-       console.log('isNAN');
+     
         return initialState.filter((x) => filterByDigits(x, searchValue));
       }
       else {
