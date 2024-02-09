@@ -27,9 +27,6 @@ const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, edit
 
   }
   
-
-  
-
   const handleDeclarationSubmit = async (declarationItems, dateData) => {
 
     const declarationData = {
