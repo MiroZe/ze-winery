@@ -29,10 +29,13 @@ const createDeclaration = async (req, res, next) => {
             startDate,
             endDate,
             appliedDocumentsDescription,
+            appliedDocumentsNumbers,
             exciseNumber,
             SIC,
             egn,
             documentDate } = req.body;
+
+            
 
         
             const declarationData = {
@@ -43,30 +46,39 @@ const createDeclaration = async (req, res, next) => {
                     exciseNumber
                 },
                 declarer: {
-                    names,
+                    name:names,
                     egn
                 },
                 reportingPeriod :{
-                    startDate,
-                    endDate
+                    taxPeriod: {
+                        start:startDate,
+                        end: endDate
+                    }
+                   
                 },
                 appliedDocuments : {
                     appliedDocument : {
-                        description :{
-                            documentNumber:appliedDocumentsDescription
-                        },
+                        description :appliedDocumentsDescription,
+                        documentNumber : appliedDocumentsNumbers,
                         documentDate
-
+                       
                     }
-                }
+                },
+                declarationItems
 
             }
 
-
+            console.log(declarationData.appliedDocuments);
 
 
         const createdDeclaration = await declarationModel.create({
-            year, month, products: declarationItems.map(({ _id, quantity }) => ({
+                year,
+                month, 
+                customer : declarationData.customer,
+                declarer: declarationData.declarer,
+                reportingPeriod: declarationData.reportingPeriod,
+                appliedDocuments: declarationData.appliedDocuments,
+                exciseGoods: declarationItems.map(({ _id, quantity }) => ({
                 product: _id,
                 quantity,
             })),

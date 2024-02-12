@@ -55,7 +55,8 @@ const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, edit
       names: formValues.names,
       startDate: formatDateAsString(formValues.startDate),
       endDate: formatDateAsString(formValues.endDate),
-      appliedDocumentsDescription: formValues.appliedDocumentNumbers,
+      appliedDocumentsNumbers: formValues.appliedDocumentNumbers,
+      appliedDocumentsDescription: `Акцизни данъчни документи - ${formValues.appliedDocumentNumbers}`,
       exciseNumber: currentCompany.exciseNumber,
       SIC: currentCompany.companyId,
       egn: currentCompany.owner.ownerId,
@@ -64,11 +65,9 @@ const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, edit
     }
 
     try {
-      //const result = await createDeclaration(declarationData);
-      console.log(declarationData);
-      console.log(declarationData.documentDate);
-      console.log(selectedMonthData);
-      //console.log(result);
+      const result = await createDeclaration(declarationData);
+
+      console.log(result);
       
     } catch (error) {
       console.log(error);
