@@ -36,8 +36,9 @@ const declarationSchema = new mongoose.Schema({
     default: false
   },
   preparationDate: {
-    type: String,
-    required: true,
+    type:String,
+    default: Date.now,
+    required: true
   },
   customsOffice: {
     type: String,

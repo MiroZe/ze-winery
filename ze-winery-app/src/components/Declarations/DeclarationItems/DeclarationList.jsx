@@ -18,10 +18,12 @@ const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, edit
   let newDate = new Date()
   const [selectedMonthData, setSelectedMonthData] = useState({
     month: newDate.getMonth() + 1,
-    year: newDate.getFullYear()
+    year: newDate.getFullYear(),
+    day:newDate.getDate()
   });
 
   const currentCompany = useSelector(state => state.company)
+ 
 
   const declarerData = {
     ownerNames:`${currentCompany.owner.firstName} ${currentCompany.owner.surName} ${currentCompany.owner.lastName}`,
@@ -36,9 +38,13 @@ const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, edit
     id : declarerData.ownerId,
     startDate: '',
     endDate: '',
-    appliedDocumentDescription: ''
+    appliedDocumentDescription:'',
+    appliedDocumentNumbers:''
 
  });
+
+ 
+ 
   
   const handleDeclarationSubmit = async (declarationItems, dateData) => {
 
@@ -49,13 +55,20 @@ const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, edit
       names: formValues.names,
       startDate: formatDateAsString(formValues.startDate),
       endDate: formatDateAsString(formValues.endDate),
-      appliedDocuments: formValues.appliedDocumentDescription
+      appliedDocumentsDescription: formValues.appliedDocumentNumbers,
+      exciseNumber: currentCompany.exciseNumber,
+      SIC: currentCompany.companyId,
+      egn: currentCompany.owner.ownerId,
+      documentDate: Object.values(selectedMonthData).reverse().join('')
       
     }
 
     try {
       //const result = await createDeclaration(declarationData);
       console.log(declarationData);
+      console.log(declarationData.documentDate);
+      console.log(selectedMonthData);
+      //console.log(result);
       
     } catch (error) {
       console.log(error);

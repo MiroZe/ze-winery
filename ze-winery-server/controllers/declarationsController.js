@@ -17,9 +17,51 @@ const getAllDeclarations = async (req, res, next) => {
 
 const createDeclaration = async (req, res, next) => {
 
+    console.log(req.body);
+
     try {
 
-        const { year, month, declarationItems } = req.body;
+        const   {
+            year,
+            month,
+            declarationItems,
+            names,
+            startDate,
+            endDate,
+            appliedDocumentsDescription,
+            exciseNumber,
+            SIC,
+            egn,
+            documentDate } = req.body;
+
+        
+            const declarationData = {
+                year,
+                month,
+                customer: {
+                    SIC,
+                    exciseNumber
+                },
+                declarer: {
+                    names,
+                    egn
+                },
+                reportingPeriod :{
+                    startDate,
+                    endDate
+                },
+                appliedDocuments : {
+                    appliedDocument : {
+                        description :{
+                            documentNumber:appliedDocumentsDescription
+                        },
+                        documentDate
+
+                    }
+                }
+
+            }
+
 
 
 
