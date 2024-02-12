@@ -7,9 +7,12 @@ import { useState } from 'react';
 import { createDeclaration } from '../../../services/companyService';
 import Declarer from '../Declarer/Declarer';
 import { useSelector } from 'react-redux';
+import { useForm } from '../../../hooks/useForm';
 
 
 const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, editItemFromDeclarationList}) => {
+
+
 
   let newDate = new Date()
   const [selectedMonthData, setSelectedMonthData] = useState({
@@ -25,20 +28,34 @@ const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, edit
     declarerNames:`${currentCompany.declarer.declarerFirstName} ${currentCompany.declarer.declarerLastName}`,
     declarerId: currentCompany.declarer.declarerId,
 
-  }
+  };
+  
+  const {formValues, onChangeHandler} = useForm({
+    names: declarerData.ownerNames || '' ,
+    id : declarerData.ownerId,
+    startDate: '',
+    endDate: '',
+    appliedDocumentDescription: ''
+
+ });
   
   const handleDeclarationSubmit = async (declarationItems, dateData) => {
 
     const declarationData = {
       declarationItems,
       year: dateData.year,
-      month: dateData.monthName
+      month: dateData.monthName,
+      names: formValues.names,
+      startDate: formValues.startDate,
+      endDate: formValues.startDate,
+      appliedDocuments: formValues.appliedDocumentDescription
       
     }
 
     try {
-      const result = await createDeclaration(declarationData);
-      console.log(result);
+      //const result = await createDeclaration(declarationData);
+      console.log(declarationData);
+      console.log(formValues);
     } catch (error) {
       console.log(error);
     }
@@ -76,7 +93,7 @@ return (
       </Table>
       
       <MonthYPicker  selectedMonthData={selectedMonthData} setSelectedMonthData={setSelectedMonthData}/>
-      <Declarer declarerData = {declarerData}/>
+      <Declarer formValues = {formValues} onChangeHandler = {onChangeHandler}/>
       <Button variant="success" onClick={ () => handleDeclarationSubmit(declarationItems,selectedMonthData)}>Запази</Button>
 
       
