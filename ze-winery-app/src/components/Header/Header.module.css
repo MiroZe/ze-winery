@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #041f60;
+    background-color: #778ca3;
     color:white;
 
 }
@@ -33,4 +33,5 @@
 .header-container img {
     width: 60px;
     height: 60px;
+    background-color: #0476D0;
 }

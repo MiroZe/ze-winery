@@ -132,7 +132,7 @@ const onChangeDeclarerHandler = () => {
 
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label>Област</Form.Label>
-            <Form.Select defaultValue="Choose..." name='state' value={formValues.state} onChange={(e) => onChangeHandler(e)}>
+            <Form.Select  name='state' value={formValues.state} onChange={(e) => onChangeHandler(e)}>
               <option value="">Изберете...</option>
               <option value="Варна">Варна</option>
               <option value="Бургас">Бургас</option>

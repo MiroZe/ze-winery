@@ -68,7 +68,7 @@ const createDeclaration = async (req, res, next) => {
 
             }
 
-            console.log(declarationData.appliedDocuments);
+           
 
 
         const createdDeclaration = await declarationModel.create({
