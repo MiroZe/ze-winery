@@ -19,12 +19,10 @@ const Declarer = ({ formValues,onChangeHandler }) => {
                 <Form.Label>Начална дата</Form.Label>
                 <Form.Control type="date" name='startDate' value={formValues.startDate} onChange={onChangeHandler}/>
                 <Form.Label>Крайна дата</Form.Label>
-                <Form.Control type="date"  name="endDate" value={formValues.startDate} onChange={onChangeHandler}/>
+                <Form.Control type="date"  name="endDate" value={formValues.endDate} onChange={onChangeHandler}/>
                
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                <Form.Label>Тип на документа</Form.Label>
-                <Form.Control type="text" defaultValue={40} disabled name=''/>
                 <Form.Label>Описание на документите</Form.Label>
                 <Form.Control type="text" 
                 placeholder='from N:100 to N:110'

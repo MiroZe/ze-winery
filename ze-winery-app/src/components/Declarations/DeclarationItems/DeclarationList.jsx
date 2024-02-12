@@ -8,6 +8,7 @@ import { createDeclaration } from '../../../services/companyService';
 import Declarer from '../Declarer/Declarer';
 import { useSelector } from 'react-redux';
 import { useForm } from '../../../hooks/useForm';
+import { formatDateAsString } from '../../../utils/formatDateAsString';
 
 
 const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, editItemFromDeclarationList}) => {
@@ -46,8 +47,8 @@ const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, edit
       year: dateData.year,
       month: dateData.monthName,
       names: formValues.names,
-      startDate: formValues.startDate,
-      endDate: formValues.startDate,
+      startDate: formatDateAsString(formValues.startDate),
+      endDate: formatDateAsString(formValues.endDate),
       appliedDocuments: formValues.appliedDocumentDescription
       
     }
@@ -55,7 +56,7 @@ const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, edit
     try {
       //const result = await createDeclaration(declarationData);
       console.log(declarationData);
-      console.log(formValues);
+      
     } catch (error) {
       console.log(error);
     }
