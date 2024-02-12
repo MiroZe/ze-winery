@@ -20,7 +20,7 @@ const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, edit
   const currentCompany = useSelector(state => state.company)
 
   const declarerData = {
-    ownerNames:`${currentCompany.owner.firstName} ${currentCompany.owner.lastName}`,
+    ownerNames:`${currentCompany.owner.firstName} ${currentCompany.owner.surName} ${currentCompany.owner.lastName}`,
     ownerId:currentCompany.owner.ownerId,
     declarerNames:`${currentCompany.declarer.declarerFirstName} ${currentCompany.declarer.declarerLastName}`,
     declarerId: currentCompany.declarer.declarerId,

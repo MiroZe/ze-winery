@@ -66,6 +66,10 @@ const companySchema = new mongoose.Schema({
             type: String,
             required: true,
           },
+          surName: {
+            type: String,
+            required: true,
+          },
           lastName: {
             type: String,
             required: true,
@@ -80,6 +84,10 @@ const companySchema = new mongoose.Schema({
     } ,
     declarer : {
         declarerFirstName: {
+            type: String,
+            
+          },
+          declarerSurName: {
             type: String,
             
           },

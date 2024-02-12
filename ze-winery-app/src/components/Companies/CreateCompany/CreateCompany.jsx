@@ -27,9 +27,11 @@ const {formValues, onChangeHandler} = useForm({
   state:'',
   postalCode: '',
   firstName :'',
+  surName :'',
   lastName: '',
   ownerId: '',
   declarerFirstName: '',
+  declarerSurName :'',
   declarerLastName:'',
   declarerId: ''
 
@@ -54,11 +56,13 @@ const createCompanySubmitHandler = async (e) => {
     postalCode:formValues.postalCode,
     owner : {
       firstName: formValues.firstName,
+      surName: formValues.surName,
       lastName:formValues.lastName,
       ownerId:formValues.ownerId
     },
     declarer: {
       declarerFirstName: formValues.declarerFirstName,
+      declarerSurName: formValues.declarerSurName,
       declarerLastName:formValues.declarerLastName,
       declarerId:formValues.declarerId
     }
@@ -153,6 +157,10 @@ const onChangeDeclarerHandler = () => {
             <Form.Label>Собствено Име</Form.Label>
             <Form.Control name='firstName' value={formValues.firstName} onChange={(e) => onChangeHandler(e)}/>
             </Form.Group>
+            <Form.Group>
+            <Form.Label>Презиме</Form.Label>
+            <Form.Control name='surName' value={formValues.surName} onChange={(e) => onChangeHandler(e)}/>
+            </Form.Group>
             <Form.Group as ={Col }controlId="formGrid">
             <Form.Label>Фамилия</Form.Label>
             <Form.Control name='lastName' value={formValues.lastName} onChange={(e) => onChangeHandler(e)}/>
@@ -177,6 +185,11 @@ const onChangeDeclarerHandler = () => {
             <Form.Label>Собствено Име</Form.Label>
             <Form.Control name='declarerFirstName' value={formValues.declarerFirstName} onChange={(e) => onChangeHandler(e)}/>
             </Form.Group>
+            <Form.Group as ={Col }controlId="formGrid">
+            <Form.Label>През Име</Form.Label>
+            <Form.Control name='declarerSurName' value={formValues.declarerSurName} onChange={(e) => onChangeHandler(e)}/>
+            </Form.Group>
+            
             <Form.Group as ={Col }controlId="formGrid">
             <Form.Label>Фамилия</Form.Label>
             <Form.Control name='declarerLastName' value={formValues.declarerLastName} onChange={(e) => onChangeHandler(e)}/>
