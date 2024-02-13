@@ -23,6 +23,7 @@ const createDeclaration = async (req, res, next) => {
 
         const   {
             year,
+            companyId,
             month,
             declarationItems,
             names,
@@ -41,6 +42,7 @@ const createDeclaration = async (req, res, next) => {
             const declarationData = {
                 year,
                 month,
+                ownerCompanyId :companyId, 
                 customer: {
                     SIC,
                     exciseNumber
@@ -73,7 +75,8 @@ const createDeclaration = async (req, res, next) => {
 
         const createdDeclaration = await declarationModel.create({
                 year,
-                month, 
+                month,
+                ownerCompanyId :companyId,
                 customer : declarationData.customer,
                 declarer: declarationData.declarer,
                 reportingPeriod: declarationData.reportingPeriod,

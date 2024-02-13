@@ -120,6 +120,11 @@ const declarationSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  ownerCompanyId: {
+    type: ObjectId,
+    ref:'Company',
+    required: true
+  },
  
   createdAt: {
     type: Date,

@@ -8,11 +8,13 @@ import { userLogin } from '../../services/authService';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../reducers/users';
 import { useNavigate } from 'react-router-dom';
+import { useErrorMessageDispatch } from '../../hooks/useErrorMessageDispatch';
 
 const LoginForm = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const dispatchErrorMessage = useErrorMessageDispatch()
 
 
     const {formValues, onChangeHandler} = useForm( 
@@ -33,6 +35,7 @@ const LoginForm = () => {
             navigate('/dashboard')
             
         } catch (error) {
+            dispatchErrorMessage(error)
             console.log(error);
         }
 

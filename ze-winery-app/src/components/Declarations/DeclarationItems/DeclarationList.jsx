@@ -29,7 +29,8 @@ const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, edit
     ownerNames:`${currentCompany.owner.firstName} ${currentCompany.owner.surName} ${currentCompany.owner.lastName}`,
     ownerId:currentCompany.owner.ownerId,
     declarerNames:`${currentCompany.declarer.declarerFirstName} ${currentCompany.declarer.declarerLastName}`,
-    declarerId: currentCompany.declarer.declarerId,
+    declarerId: currentCompany.declarer.declarerId
+    
 
   };
   
@@ -50,6 +51,7 @@ const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, edit
 
     const declarationData = {
       declarationItems,
+      companyId : currentCompany._id,
       year: dateData.year,
       month: dateData.monthName,
       names: formValues.names,
