@@ -2,10 +2,14 @@ import { Link } from 'react-router-dom';
 import styles from './Header.module.css'
 import { useSelector } from 'react-redux';
 import logo from '../../assets/logo_transparent.png'
+import MessageBanner from '../Message/MessageBannes';
 
 const Header = () => {
 
     const {user} = useSelector(state => state.user);
+   //  const {message,isMessage} = useSelector(state => state.message);
+   //  console.log(isMessage);
+    
   
     const username = user?.username;
    
@@ -35,7 +39,7 @@ const Header = () => {
             }
                <li><Link to={'/contacts'}>Контакти</Link></li>
             </ul>
-
+            <MessageBanner/>
        
         </div>
      
