@@ -1,6 +1,5 @@
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import style from './SubbmittedDeclarations.module.css'
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
