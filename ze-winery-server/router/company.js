@@ -10,7 +10,7 @@ router.post('/create', auth(), companyController.createCompany);
 router.get('/my-companies', auth(), companyController.getMyCompanies);
 router.get('/my-companies/:companyId', auth(), companyController.getCompanyById);
 router.get('/my-companies/:companyId/products', auth(), companyController.getCompanyProducts);
-router.get('/declarations', auth(), declarationController.getAllDeclarations);
+router.get('/:companyId/declarations', auth(), companyController.getAllCompanyDeclarations);
 router.post('/declarations', auth(), declarationController.createDeclaration);
 
 

@@ -2,18 +2,7 @@ const { declarationModel } = require('../models')
 
 
 
-const getAllDeclarations = async (req, res, next) => {
 
-
-    try {
-        const declarations = await declarationModel.find({})
-        return res.status(200).json(declarations)
-
-    } catch (error) {
-        next(error)
-    }
-
-}
 
 const createDeclaration = async (req, res, next) => {
 
@@ -97,6 +86,6 @@ const createDeclaration = async (req, res, next) => {
 
 
 module.exports = {
-    getAllDeclarations,
+    
     createDeclaration
 }

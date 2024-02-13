@@ -22,3 +22,9 @@ export const createDeclaration = (declarationData) => {
 
     return request.post(`${baseURL}/company/declarations/`,declarationData )
 }
+
+
+export const getCompanyDeclarations = (companyId) => {
+
+    return request.get(`${baseURL}/company/${companyId}/declarations`)
+};

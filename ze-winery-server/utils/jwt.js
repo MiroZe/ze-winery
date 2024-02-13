@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const secret = process.env.SECRET || 'ZeWinery2023';
 
 function createToken(data) {
-    return jwt.sign(data, secret, { expiresIn: '1d' });
+    return jwt.sign(data, secret, { expiresIn: '7d' });
 }
 
 function verifyToken(token) {

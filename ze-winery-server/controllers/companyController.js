@@ -1,4 +1,4 @@
-const { companyModel, productModel } = require('../models');
+const { companyModel, productModel, declarationModel } = require('../models');
 
 
 
@@ -77,9 +77,23 @@ const getCompanyProducts = async(req,res,next) => {
 
 }
 
+const getAllCompanyDeclarations = async (req,res,next) => {
+    const {companyId} = req.params;
+
+    try {
+       const declarations =  await declarationModel.find ({ownerCompanyId:companyId});
+       return res.status(200).json(declarations)
+        
+    } catch (error) {
+        next(error)
+    }
+
+}
+
 module.exports = {
     createCompany,
     getMyCompanies,
     getCompanyById,
-    getCompanyProducts
+    getCompanyProducts,
+    getAllCompanyDeclarations
 }
