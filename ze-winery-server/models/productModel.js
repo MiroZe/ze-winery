@@ -4,7 +4,7 @@ const { ObjectId } = mongoose.Schema.Types;
 
 
 const productSchema = new mongoose.Schema({
-    exciseGood: {
+   
 
 
         brandName: {
@@ -55,7 +55,7 @@ const productSchema = new mongoose.Schema({
             required: true,
             default: 0
         },
-    },
+    
     owner: {
         type: ObjectId,
         ref: 'Company'

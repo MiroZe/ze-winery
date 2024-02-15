@@ -7,6 +7,8 @@ import { useForm } from '../../../hooks/useForm';
 import { createNewProduct } from '../../../services/productService';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import InputGroup from 'react-bootstrap/InputGroup';
 
 
 const CreateProduct = () => {
@@ -19,13 +21,19 @@ const CreateProduct = () => {
 
 
   });
+  const [validated, setValidated] = useState(true);
 
   const {_id} = useSelector(state => state.company);
   const navigate = useNavigate();
 
   const onProductSubmitHandler = async (e) => {
     e.preventDefault();
-
+    const form = e.currentTarget
+    if(form.checkValidity() === false) {
+      setValidated(false);
+      console.log(validated);
+      return
+    }
     try {
 
       await createNewProduct(_id,formValues);
@@ -33,29 +41,32 @@ const CreateProduct = () => {
     } catch (error) {
       console.log(error);
     }
+  };
+
   
-
-
-  }
 
   return (
 
     <div className={styles['new-product-form-container']}>
 
-      <Form onSubmit={onProductSubmitHandler} className={styles['product-form']}>
+      <Form onSubmit={onProductSubmitHandler} className={styles['product-form']} noValidate validated={!validated}>
         <Row className="mb-3">
+         
           <Form.Group as={Col} controlId="formGridName">
             <Form.Label>Търговско наименование</Form.Label>
             <Form.Control type="text" placeholder="Въведете име" 
             name='trademarkName'
             value={formValues.trademarkName}
             onChange={(e) => onChangeHandler(e)}
+            required
+            
             />
 
           </Form.Group>
+          
           <Form.Group as={Col} controlId="formGridType">
             <Form.Label>Код по КН</Form.Label>
-            <Form.Select defaultValue="Choose..." name='CNCode' value={formValues.CNCode} onChange={(e) => onChangeHandler(e)}>
+            <Form.Select required  name='CNCode' value={formValues.CNCode} onChange={(e) => onChangeHandler(e)}>
               <option value="">Изберете...</option>
               <option value="22042180">22042180</option>
               <option value="22042179">22042179</option>
@@ -70,6 +81,7 @@ const CreateProduct = () => {
             <Form.Control type="number" name='additionalCode' 
             value={formValues.additionalCode}
             onChange={(e) => onChangeHandler(e)}
+            required
             />
           </Form.Group>
           <Form.Group as={Col} controlId="formGridPassword">
@@ -78,6 +90,7 @@ const CreateProduct = () => {
             name='pieces' 
             value={formValues.pieces}
             onChange={(e) => onChangeHandler(e)}
+            required
             />
           </Form.Group>
 
