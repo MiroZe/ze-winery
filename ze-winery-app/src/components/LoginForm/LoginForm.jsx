@@ -14,7 +14,7 @@ const LoginForm = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const dispatchErrorMessage = useErrorMessageDispatch()
+    const dispatchErrorMessage = useErrorMessageDispatch();
 
 
     const {formValues, onChangeHandler} = useForm( 

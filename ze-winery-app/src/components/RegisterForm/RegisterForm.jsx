@@ -7,12 +7,14 @@ import { userRegister } from '../../services/authService';
 import{useNavigate} from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../reducers/users';
+import { useErrorMessageDispatch } from '../../hooks/useErrorMessageDispatch';
 
 
 const RegisterForm = () => {
 
     const navigate = useNavigate();
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const errorMessageDispatch = useErrorMessageDispatch();
 
     const{formValues,onChangeHandler} = useForm(
         {
@@ -32,7 +34,7 @@ const RegisterForm = () => {
             dispatch((setUser(user)))
             navigate('/dashboard')
         } catch (error) {
-            console.log(error);
+            errorMessageDispatch(error)
         }
 
 

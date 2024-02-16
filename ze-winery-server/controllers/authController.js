@@ -15,6 +15,9 @@ const register = (req, res, next) => {
 
 
     const { username, email, password, rePassword } = req.body;
+    if (Object.values(req.body).some(f => f === '')) {
+        throw new Error('Моля,попълнете липсващите полета')
+    }
 
     if (password !== rePassword) {
         throw new Error({ error: 'Passwords mismatch!' })
@@ -35,6 +38,7 @@ const register = (req, res, next) => {
                 .send(createdUser);
         })
         .catch(err => {
+           console.log(err);
 
             if (err.name === 'MongoServerError' && err.code === 11000) {
 

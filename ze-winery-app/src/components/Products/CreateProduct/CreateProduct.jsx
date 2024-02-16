@@ -8,7 +8,6 @@ import { createNewProduct } from '../../../services/productService';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import InputGroup from 'react-bootstrap/InputGroup';
 
 
 const CreateProduct = () => {
