@@ -1,4 +1,7 @@
 const { companyModel, productModel, declarationModel } = require('../models');
+const {Builder} = require('xml2js');
+const removeUnnecessaryFields = require('../utils/removeFromXML');
+
 
 
 
@@ -94,10 +97,30 @@ const getCompanyDeclarationById = async (req,res,next) => {
     
 
     try {
-       const declaration =  await declarationModel.find ({_id:declarationId});
-       console.log(declaration);
+       const declaration =  await declarationModel.findById ({_id:declarationId}).populate('exciseGoods.product').exec();
+      
        return res.status(200).json(declaration)
         
+    } catch (error) {
+        next(error)
+    }
+
+}
+
+const getCompanyXMLDeclarationById = async (req,res,next) => {
+    const {declarationId} = req.params;
+    
+
+    try {
+       const declaration =  await declarationModel.findById ({_id:declarationId}).populate('exciseGoods.product').exec();
+       const builder = new Builder({
+        rootName:'Declaration'
+       });
+       const xml = builder.buildObject(removeUnnecessaryFields(declaration.toObject()))
+      
+       res.attachment('declaration.xml');
+       res.type('xml');
+       res.send(xml);
     } catch (error) {
         next(error)
     }
@@ -110,5 +133,6 @@ module.exports = {
     getCompanyById,
     getCompanyProducts,
     getAllCompanyDeclarations,
-    getCompanyDeclarationById
+    getCompanyDeclarationById,
+    getCompanyXMLDeclarationById
 }

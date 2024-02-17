@@ -33,3 +33,9 @@ export const getCompanyDeclarationById = (declarationId) => {
 
     return request.get(`${baseURL}/company/declarations/${declarationId}`)
 };
+
+export const getCompanyXMLDeclarationById = (declarationId) => {
+
+    return  fetch(`${baseURL}/company/declarations/${declarationId}/xml`, {credentials:'include'})
+    
+};
