@@ -1,6 +1,8 @@
 const { companyModel, productModel, declarationModel } = require('../models');
 const {Builder} = require('xml2js');
 const removeUnnecessaryFields = require('../utils/removeFromXML');
+const { rawListeners } = require('../models/TokenBlacklistModel');
+const capitalizeKeys = require('../utils/capitalizeKeys');
 
 
 
@@ -116,7 +118,11 @@ const getCompanyXMLDeclarationById = async (req,res,next) => {
        const builder = new Builder({
         rootName:'Declaration'
        });
-       const xml = builder.buildObject(removeUnnecessaryFields(declaration.toObject()))
+
+       const declarationObj = declaration.toObject();
+       const raw = removeUnnecessaryFields(declarationObj)
+       const rawU = capitalizeKeys(raw)
+       const xml = builder.buildObject(rawU);
       
        res.attachment('declaration.xml');
        res.type('xml');
