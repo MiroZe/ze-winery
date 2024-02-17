@@ -20,12 +20,13 @@ const DeclarationList = ({_id, year,month}) => {
 
     const xmlDeclarationHandler = async (id) => {
         try {
-         const declaration = await getCompanyXMLDeclarationById(id);
-          const blob = await declaration.blob();
+         const response = await getCompanyXMLDeclarationById(id);
+         
+          const blob = await response.blob();
            const url = window.URL.createObjectURL(blob);
            const link = document.createElement('a');
            link.href = url;
-           link.setAttribute('download', 'declaration.xml'); 
+           link.setAttribute('download', `${month}${year}.xml`); 
            document.body.appendChild(link);
            link.click();
            document.body.removeChild(link);
