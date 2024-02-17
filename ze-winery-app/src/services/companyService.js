@@ -28,3 +28,8 @@ export const getCompanyDeclarations = (companyId) => {
 
     return request.get(`${baseURL}/company/${companyId}/declarations`)
 };
+
+export const getCompanyDeclarationById = (declarationId) => {
+
+    return request.get(`${baseURL}/company/declarations/${declarationId}`)
+};
