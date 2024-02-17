@@ -17,7 +17,7 @@ const SubmittedDeclarations = () => {
         .then(declarations => setAllDeclarations(declarations))
 
     },[companyId]);
-    console.log(allDeclarations);
+    
 
 return (
     <Container className={style['declarations-container']}>

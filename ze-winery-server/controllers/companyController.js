@@ -89,11 +89,24 @@ const getAllCompanyDeclarations = async (req,res,next) => {
     }
 
 }
+const getCompanyDeclarationById = async (req,res,next) => {
+    const {declarationId} = req.params;
+
+    try {
+       const declaration =  await declarationModel.find ({_id:declarationId});
+       return res.status(200).json(declaration)
+        
+    } catch (error) {
+        next(error)
+    }
+
+}
 
 module.exports = {
     createCompany,
     getMyCompanies,
     getCompanyById,
     getCompanyProducts,
-    getAllCompanyDeclarations
+    getAllCompanyDeclarations,
+    getCompanyDeclarationById
 }
