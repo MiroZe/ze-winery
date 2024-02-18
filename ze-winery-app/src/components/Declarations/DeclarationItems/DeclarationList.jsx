@@ -9,11 +9,14 @@ import Declarer from '../Declarer/Declarer';
 import { useSelector } from 'react-redux';
 import { useForm } from '../../../hooks/useForm';
 import { formatDateAsString } from '../../../utils/formatDateAsString';
+import { formFieldCheckFn } from '../../../utils/formsFieldCheckFn';
+import { useErrorMessageDispatch } from '../../../hooks/useErrorMessageDispatch';
 
 
 const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, editItemFromDeclarationList}) => {
 
-
+  const [validated,setValidated] = useState(true);
+  const errorMessageDispatch = useErrorMessageDispatch();
 
   let newDate = new Date()
   const [selectedMonthData, setSelectedMonthData] = useState({
@@ -44,9 +47,6 @@ const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, edit
 
  });
 
- 
- 
-  
   const handleDeclarationSubmit = async (declarationItems, dateData) => {
 
     const declarationData = {
@@ -67,12 +67,19 @@ const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, edit
     }
 
     try {
-      const result = await createDeclaration(declarationData);
+      if(formFieldCheckFn(declarationData) 
+      || formValues.appliedDocumentDescription === ''
+      ){
+      
+        setValidated(false);
+        return;
+      }
+   
+      await createDeclaration(declarationData);
 
-      console.log(result);
       
     } catch (error) {
-      console.log(error);
+      errorMessageDispatch(error)
     }
 
   }
@@ -108,7 +115,7 @@ return (
       </Table>
       
       <MonthYPicker  selectedMonthData={selectedMonthData} setSelectedMonthData={setSelectedMonthData}/>
-      <Declarer formValues = {formValues} onChangeHandler = {onChangeHandler}/>
+      <Declarer validated={validated} formValues = {formValues} onChangeHandler = {onChangeHandler}/>
       <Button variant="success" onClick={ () => handleDeclarationSubmit(declarationItems,selectedMonthData)}>Запази</Button>
 
       

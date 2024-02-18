@@ -30,7 +30,7 @@ const CreateProduct = () => {
     const form = e.currentTarget;
     if(form.checkValidity() === false) {
       setValidated(false);
-      console.log(validated);
+      
       return
     }
     try {
