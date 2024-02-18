@@ -4,7 +4,7 @@
 
 .declarations-container .column {
     border: 2px solid #0476d0;
-    max-width: 25em;
+    max-width: 33em;
     margin: 5px auto;
     text-align: center;
     color: black;
@@ -18,5 +18,10 @@
 
 .declarations-container .column svg:hover {
     cursor: pointer;
+}
+
+.declarations-container .column span{
+    color: #42777b;
+    font-weight: 700;
 }
 

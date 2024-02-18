@@ -3,7 +3,7 @@ import style from './SubbmittedDeclarations.module.css'
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getCompanyDeclarations } from '../../../services/companyService';
-import DeclarationList from './DeclarationList';
+import DeclarationList from './DeclarationList'
 import Accordion from 'react-bootstrap/Accordion';
 
 
@@ -20,12 +20,10 @@ const SubmittedDeclarations = () => {
     
 
 return (
-    <Accordion defaultActiveKey="0" flush className={style['declarations-container']}>
+    <Accordion flush className={style['declarations-container']}>
 
       {allDeclarations.map( d => <DeclarationList key={d._id} {...d}/>)}
-      
-  
-
+    
     </Accordion>
 )
 
