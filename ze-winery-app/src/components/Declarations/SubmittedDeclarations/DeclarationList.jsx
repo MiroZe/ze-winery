@@ -1,9 +1,8 @@
-import Col from 'react-bootstrap/Col';
 import styles from './SubbmittedDeclarations.module.css';
 import {faCircleInfo,faFileCode} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { getCompanyDeclarationById, getCompanyXMLDeclarationById } from '../../../services/companyService';
-
+import Accordion from 'react-bootstrap/Accordion';
 
 const DeclarationList = ({_id, year,month}) => {
 
@@ -38,10 +37,14 @@ const DeclarationList = ({_id, year,month}) => {
     }
 
 return (
-    <Col className={styles['column']}>{year} {month}
-    <FontAwesomeIcon icon={faCircleInfo} style={{color: "#0476d0",}} size='xl' onClick={() => declarationByIdHandler(_id) } />
-    <FontAwesomeIcon icon={faFileCode} style={{color: "#0476d0",}} size='xl'  onClick={() => xmlDeclarationHandler(_id)}/>
-     </Col>
+    <Accordion.Item eventKey="0" className={styles['column']}>
+    <Accordion.Header>{year} {month}</Accordion.Header>
+    <Accordion.Body>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia cupiditate repellendus, quaerat vitae quas fuga libero perferendis reprehenderit a placeat delectus, itaque iusto eos velit explicabo minus voluptatem nam amet.</p>
+    <FontAwesomeIcon icon={faCircleInfo} style={{color: "#42777B",marginRight:'12px'}} size='xl' onClick={() => declarationByIdHandler(_id) } />
+    <FontAwesomeIcon icon={faFileCode} style={{color: "#42777B",}} size='xl'  onClick={() => xmlDeclarationHandler(_id)}/>
+    </Accordion.Body>
+     </Accordion.Item>
 )
 
 
