@@ -2,8 +2,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #778ca3;
+    background-color: #47555e;
     color:white;
+    padding: 0.4em;
 
 }
 
@@ -20,7 +21,7 @@
     display: block;
     color: white;
     padding: 0.5em 1.3em;
-    background-color: #0476D0;
+    background-color: #42777B;
 }
 
 .list-items a {
@@ -33,5 +34,5 @@
 .header-container img {
     width: 60px;
     height: 60px;
-    background-color: #0476D0;
+    background-color: #42777B;
 }

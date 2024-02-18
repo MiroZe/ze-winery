@@ -1,10 +1,13 @@
 .dashboard-container {
     flex-grow: 1;
-    max-width: 15em;
-    background-color: #041f60;
+    max-width: 9em;
+    background-color: #46595E;
     margin: 0.1em;
+    border-radius: 0.2em;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
 }
-
 .aside-list-items {
     
     display: flex;
@@ -16,7 +19,7 @@
 
 .dashboard-container li {
     display: block;
-    background-color:#0476D0 ;
+    background-color:#42777B ;
     padding: 0.5em;
     width: 7em;
     margin: 0 auto;
