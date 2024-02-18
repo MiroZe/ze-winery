@@ -27,7 +27,7 @@ const CreateProduct = () => {
 
   const onProductSubmitHandler = async (e) => {
     e.preventDefault();
-    const form = e.currentTarget
+    const form = e.currentTarget;
     if(form.checkValidity() === false) {
       setValidated(false);
       console.log(validated);

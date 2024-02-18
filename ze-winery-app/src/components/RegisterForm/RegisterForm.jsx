@@ -8,9 +8,12 @@ import{useNavigate} from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../reducers/users';
 import { useErrorMessageDispatch } from '../../hooks/useErrorMessageDispatch';
+import { useState } from 'react';
 
 
 const RegisterForm = () => {
+
+  const [validated, setValidated] = useState(true);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -28,7 +31,11 @@ const RegisterForm = () => {
     const onUserRegisterHandler = async (e) => {
 
         e.preventDefault();
-
+        const form = e.currentTarget;
+        if(form.checkValidity() === false) {
+            setValidated(false);
+            return
+          }
         try {
             const user = await userRegister(formValues);
             dispatch((setUser(user)))
@@ -43,22 +50,23 @@ const RegisterForm = () => {
 
     return (
         <div className={styles['register-form-container']}>
-        <Form onSubmit={onUserRegisterHandler} className={styles['form-container']}>
+            <h3>Register</h3>
+        <Form onSubmit={onUserRegisterHandler} className={styles['form-container']} noValidate validated={!validated}>
             <FloatingLabel
                 controlId="floatingInput"
                 label="Username"
                 className="mb-3"
             >
-                <Form.Control type="text" placeholder="name@example.com" name='username' value={formValues.username} onChange={(e) => onChangeHandler(e)}/>
+                <Form.Control required type="text" placeholder="name@example.com" name='username' value={formValues.username} onChange={(e) => onChangeHandler(e)}/>
             </FloatingLabel>
             <FloatingLabel controlId="floatingemail" label="Email" className="mb-3">
-                <Form.Control type="text" placeholder="email" name='email' value={formValues.email} onChange={(e) => onChangeHandler(e)}/>
+                <Form.Control required type="text" placeholder="email" name='email' value={formValues.email} onChange={(e) => onChangeHandler(e)}/>
             </FloatingLabel>
             <FloatingLabel controlId="floatingPassword" label="Password" className="mb-3">
-                <Form.Control type="password" placeholder="Password" name='password' value={formValues.password} onChange={(e) => onChangeHandler(e)}/>
+                <Form.Control required type="password" placeholder="Password" name='password' value={formValues.password} onChange={(e) => onChangeHandler(e)}/>
             </FloatingLabel>
             <FloatingLabel controlId="floatingRePassword" label="Repeat Password" className="mb-3">
-                <Form.Control type="password" placeholder="Repeat Password" name='rePassword' value={formValues.rePassword} onChange={(e) => onChangeHandler(e)}/>
+                <Form.Control required type="password" placeholder="Repeat Password" name='rePassword' value={formValues.rePassword} onChange={(e) => onChangeHandler(e)}/>
             </FloatingLabel>
             <Button variant="info" type='submit' className={styles['submit-btn']}>Register</Button>
         </Form>
