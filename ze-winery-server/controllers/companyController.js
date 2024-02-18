@@ -12,7 +12,7 @@ const createCompany = async (req, res, next) => {
 
     
     const { companyName, companyType, companyId, exciseId, address, city, state, postalCode, userId,owner,declarer } = req.body;
-    console.log(req.body);
+   
     const companyData = {
         companyName,
         companyType,
@@ -32,6 +32,7 @@ const createCompany = async (req, res, next) => {
         return res.status(201).json(createdCompany)
 
     } catch (error) {
+     
         next(error)
     }
 

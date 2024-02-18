@@ -3,7 +3,8 @@ require('dotenv').config()
 const dbConnect = require('./config/db');
 const cors = require('cors');
 const config = require('./config/config');
-const apiRouter = require('./router')
+const apiRouter = require('./router');
+const { errorHandler } = require('./utils');
 
 dbConnect()
 .then(() => {
@@ -18,6 +19,7 @@ dbConnect()
    }));
 
 app.use('/', apiRouter)
+app.use(errorHandler)
 
 
    app.listen(config.port, console.log(`The server is listening on port ${config.port}`))

@@ -10,12 +10,14 @@ import { createCompany } from '../../../services/companyService';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useErrorMessageDispatch } from '../../../hooks/useErrorMessageDispatch';
 
 const CreateCompany = () => {
 
   const {user} = useSelector(state => state.user);
   const [isDeclarer,setIsDeclarer] = useState(false);
-  const [validated,setValidated] = useState(true)
+  const [validated,setValidated] = useState(true);
+  const setErrorMessage = useErrorMessageDispatch();
   const navigate = useNavigate();
 
 const {formValues, onChangeHandler} = useForm({
@@ -37,10 +39,6 @@ const {formValues, onChangeHandler} = useForm({
   declarerId: ''
 
 });
-
-
-
-
 
 
 const createCompanySubmitHandler = async (e) => {
@@ -76,10 +74,11 @@ const createCompanySubmitHandler = async (e) => {
   try {
   
     await createCompany({...companyData, userId:user._id});
-    navigate('/')
+    navigate('/dashboard')
    
   } catch (error) {
-    console.log(error);
+    setErrorMessage(error)
+    console.log(error.message);
     
   }
 };
