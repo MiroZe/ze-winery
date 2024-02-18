@@ -20,7 +20,7 @@ const Declarer = ({ formValues, onChangeHandler,validated }) => {
             </Form.Group>
             <Form.Group>
                 <Form.Label>Начална дата</Form.Label>
-                <Form.Control required type="date" name="startDate" value={formValues.startDate} onChange={onChangeHandler} />
+                <Form.Control required type="date" name="startDate" value={formValues.startDate} onChange={onChangeHandler}  />
                 <Form.Label>Крайна дата</Form.Label>
                 <Form.Control required type="date" name="endDate" value={formValues.endDate} onChange={onChangeHandler} />
 
