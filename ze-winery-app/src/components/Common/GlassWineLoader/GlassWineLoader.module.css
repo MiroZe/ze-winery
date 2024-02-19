@@ -2,12 +2,12 @@ path {
     opacity: 0.95;
   }
   .container svg {
-      background: silver;
-      border-radius: 20px;
-      border: 5px solid lightgray;
+     
+     
+     
       position: relative;
       top: 100px;
-      box-shadow: 0 0 0 10px silver;
+     
       width: 205px;
       height: 210px;
       margin: 0 auto;
