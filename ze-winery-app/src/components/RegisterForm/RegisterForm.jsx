@@ -70,6 +70,7 @@ const RegisterForm = () => {
             </FloatingLabel>
             <Button variant="info" type='submit' className={styles['submit-btn']}>Register</Button>
         </Form>
+       
         </div>
     )
 

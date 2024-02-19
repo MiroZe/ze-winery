@@ -20,7 +20,6 @@ const Footer = () => {
               <ul className={styles["footer-links"]}>
                 <li><a href="http://scanfcode.com/about/">About Us</a></li>
                 <li><a href="http://scanfcode.com/contact/">Contact Us</a></li>
-                <li><a href="http://scanfcode.com/contribute-at-scanfcode/">Contribute</a></li>
                 <li><a href="http://scanfcode.com/privacy-policy/">Privacy Policy</a></li>
                 <li><a href="http://scanfcode.com/sitemap/">Sitemap</a></li>
               </ul>
