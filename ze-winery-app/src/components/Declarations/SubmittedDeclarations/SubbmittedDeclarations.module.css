@@ -1,5 +1,6 @@
 .declarations-container {
     flex-grow: 1;
+    text-align: center;
 }
 
 .declarations-container .column {
@@ -15,6 +16,11 @@
     
 
 }
+
+.declarations-container p:first-child {
+    font-size: 2.5em;
+}
+
 
 .declarations-container .column svg:hover {
     cursor: pointer;

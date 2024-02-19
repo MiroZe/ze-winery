@@ -20,11 +20,15 @@ const SubmittedDeclarations = () => {
     
 
 return (
+    <>
+    
     <Accordion flush className={style['declarations-container']}>
+    {allDeclarations.length === 0 ? <p>Все още няма подадени деклaрации!</p> : 
 
-      {allDeclarations.map( d => <DeclarationList key={d._id} {...d}/>)}
+      allDeclarations.map( d => <DeclarationList key={d._id} {...d}/>)}
     
     </Accordion>
+    </>
 )
 
 
