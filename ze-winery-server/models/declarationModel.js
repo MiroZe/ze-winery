@@ -3,15 +3,25 @@ const { ObjectId } = mongoose.Schema.Types;
 
 
 const productSchema = new mongoose.Schema({
+  sequenceNumber : {
+    type: Number,
+    required:true,
+
+  },
+
   product: {
     type: ObjectId,
     ref: 'Product',
     required: true,
   },
-  quantity: {
+  quantityOfGoods: {
     type: Number,
     required: true,
   },
+  numberOfPackages : {
+    type: Number,
+    required: true,
+  }
 });
 
 const declarationSchema = new mongoose.Schema({
