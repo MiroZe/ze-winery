@@ -16,7 +16,10 @@ const SubmittedDeclarations = () => {
 
     useEffect(()=> {
         getCompanyDeclarations(companyId)
-        .then(declarations => setAllDeclarations(declarations))
+        .then(declarations => {
+            setAllDeclarations(declarations);
+            setIsLoader(false)
+        } )
 
     },[companyId]);
     
