@@ -39,3 +39,8 @@ export const getCompanyXMLDeclarationById = (declarationId) => {
     return  fetch(`${baseURL}/company/declarations/${declarationId}/xml`, {credentials:'include'})
     
 };
+
+export const deleteCompanyDeclarationById = (declarationId) => {
+
+    return request.delete(`${baseURL}/company/declarations/${declarationId}`)
+};

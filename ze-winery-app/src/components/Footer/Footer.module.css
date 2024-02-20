@@ -1,16 +1,17 @@
 .site-footer
 {
   background-color:#26272b;
-  padding:45px 0 20px;
-  font-size:15px;
-  line-height:24px;
+  padding:10px 0 20px;
+  font-size:10px;
+  line-height:12px;
   color:#737373;
   flex-shrink: 1;
 }
-.site-footer hr
-{
-  border-top-color:#bbb;
-  opacity:0.5
+
+.container .row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 .site-footer hr.small
 {

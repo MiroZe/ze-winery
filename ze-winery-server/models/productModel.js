@@ -12,7 +12,7 @@ const productSchema = new mongoose.Schema({
             required: true,
             default: 'A81304'
         },
-        trademarkName: {
+        trademark: {
             type: String,
             required: true
         },
@@ -21,34 +21,55 @@ const productSchema = new mongoose.Schema({
             required: true,
             default: 'W200'
         },
+        CNCode: {
+            type: String,
+            required: true
+        },
         maeasure: {
             type: Number,
             required: true,
             default: 3
         },
 
-        CNCode: {
-            type: String,
-            required: true
-        },
         additionalCode: {
             type: String,
             required: true
         },
-        obligationBaseCode: {
+        intendedUseOfProduct: {
             type: Number,
             required: true,
             default: 401
+        },
+        purpose : {
+            type:String,
+            required: true,
+            default: 'C01'    
+        },
+        dutyAmount : {
+            type: Number,
+            required: true,
+            default: 0
+        },
+        payment: {
+            type: Number,
+            required: true,
+            default: 10
+        },
+        paidDuty : {
+            type: Number,
+            required: true,
+            default: 0
         },
         pieces: {
             type: Number,
             required: true,
 
         },
-        paymenCode: {
+        taxBase: {
             type: Number,
             required: true,
-            default: 10
+            default: 4.50
+
         },
         exciseDuty: {
             type: Number,

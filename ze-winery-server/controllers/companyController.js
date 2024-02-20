@@ -133,6 +133,20 @@ const getCompanyXMLDeclarationById = async (req,res,next) => {
     }
 
 }
+const deleteCompanyDeclarationById = async (req,res,next) => {
+    const {declarationId} = req.params;
+    
+
+    try {
+       const declaration =  await declarationModel.findById ({_id:declarationId}).populate('exciseGoods.product').exec();
+      
+       return res.status(200).json(declaration)
+        
+    } catch (error) {
+        next(error)
+    }
+
+}
 
 module.exports = {
     createCompany,
