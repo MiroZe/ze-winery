@@ -31,7 +31,7 @@ const CreateDecration = () => {
             );
         } else {
 
-            setDeclarationItems((prevD) => [...prevD, { ...currentItem, quantity: +itemQuantity,packsQuantity }]);
+            setDeclarationItems((prevD) => [...prevD, { ...currentItem, quantity: +itemQuantity,packsQuantity,sequenceNumber:prevD.length + 1  }]);
 
         }
 

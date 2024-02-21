@@ -70,9 +70,11 @@ const createDeclaration = async (req, res, next) => {
                 declarer: declarationData.declarer,
                 reportingPeriod: declarationData.reportingPeriod,
                 appliedDocuments: declarationData.appliedDocuments,
-                exciseGoods: declarationItems.map(({ _id, quantity }) => ({
+                exciseGoods: declarationItems.map(({ _id, quantity, packsQuantity,sequenceNumber}) => ({
                 product: _id,
-                quantity,
+                numberOfPackages:packsQuantity,
+                quantityOfGoods:quantity,
+                sequenceNumber
             })),
         })
         return res.status(201).json(createdDeclaration)

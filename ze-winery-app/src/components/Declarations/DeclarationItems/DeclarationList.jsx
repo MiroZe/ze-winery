@@ -76,6 +76,7 @@ const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, edit
       }
    
       await createDeclaration(declarationData);
+      
 
       
     } catch (error) {
