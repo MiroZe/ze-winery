@@ -13,6 +13,7 @@ router.get('/my-companies/:companyId/products', auth(), companyController.getCom
 router.get('/:companyId/declarations', auth(), companyController.getAllCompanyDeclarations);
 router.get('/declarations/:declarationId', auth(), companyController.getCompanyDeclarationById);
 router.get('/declarations/:declarationId/xml', auth(), companyController.getCompanyXMLDeclarationById);
+router.delete('/declarations/:declarationId/delete', auth(), companyController.deleteCompanyDeclarationById);
 router.post('/declarations', auth(), declarationController.createDeclaration);
 
 

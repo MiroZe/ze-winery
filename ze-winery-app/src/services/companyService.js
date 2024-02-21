@@ -42,5 +42,5 @@ export const getCompanyXMLDeclarationById = (declarationId) => {
 
 export const deleteCompanyDeclarationById = (declarationId) => {
 
-    return request.delete(`${baseURL}/company/declarations/${declarationId}`)
+    return request.delete(`${baseURL}/company/declarations/${declarationId}/delete`)
 };

@@ -138,9 +138,9 @@ const deleteCompanyDeclarationById = async (req,res,next) => {
     
 
     try {
-       const declaration =  await declarationModel.findById ({_id:declarationId}).populate('exciseGoods.product').exec();
+       await declarationModel.findByIdAndDelete ({_id:declarationId});
       
-       return res.status(200).json(declaration)
+       return res.status(200).json({message:'Успешно изтриване'})
         
     } catch (error) {
         next(error)
@@ -155,5 +155,6 @@ module.exports = {
     getCompanyProducts,
     getAllCompanyDeclarations,
     getCompanyDeclarationById,
-    getCompanyXMLDeclarationById
+    getCompanyXMLDeclarationById,
+    deleteCompanyDeclarationById
 }
