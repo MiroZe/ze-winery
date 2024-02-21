@@ -11,7 +11,9 @@ const DeclarationItem = (
      trademarkName,
      CNCode,
      additionalCode,
-     pieces,quantity,
+     pieces,
+     packsQuantity,
+     quantity,
       deleteItemFromDecalarationList,
     }) => {
 
@@ -24,6 +26,7 @@ return (
     <td>{CNCode}</td>
     <td>{additionalCode}</td>
     <td>{pieces}</td>
+    <td>{packsQuantity}</td>
     <td>{quantity}</td>
     <td>
         <div className={styles['button-container']}>

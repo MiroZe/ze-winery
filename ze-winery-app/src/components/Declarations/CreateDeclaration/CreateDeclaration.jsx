@@ -17,9 +17,9 @@ const CreateDecration = () => {
         setShowModal(true);
         setCurrentItem(data)
     }
-    const addItemToDeclaration = (itemQuantity) => {
+    const addItemToDeclaration = (packsQuantity,itemQuantity) => {
 
-   
+       
         setisItemSelected(true);
    
 
@@ -27,11 +27,11 @@ const CreateDecration = () => {
 
         if (alreadyAdded) {
             setDeclarationItems((prevD) =>
-                prevD.map((f) => (f.additionalCode === currentItem.additionalCode ? { ...f, quantity: f.quantity + +itemQuantity } : f))
+                prevD.map((f) => (f.additionalCode === currentItem.additionalCode ? { ...f, packsQuantity:f.packsQuantity + +packsQuantity, quantity: f.quantity + +itemQuantity } : f))
             );
         } else {
 
-            setDeclarationItems((prevD) => [...prevD, { ...currentItem, quantity: +itemQuantity }]);
+            setDeclarationItems((prevD) => [...prevD, { ...currentItem, quantity: +itemQuantity,packsQuantity }]);
 
         }
 
@@ -57,7 +57,9 @@ const CreateDecration = () => {
                 addItemToDeclaration={addItemToDeclaration}
               />}
            
-            <ProductsList viewChooseBtn={viewChooseBtn} showQuantityModal={showQuantityModal} isItemSelected={isItemSelected} />
+            <ProductsList viewChooseBtn={viewChooseBtn} 
+            showQuantityModal={showQuantityModal}
+             isItemSelected={isItemSelected} />
             <div className={styles['declaration-container']}>
                 
             <DeclarationList

@@ -2,7 +2,7 @@
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { useState } from 'react';
+import { useForm } from '../../../hooks/useForm';
 
 
 
@@ -16,19 +16,20 @@ const ProductQuantityForm = (
   }) => {
 
   
- const [itemQuantity, setItemQuantity] = useState('')
+ const {formValues, onChangeHandler} = useForm({
+  packsQuantity: '',
+  quantityInLitters : ''
+ });
 
 
- const itemQuantityHandler = (e) => {
-  setItemQuantity(e.target.value);
- 
-  
- }
+
 
  const onSubmitQuantityValue = (e) => {
  e.preventDefault();
  closeModal();
- addItemToDeclaration(itemQuantity);
+ const quantityInLitters = parseFloat(formValues.packsQuantity) * parseFloat(currentItem.pieces);
+
+ addItemToDeclaration(parseFloat(formValues.packsQuantity),quantityInLitters);
  
 
  }
@@ -40,14 +41,24 @@ const ProductQuantityForm = (
         <Modal.Title>{currentItem.trademarkName} {currentItem.pieces}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
+
+        <Form.Label>Брой опаковки</Form.Label>
+            <Form.Control
+              type="text"
+              name='packsQuantity'
+              autoFocus
+              value={formValues.packsQuantity}
+              onChange={onChangeHandler}
+            />
       
          
             <Form.Label>Количество</Form.Label>
             <Form.Control
               type="text"
+              name='quantityInLitters'
               autoFocus
-              value={itemQuantity}
-              onChange={itemQuantityHandler}
+              value={formValues.packsQuantity * currentItem.pieces}
+              onChange={onChangeHandler}
             />
         
         
