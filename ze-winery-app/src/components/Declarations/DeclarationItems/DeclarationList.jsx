@@ -11,12 +11,15 @@ import { useForm } from '../../../hooks/useForm';
 import { formatDateAsString } from '../../../utils/formatDateAsString';
 import { formFieldCheckFn } from '../../../utils/formsFieldCheckFn';
 import { useErrorMessageDispatch } from '../../../hooks/useErrorMessageDispatch';
+import { useNavigate, useParams } from 'react-router-dom';
 
 
 const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, editItemFromDeclarationList}) => {
 
   const [validated,setValidated] = useState(true);
   const errorMessageDispatch = useErrorMessageDispatch();
+  const navigate = useNavigate();
+  const {companyId} = useParams();
 
   let newDate = new Date()
   const [selectedMonthData, setSelectedMonthData] = useState({
@@ -76,6 +79,7 @@ const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, edit
       }
    
       await createDeclaration(declarationData);
+      navigate(`/my-companies/${companyId}/my-declarations`)
       
 
       
