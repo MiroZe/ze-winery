@@ -70,7 +70,7 @@ return (
        </>}
     <FontAwesomeIcon icon={faFilePen} style={{color: "#42777B",marginLeft:'12px'}} size='xl' onClick={linkTo} />
     <FontAwesomeIcon icon={faTrash} style={{color: "#42777B",marginLeft:'12px'}} size='xl' onClick={() =>showHideDeleteModal() } />
-        {showModal && <DeleteConfirmationModal showModal={showModal} showHideDeleteModal = {showHideDeleteModal}/>}
+        {showModal && <DeleteConfirmationModal id={_id} showModal={showModal} showHideDeleteModal = {showHideDeleteModal}/>}
     </Accordion.Body>
      </Accordion.Item>
 )
