@@ -7,11 +7,13 @@ import MessageBanner from '../Message/MessageBannes';
 const Header = () => {
 
     const {user} = useSelector(state => state.user);
+    const {companyName,companyType} = useSelector(state => state.company)
    //  const {message,isMessage} = useSelector(state => state.message);
    //  console.log(isMessage);
     
   
     const username = user?.username;
+    
    
 
     return (
@@ -23,6 +25,7 @@ const Header = () => {
             </Link>
       </div>
             <p>Welcome { username || 'Guest'}</p>
+            <p>{`${companyName} ${companyType}`}</p>
             <ul className={styles['list-items']}>
                <li><Link to={'/'}>Home</Link></li>
                {username && 
