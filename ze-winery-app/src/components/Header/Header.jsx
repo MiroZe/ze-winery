@@ -25,7 +25,7 @@ const Header = () => {
             </Link>
       </div>
             <p>Welcome { username || 'Guest'}</p>
-            <p>{`${companyName} ${companyType}`}</p>
+            <p>{companyName ? `${companyName} ${companyType}` : ''}</p>
             <ul className={styles['list-items']}>
                <li><Link to={'/'}>Home</Link></li>
                {username && 

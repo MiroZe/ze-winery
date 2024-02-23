@@ -6,6 +6,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import { useState } from 'react';
 import {useNavigate,useParams} from 'react-router-dom'
 import DeleteConfirmationModal from '../../Common/DeleteConfirmationModal/DeleteConfirmationModal';
+import TooltipComponent from '../../Common/Tooltip/Tooltip';
 
 const DeclarationList = ({_id, year,month}) => {
 
@@ -61,17 +62,26 @@ return (
     <Accordion.Item  className={styles['column']}>
     <Accordion.Header>{year} {month}</Accordion.Header>
     <Accordion.Body>
+        <TooltipComponent text={'Информация'}>
     <FontAwesomeIcon icon={faCircleInfo} style={{color: "#42777B",marginRight:'12px'}} size='xl' onClick={() => declarationByIdHandler(_id) } />
+        </TooltipComponent>
+       <TooltipComponent text={'Свали'}>
     <FontAwesomeIcon icon={faFileCode} style={{color: "#42777B",}} size='xl'  onClick={() => xmlDeclarationHandler(_id)}/>
+    </TooltipComponent>
        {currentDeclaration.createdAt &&  <>
        <p>Подадена на: <span>{currentDeclaration.createdAt}</span></p>
        <p>Приложени документи: <span>{currentDeclaration?.appliedDocuments.appliedDocument.description}</span></p>
        <p>Номера на документи: <span>{currentDeclaration?.appliedDocuments.appliedDocument.documentNumber}</span></p>
        </>}
+       <TooltipComponent text={'Редактирай'}>
     <FontAwesomeIcon icon={faFilePen} style={{color: "#42777B",marginLeft:'12px'}} size='xl' onClick={linkTo} />
+    </TooltipComponent>
+    <TooltipComponent text={'Изтрий'}>
     <FontAwesomeIcon icon={faTrash} style={{color: "#42777B",marginLeft:'12px'}} size='xl' onClick={() =>showHideDeleteModal() } />
+        </TooltipComponent>
         {showModal && <DeleteConfirmationModal id={_id} showModal={showModal} showHideDeleteModal = {showHideDeleteModal}/>}
     </Accordion.Body>
+    
      </Accordion.Item>
 )
 

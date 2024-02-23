@@ -1,28 +1,21 @@
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Tooltip from 'react-bootstrap/Tooltip';
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
+import styles from "./Tooltip.module.css";
 
-const TooltipComponent = () => {
-
-return (
-
-    <>
-    {['top', 'right', 'bottom', 'left'].map((placement) => (
-      <OverlayTrigger
-        key={placement}
-        placement={placement}
-        overlay={
-          <Tooltip id={`tooltip-${placement}`}>
-            Tooltip on <strong>{placement}</strong>.
-          </Tooltip>
-        }
-      >
-        <Button variant="secondary">Tooltip on {placement}</Button>
-      </OverlayTrigger>
-    ))}
-  </>
-)
-
-
-}
+const TooltipComponent = ({ children,text }) => {
+  return (
+    <OverlayTrigger
+      key="top"
+      placement="top"
+      overlay={
+        <Tooltip  className={styles['my-tooltip']}>
+          {text}
+        </Tooltip>
+      }
+    >
+      {children}
+    </OverlayTrigger>
+  );
+};
 
 export default TooltipComponent;
