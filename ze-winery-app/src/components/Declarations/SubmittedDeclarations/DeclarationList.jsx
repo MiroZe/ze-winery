@@ -51,8 +51,8 @@ const DeclarationList = ({_id, year,month}) => {
         }
     }
 
-    const linkTo = () => {
-        navigate(`/my-companies/${companyId}/edit-declaration`)
+    const linkTo = (declarationId) => {
+        navigate(`/my-companies/${companyId}/edit-declaration/${declarationId}`)
     }
 
  
@@ -74,7 +74,7 @@ return (
        <p>Номера на документи: <span>{currentDeclaration?.appliedDocuments.appliedDocument.documentNumber}</span></p>
        </>}
        <TooltipComponent text={'Редактирай'}>
-    <FontAwesomeIcon icon={faFilePen} style={{color: "#42777B",marginLeft:'12px'}} size='xl' onClick={linkTo} />
+    <FontAwesomeIcon icon={faFilePen} style={{color: "#42777B",marginLeft:'12px'}} size='xl' onClick={() => linkTo(_id)} />
     </TooltipComponent>
     <TooltipComponent text={'Изтрий'}>
     <FontAwesomeIcon icon={faTrash} style={{color: "#42777B",marginLeft:'12px'}} size='xl' onClick={() =>showHideDeleteModal() } />

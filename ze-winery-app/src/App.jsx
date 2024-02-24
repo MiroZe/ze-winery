@@ -17,7 +17,7 @@ import Logout from './components/Logout/Logout';
 import CompanyDetails from './components/Companies/CompanyDetails/CompanyDetails';
 import CreateDecration from './components/Declarations/CreateDeclaration/CreateDeclaration';
 import SubmittedDeclarations from './components/Declarations/SubmittedDeclarations/SubbmittedDeclarations';
-import EditDeclaration from './components/Declarations/EditDeclaration/EditdDeclaration';
+import EditDeclaration from './components/Declarations/EditDeclaration/EditDeclaration';
 
 function App() {
 
@@ -39,7 +39,7 @@ function App() {
         <Route path='/create-product' element={<CreateProduct/>}/>
         <Route path='/my-companies/:companyId' element={<CompanyDetails/>}/>
         <Route path='/my-companies/:companyId/create-declaration' element={<CreateDecration/>}/>
-        <Route path='/my-companies/:companyId/edit-declaration' element={<EditDeclaration/>}/>
+        <Route path='/my-companies/:companyId/edit-declaration/:declarationId' element={<EditDeclaration/>}/>
         <Route path='/my-companies/:companyId/my-declarations' element={<SubmittedDeclarations/>}/>
 
 
