@@ -6,7 +6,6 @@ import { useErrorMessageDispatch } from '../../../hooks/useErrorMessageDispatch'
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import Table from 'react-bootstrap/Table';
-import DeclarationItem from '../DeclarationItems/DeclarationItem';
 import GlassWineLoader from '../../Common/GlassWineLoader/GlassWineLoader';
 import GoodItem from './GoodItem';
 
@@ -34,7 +33,7 @@ const EditDeclaration = () => {
 
     }, [declarationId, errorMessageDispatch])
 
-    console.log(currentDeclaration.exciseGoods);
+    console.log(currentDeclaration);
 
     return (
         <div className={styles['edit-declaration-container']} >
