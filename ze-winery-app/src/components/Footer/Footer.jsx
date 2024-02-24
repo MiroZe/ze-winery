@@ -34,12 +34,12 @@ const Footer = () => {
 
         </div>
         <div className={`${styles['col-md-4']} ${styles['col-sm-6']} ${styles['col-xs-12']}`}>
-
+{/* 
           <ul className={styles["social-icons"]}>
             <li><a className={styles["facebook"]} href="#"><FontAwesomeIcon icon="fa-brands fa-facebook-f" /></a></li>
             <li><a className={styles["twitter"]} href="#"><i className={styles["fa fa-twitter"]}></i></a></li>
             <li><a className={styles["linkedin"]} href="#"><i className={styles["fa fa-linkedin"]}></i></a></li>
-          </ul>
+          </ul> */}
         </div>
       
       </div>

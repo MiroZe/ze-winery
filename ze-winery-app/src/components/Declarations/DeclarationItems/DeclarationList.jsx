@@ -94,7 +94,7 @@ return (
    
     <div className={styles['declaration-container']}>
 
-      
+     
       <Table striped bordered hover>
         <thead>
           <tr>
