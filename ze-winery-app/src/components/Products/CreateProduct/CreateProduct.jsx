@@ -13,7 +13,7 @@ import { useState } from 'react';
 const CreateProduct = () => {
 
   const {formValues, onChangeHandler} = useForm({
-    trademarkName: '',
+    trademark: '',
     CNCode: '',
     additionalCode:'',
     pieces:''
@@ -42,7 +42,7 @@ const CreateProduct = () => {
     }
   };
 
-  
+ 
 
   return (
 
@@ -54,8 +54,8 @@ const CreateProduct = () => {
           <Form.Group as={Col} controlId="formGridName">
             <Form.Label>Търговско наименование</Form.Label>
             <Form.Control type="text" placeholder="Въведете име" 
-            name='trademarkName'
-            value={formValues.trademarkName}
+            name='trademark'
+            value={formValues.trademark}
             onChange={(e) => onChangeHandler(e)}
             required
             

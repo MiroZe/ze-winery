@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 
 
 const ProductItem = ({
-  _id, trademarkName, CNCode, additionalCode, pieces, viewChooseBtn,showQuantityModal
+  _id, trademark, CNCode, additionalCode, pieces, viewChooseBtn,showQuantityModal
 }) => {
 
 
@@ -11,14 +11,14 @@ const ProductItem = ({
   return (
     <tr>
       
-      <td>{trademarkName}</td>
+      <td>{trademark}</td>
       <td>{CNCode}</td>
       <td>{additionalCode}</td>
       <td>{pieces}</td>
 
       {viewChooseBtn &&
     
-        <td><Button onClick={() => showQuantityModal({_id, trademarkName, CNCode, additionalCode, pieces})}>
+        <td><Button onClick={() => showQuantityModal({_id, trademark, CNCode, additionalCode, pieces})}>
           Избери
         </Button></td>
        

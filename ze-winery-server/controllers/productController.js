@@ -5,10 +5,12 @@ const { productModel } = require("../models");
 
 const createProduct = async (req,res,next) => {
 
-const {trademarkName, CNCode,additionalCode,pieces,companyId} = req.body;
-console.log(pieces);
+const {trademark, CNCode,additionalCode,pieces,companyId} = req.body;
+
+console.log(req.body);
+
 const productData = {
-    trademarkName, 
+    trademark, 
     CNCode,
     additionalCode,
     pieces,
