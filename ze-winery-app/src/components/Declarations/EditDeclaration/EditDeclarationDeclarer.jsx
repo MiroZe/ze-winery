@@ -7,10 +7,22 @@ const EditDeclarationDeclarer = ({formValues,onChangeHandler}) => {
 
     return (
         <>
-        <Form.Label>Имена</Form.Label>
+        <Form.Label >Имена</Form.Label>
         <Form.Control 
         type="text"
          onChange={(e) => onChangeHandler(e)} name='name' value={formValues.name} />
+         <Form.Label>ЕГН</Form.Label>
+        <Form.Control 
+        type="text"
+         onChange={(e) => onChangeHandler(e)} name='egn' value={formValues.egn} />
+         <Form.Label>Приложени документи</Form.Label>
+        <Form.Control 
+        type="text"
+         onChange={(e) => onChangeHandler(e)} name='appliedDocuments' value={formValues.appliedDocuments} />
+         <Form.Label>Номера на приложени документи</Form.Label>
+        <Form.Control 
+        type="text"
+         onChange={(e) => onChangeHandler(e)} name='documentNumber' value={formValues.documentNumber} />
         </>
     )
 

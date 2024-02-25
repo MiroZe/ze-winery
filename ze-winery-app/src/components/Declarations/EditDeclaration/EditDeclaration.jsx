@@ -19,6 +19,9 @@ const EditDeclaration = () => {
   const [showLoader, setShowLoader] = useState(true);
   const [formValues, setFormValues] = useState({
     name: '',
+    egn:'',
+    appliedDocuments: '',
+    documentNumber: ''
 
   })
 
@@ -28,7 +31,12 @@ const EditDeclaration = () => {
       .then(data => {
         
         setCurrentDeclaration(data);
-        setFormValues(state => ({...state,name:data.declarer.name }))
+        setFormValues(state => (
+          {...state,name:data.declarer.name,
+            egn: data.declarer.egn,
+            appliedDocuments:data.appliedDocuments.appliedDocument.description,
+            documentNumber:data.appliedDocuments.appliedDocument.documentNumber
+          }))
         setShowLoader(false)
 
       })
@@ -43,8 +51,7 @@ const onChangeHandler = (e) => {
   setFormValues(state => ({ ...state, [e.target.name]: e.target.value }));
 }
 
-   console.log(formValues);
-   console.log(currentDeclaration);
+
 
   return (
     <div className={styles['edit-declaration-container']} >
