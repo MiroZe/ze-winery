@@ -23,7 +23,8 @@ const EditDeclaration = () => {
     appliedDocuments: '',
     documentNumber: ''
 
-  })
+  });
+  
 
 
   useEffect(() => {
