@@ -9,6 +9,7 @@ import Table from 'react-bootstrap/Table';
 import GlassWineLoader from '../../Common/GlassWineLoader/GlassWineLoader';
 import GoodItem from './GoodItem';
 import EditDeclarationDeclarer from './EditDeclarationDeclarer';
+import Button from 'react-bootstrap/Button';
 
 
 const EditDeclaration = () => {
@@ -19,24 +20,25 @@ const EditDeclaration = () => {
   const [showLoader, setShowLoader] = useState(true);
   const [formValues, setFormValues] = useState({
     name: '',
-    egn:'',
+    egn: '',
     appliedDocuments: '',
     documentNumber: ''
 
   });
-  
+
 
 
   useEffect(() => {
     getCompanyDeclarationById(declarationId)
       .then(data => {
-        
+
         setCurrentDeclaration(data);
         setFormValues(state => (
-          {...state,name:data.declarer.name,
+          {
+            ...state, name: data.declarer.name,
             egn: data.declarer.egn,
-            appliedDocuments:data.appliedDocuments.appliedDocument.description,
-            documentNumber:data.appliedDocuments.appliedDocument.documentNumber
+            appliedDocuments: data.appliedDocuments.appliedDocument.description,
+            documentNumber: data.appliedDocuments.appliedDocument.documentNumber
           }))
         setShowLoader(false)
 
@@ -45,26 +47,26 @@ const EditDeclaration = () => {
         errorMessageDispatch(error)
       })
 
-  }, [declarationId, errorMessageDispatch,setFormValues])
+  }, [declarationId, errorMessageDispatch, setFormValues])
 
 
-const onChangeHandler = (e) => {
-  setFormValues(state => ({ ...state, [e.target.name]: e.target.value }));
-}
+  const onChangeHandler = (e) => {
+    setFormValues(state => ({ ...state, [e.target.name]: e.target.value }));
+  }
 
 
 
   return (
     <div className={styles['edit-declaration-container']} >
-      {showLoader ? <GlassWineLoader/> : 
-      <Tabs
-        defaultActiveKey="profile"
-        id="uncontrolled-tab-example"
-        className="mb-3"
-        variant='pills'
-      >
-        <Tab eventKey="home" title="Стоки">
-         
+      {showLoader ? <GlassWineLoader /> :
+        <Tabs
+          defaultActiveKey="profile"
+          id="uncontrolled-tab-example"
+          className="mb-3"
+          variant='pills'
+        >
+          <Tab eventKey="home" title="Стоки">
+
 
             <Table striped bordered hover>
               <thead>
@@ -89,16 +91,19 @@ const onChangeHandler = (e) => {
 
               </tbody>
             </Table>
-          
-        </Tab>
-        <Tab eventKey="profile" title="Декларатор">
-    
-          <EditDeclarationDeclarer formValues={formValues} onChangeHandler={onChangeHandler}/>
-        
-        </Tab>
 
-      </Tabs>
-    }
+          </Tab>
+          <Tab eventKey="profile" title="Декларатор">
+
+            <EditDeclarationDeclarer formValues={formValues} onChangeHandler={onChangeHandler} />
+
+          </Tab>
+        </Tabs>
+      }
+      <div className={styles['button-container']}>
+        <Button variant="danger" >Откажи</Button>
+        <Button variant="info">Редактирай</Button>
+      </div>
     </div>
   )
 

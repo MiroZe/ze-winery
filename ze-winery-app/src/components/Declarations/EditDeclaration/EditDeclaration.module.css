@@ -1,6 +1,22 @@
 .edit-declaration-container {
     flex-grow: 1;
     margin: 10px auto;
-    width: 80%
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 1em
+   
+    
 }
 
+.edit-declaration-container label {
+    color: #42777b;
+    font-weight: 600;
+}
+
+
+.button-container {
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+}
