@@ -18,7 +18,7 @@ const EditDeclarationDeclarer = ({formValues,onChangeHandler}) => {
          <Form.Label>Приложени документи</Form.Label>
         <Form.Control 
         type="text"
-         onChange={(e) => onChangeHandler(e)} name='appliedDocuments' value={formValues.appliedDocuments} />
+         onChange={(e) => onChangeHandler(e)} name='description' value={formValues.description} />
          <Form.Label>Номера на приложени документи</Form.Label>
         <Form.Control 
         type="text"

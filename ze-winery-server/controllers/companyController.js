@@ -148,6 +148,32 @@ const deleteCompanyDeclarationById = async (req,res,next) => {
 
 }
 
+const editCompanyDeclarationById = async (req,res,next) => {
+    const {declarationId} = req.params;
+    const {name,egn,description,documentNumber} = req.body;
+   
+    console.log(documentNumber);
+    
+
+    try {
+      const updatedDeclaration = await declarationModel.findByIdAndUpdate (
+        {_id:declarationId},
+        {
+            'declarer.name': name,
+            'declarer.egn': egn,
+            'appliedDocuments.appliedDocument.description': description,
+            'appliedDocuments.appliedDocument.documentNumber': documentNumber
+        },
+        {new:true});
+      
+       return res.status(200).json(updatedDeclaration)
+        
+    } catch (error) {
+        next(error)
+    }
+
+}
+
 module.exports = {
     createCompany,
     getMyCompanies,
@@ -156,5 +182,6 @@ module.exports = {
     getAllCompanyDeclarations,
     getCompanyDeclarationById,
     getCompanyXMLDeclarationById,
-    deleteCompanyDeclarationById
+    deleteCompanyDeclarationById,
+    editCompanyDeclarationById
 }

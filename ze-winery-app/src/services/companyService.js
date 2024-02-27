@@ -44,3 +44,10 @@ export const deleteCompanyDeclarationById = (declarationId) => {
 
     return request.delete(`${baseURL}/company/declarations/${declarationId}/delete`)
 };
+
+
+
+export const editCompanyDeclarationById = (declarationId, declarationData) => {
+
+    return request.patch(`${baseURL}/company/declarations/${declarationId}`,declarationData)
+};

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from './EditDeclaration.module.css'
-import { getCompanyDeclarationById } from '../../../services/companyService';
-import { useParams } from 'react-router-dom';
+import { editCompanyDeclarationById, getCompanyDeclarationById } from '../../../services/companyService';
+import { Link, useParams } from 'react-router-dom';
 import { useErrorMessageDispatch } from '../../../hooks/useErrorMessageDispatch';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
@@ -15,16 +15,25 @@ import Button from 'react-bootstrap/Button';
 const EditDeclaration = () => {
 
   const [currentDeclaration, setCurrentDeclaration] = useState({});
-  const { declarationId } = useParams();
+  const { companyId,declarationId } = useParams();
+  
   const errorMessageDispatch = useErrorMessageDispatch();
   const [showLoader, setShowLoader] = useState(true);
   const [formValues, setFormValues] = useState({
     name: '',
     egn: '',
-    appliedDocuments: '',
-    documentNumber: ''
-
+    description: '',
+    documentNumber: '',
+   
   });
+
+  
+
+  const onChangeHandler = (e) => {
+  
+    setFormValues(state => ({ ...state, [e.target.name]: e.target.value }));
+};
+
 
 
 
@@ -37,8 +46,9 @@ const EditDeclaration = () => {
           {
             ...state, name: data.declarer.name,
             egn: data.declarer.egn,
-            appliedDocuments: data.appliedDocuments.appliedDocument.description,
-            documentNumber: data.appliedDocuments.appliedDocument.documentNumber
+            description: data.appliedDocuments.appliedDocument.description,
+            documentNumber: data.appliedDocuments.appliedDocument.documentNumber,
+           
           }))
         setShowLoader(false)
 
@@ -50,10 +60,18 @@ const EditDeclaration = () => {
   }, [declarationId, errorMessageDispatch, setFormValues])
 
 
-  const onChangeHandler = (e) => {
-    setFormValues(state => ({ ...state, [e.target.name]: e.target.value }));
-  }
+  
 
+  const onEditSubmitHandler = async (declarationId) => {
+
+    try {
+     const decl = await editCompanyDeclarationById(declarationId,formValues);
+     console.log(decl);
+      
+    } catch (error) {
+      errorMessageDispatch(error)
+    }
+  }
 
 
   return (
@@ -101,8 +119,8 @@ const EditDeclaration = () => {
         </Tabs>
       }
       <div className={styles['button-container']}>
-        <Button variant="danger" >Откажи</Button>
-        <Button variant="info">Редактирай</Button>
+        <Button as={Link} to={`/my-companies/${companyId}/my-declarations`} variant="danger" >Откажи</Button>
+        <Button variant="info" onClick={() => onEditSubmitHandler(declarationId)}>Редактирай</Button>
       </div>
     </div>
   )
