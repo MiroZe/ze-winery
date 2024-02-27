@@ -8,7 +8,7 @@ import styles from './DeclarationItems.module.css';
 const DeclarationItem = (
   {index,
     _id,
-     trademarkName,
+     trademark,
      CNCode,
      additionalCode,
      pieces,
@@ -22,7 +22,7 @@ const DeclarationItem = (
 return (
     <tr>
     <td>{index +1}</td>
-    <td>{trademarkName}</td>
+    <td>{trademark}</td>
     <td>{CNCode}</td>
     <td>{additionalCode}</td>
     <td>{pieces}</td>

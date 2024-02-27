@@ -15,6 +15,7 @@ const DeleteConfirmationModal = ({id,showModal,showHideDeleteModal}) => {
   const deleteDeclarationHandler = async (id) => {
     try {
         await deleteCompanyDeclarationById(id);
+        showHideDeleteModal()
         navigate(`/my-companies/${companyId}/my-declarations`)
     
       } catch (error) {

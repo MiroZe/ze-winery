@@ -74,7 +74,7 @@ const EditDeclaration = () => {
   const onEditSubmitHandler = async (declarationId) => {
 
     try {
-     const decl = await editCompanyDeclarationById(declarationId,{...formValues,exciseGoods:updatedValues});
+     const decl = await editCompanyDeclarationById(declarationId,{...formValues,newGoodsValues:updatedValues});
      console.log(decl);
       
     } catch (error) {

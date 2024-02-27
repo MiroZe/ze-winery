@@ -150,22 +150,39 @@ const deleteCompanyDeclarationById = async (req,res,next) => {
 
 const editCompanyDeclarationById = async (req,res,next) => {
     const {declarationId} = req.params;
-    const {name,egn,description,documentNumber,exciseGoods} = req.body;
+    const {name,egn,description,documentNumber,newGoodsValues} = req.body;
    
-    console.log(exciseGoods);
+   
     
 
     try {
-      const updatedDeclaration = await declarationModel.findByIdAndUpdate (
-        {_id:declarationId},
-        {
+
+        const updateQuery = {
             'declarer.name': name,
             'declarer.egn': egn,
             'appliedDocuments.appliedDocument.description': description,
-            'appliedDocuments.appliedDocument.documentNumber': documentNumber,
-            'exciseGoods': exciseGoods.map(item => item.numberOfPackages)
-        },
-        {new:true});
+            'appliedDocuments.appliedDocument.documentNumber': documentNumber
+        };
+
+        const exciseGoodsUpdate = {};
+        for (const [id, values] of Object.entries(newGoodsValues)) {
+            exciseGoodsUpdate[`exciseGoods.$[elem${id}].numberOfPackages`] = values.numberOfPackages;
+            exciseGoodsUpdate[`exciseGoods.$[elem${id}].quantityOfGoods`] = values.quantityOfGoods;
+        }
+        
+        console.log(exciseGoodsUpdate);
+
+
+        const updatedDeclaration = await declarationModel.findByIdAndUpdate(
+            declarationId,
+            { 
+                $set: { ...updateQuery, ...exciseGoodsUpdate },
+            },
+            { 
+                new: true, 
+                arrayFilters: Object.keys(newGoodsValues).map(id => ({ [`elem${id}._id`]: id })) 
+            }
+        );
       
        return res.status(200).json(updatedDeclaration)
         
