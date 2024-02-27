@@ -150,9 +150,9 @@ const deleteCompanyDeclarationById = async (req,res,next) => {
 
 const editCompanyDeclarationById = async (req,res,next) => {
     const {declarationId} = req.params;
-    const {name,egn,description,documentNumber} = req.body;
+    const {name,egn,description,documentNumber,exciseGoods} = req.body;
    
-    console.log(documentNumber);
+    console.log(exciseGoods);
     
 
     try {
@@ -162,7 +162,8 @@ const editCompanyDeclarationById = async (req,res,next) => {
             'declarer.name': name,
             'declarer.egn': egn,
             'appliedDocuments.appliedDocument.description': description,
-            'appliedDocuments.appliedDocument.documentNumber': documentNumber
+            'appliedDocuments.appliedDocument.documentNumber': documentNumber,
+            'exciseGoods': exciseGoods.map(item => item.numberOfPackages)
         },
         {new:true});
       

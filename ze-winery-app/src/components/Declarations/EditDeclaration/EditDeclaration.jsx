@@ -15,8 +15,8 @@ import Button from 'react-bootstrap/Button';
 const EditDeclaration = () => {
 
   const [currentDeclaration, setCurrentDeclaration] = useState({});
+  const [updatedValues, setUpdatedValues] = useState({});
   const { companyId,declarationId } = useParams();
-  
   const errorMessageDispatch = useErrorMessageDispatch();
   const [showLoader, setShowLoader] = useState(true);
   const [formValues, setFormValues] = useState({
@@ -26,6 +26,15 @@ const EditDeclaration = () => {
     documentNumber: '',
    
   });
+
+  const handleUpdate = (id, updatedData) => {
+    setUpdatedValues(prevState => ({
+      ...prevState,
+      [id]: updatedData
+    }));
+  };
+
+  console.log(updatedValues);
 
   
 
@@ -65,7 +74,7 @@ const EditDeclaration = () => {
   const onEditSubmitHandler = async (declarationId) => {
 
     try {
-     const decl = await editCompanyDeclarationById(declarationId,formValues);
+     const decl = await editCompanyDeclarationById(declarationId,{...formValues,exciseGoods:updatedValues});
      console.log(decl);
       
     } catch (error) {
@@ -102,8 +111,11 @@ const EditDeclaration = () => {
               </thead>
               <tbody>
                 {currentDeclaration?.exciseGoods.map((p, index) => <GoodItem
-                  key={p._id} {...p}
+                  key={p._id}
+                  {...p}
                   index={index}
+                  onUpdate = {updatedValues => handleUpdate(p._id,updatedValues)}
+                  
 
                 />)}
 

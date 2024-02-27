@@ -4,15 +4,18 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { deleteCompanyDeclarationById } from '../../../services/companyService';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const DeleteConfirmationModal = ({id,showModal,showHideDeleteModal}) => {
 
-  
+  const navigate = useNavigate();
+  const {companyId} = useParams();
 
 
   const deleteDeclarationHandler = async (id) => {
     try {
-        await deleteCompanyDeclarationById(id)
+        await deleteCompanyDeclarationById(id);
+        navigate(`/my-companies/${companyId}/my-declarations`)
     
       } catch (error) {
           console.log(error);
