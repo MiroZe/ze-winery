@@ -170,7 +170,7 @@ const editCompanyDeclarationById = async (req,res,next) => {
             exciseGoodsUpdate[`exciseGoods.$[elem${id}].quantityOfGoods`] = values.quantityOfGoods;
         }
         
-        console.log(exciseGoodsUpdate);
+        
 
 
         const updatedDeclaration = await declarationModel.findByIdAndUpdate(

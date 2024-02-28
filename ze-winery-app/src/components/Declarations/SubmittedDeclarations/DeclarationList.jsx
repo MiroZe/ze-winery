@@ -65,7 +65,7 @@ return (
         <TooltipComponent text={'Информация'}>
     <FontAwesomeIcon icon={faCircleInfo} style={{color: "#42777B",marginRight:'12px'}} size='xl' onClick={() => declarationByIdHandler(_id) } />
         </TooltipComponent>
-       <TooltipComponent text={'Свали'}>
+       <TooltipComponent text={'Изтегли'}>
     <FontAwesomeIcon icon={faFileCode} style={{color: "#42777B",}} size='xl'  onClick={() => xmlDeclarationHandler(_id)}/>
     </TooltipComponent>
        {currentDeclaration.createdAt &&  <>
