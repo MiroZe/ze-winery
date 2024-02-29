@@ -22,6 +22,8 @@ const SubmittedDeclarations = () => {
         } )
 
     },[companyId]);
+
+    
     
 
 return (
