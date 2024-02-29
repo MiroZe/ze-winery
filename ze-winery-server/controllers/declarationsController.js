@@ -60,7 +60,7 @@ const createDeclaration = async (req, res, next) => {
             }
 
            
-
+         
 
         const createdDeclaration = await declarationModel.create({
                 year,
@@ -71,12 +71,13 @@ const createDeclaration = async (req, res, next) => {
                 reportingPeriod: declarationData.reportingPeriod,
                 appliedDocuments: declarationData.appliedDocuments,
                 exciseGoods: declarationItems.map(({ _id, quantity, packsQuantity,sequenceNumber}) => ({
-                product: _id,
+                exciseGood: _id,
                 numberOfPackages:packsQuantity,
                 quantityOfGoods:quantity,
                 sequenceNumber
             })),
         })
+        
         return res.status(201).json(createdDeclaration)
 
     } catch (error) {

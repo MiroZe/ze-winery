@@ -9,7 +9,7 @@ const productSchema = new mongoose.Schema({
 
   },
 
-  product: {
+  exciseGood: {
     type: ObjectId,
     ref: 'Product',
     required: true,
