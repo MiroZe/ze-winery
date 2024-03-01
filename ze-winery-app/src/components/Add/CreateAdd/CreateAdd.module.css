@@ -1,0 +1,9 @@
+.new-add-container {
+
+flex-grow: 1;
+
+}
+
+.new-add-container div {
+    border: 1px solid black;
+}
