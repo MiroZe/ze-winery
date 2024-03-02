@@ -1,6 +1,6 @@
 .new-add-container {
 
-flex-grow: 1;
+
 display: flex;
 gap: 1.5em;
 width: 100%;
@@ -30,7 +30,7 @@ width: 100%;
 }
 
 .bottom-part div {
-    height: 7em;
+    height: 12em;
 }
 
 .bottom-part span{
@@ -40,4 +40,12 @@ width: 100%;
     writing-mode: vertical-rl;
     text-orientation: sideways;
     font-size: 0.8em;
+    text-align: end;
+    
 }
+
+.vertical-col {
+    border: 1px solid black;
+    overflow: hidden;
+}
+
