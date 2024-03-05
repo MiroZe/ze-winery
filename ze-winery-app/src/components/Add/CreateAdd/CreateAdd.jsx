@@ -2,12 +2,11 @@ import styles from './CreateAdd.module.css'
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import {definedAdData} from './definedAdData'
 
 const CreateAdd = () => {
 
     return (
-        <>
+        <div className={styles['add-container']}>
             <div className={styles['new-add-container']}>
                 <div className={styles['left-side']}>
                     <Row>
@@ -153,10 +152,31 @@ const CreateAdd = () => {
                     <Col className={styles['vertical-col']} ><span>брой потребителски опаковки</span></Col>
                     <Col className={styles['vertical-col']} ><span>Мерна единица</span></Col>
                     <Col className={styles['vertical-col']} ><span>коефициент на преизчиспяване към данъчна основа</span></Col>
+                    <Col className={styles['hotizontal-col']} >
+                        <Row><span>Основа эа облагане с акциз, съгласно чл. 28 и 29 от ЭАДС</span></Row>
+                        <Row className={styles['row-container']}>
+                            <Col className={styles['vertical-col-2']}><span>LTR, нLТ, РСЕ,К GM, TNE</span></Col>
+                            <Col className={styles['vertical-col-2']}><span>пропорционален акциз</span></Col>
+                             <Col className={styles['vertical-col-2']}><span>С02</span></Col>
+                             <Col className={styles['vertical-col-2']}><span>GJ</span></Col>
+
+                        </Row>
+                    </Col>
+                    <Col className={styles['hotizontal-col']} >
+                        <Row><span>Основа эа облагане с акциз, съгласно чл. 28 и 29 от ЭАДС</span></Row>
+                        <Row className={styles['row-container']}>
+                            <Col className={styles['vertical-col-2']}><span>За LTR, нLТ, РСЕ,К GM, TNE</span></Col>
+                            <Col className={styles['vertical-col-2']}><span>За С02</span></Col>
+                             <Col className={styles['vertical-col-2']}><span>За GJ</span></Col>
+                             <Col className={styles['vertical-col-2']}><span>По чл. 39, ап. 1, т. 2 от 3АДС</span></Col>
+
+                        </Row>
+                    </Col>
+
 
                 </Row>
             </div>
-        </>
+        </div>
 
 
 

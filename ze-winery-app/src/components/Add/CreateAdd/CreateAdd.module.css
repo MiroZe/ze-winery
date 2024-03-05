@@ -1,3 +1,7 @@
+.add-container{
+    flex-grow: 1;
+}
+
 .new-add-container {
 
 
@@ -47,5 +51,40 @@ width: 100%;
 .vertical-col {
     border: 1px solid black;
     overflow: hidden;
+}
+
+.bottom-part .hotizontal-col span{
+    text-orientation: upright;
+    writing-mode: inherit;
+    transform: none;
+    min-width: 14em;
+
+}
+
+.bottom-part .hotizontal-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.bottom-part .hotizontal-col .row-container{
+    display: flex;
+ 
+}
+
+
+.bottom-part .hotizontal-col .row-container .vertical-col-2{
+    width: 2em;
+    overflow: hidden;
+    border: 1px solid black;
+    height: 8em;
+ 
+}
+
+.bottom-part .hotizontal-col .row-container .vertical-col-2 span{
+    display: inline-block;
+    text-orientation: sideways;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: x-small;
 }
 
