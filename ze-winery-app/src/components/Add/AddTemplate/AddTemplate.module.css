@@ -1,0 +1,111 @@
+.add-container{
+    flex-grow: 1;
+}
+
+.add-container span{
+    display: block;
+}
+
+.add-container div {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.new-add-container {
+
+
+display: flex;
+gap: 1.5em;
+width: 100%;
+
+
+
+}
+
+.new-add-container .left-side,
+.new-add-container .right-side{
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    border: none;
+    justify-content: space-between;
+    height: 22em;
+}
+
+
+.new-add-container div {
+    border: 1px solid black;
+}
+.new-add-container .left-side .no-border{
+    border:none;
+    
+   
+}
+
+.bottom-part div {
+    height: 12em;
+}
+
+.bottom-part span{
+    display: inline-block;
+    transform: rotate(180deg);
+    vertical-align: bottom;
+    writing-mode: vertical-rl;
+    text-orientation: sideways;
+    font-size: 0.8em;
+    text-align: end;
+    
+}
+
+.vertical-col {
+    border: 1px solid black;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.bottom-part .hotizontal-col span{
+    text-orientation: upright;
+    writing-mode: inherit;
+    transform: none;
+    min-width: 14em;
+
+}
+
+.bottom-part .hotizontal-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.bottom-part .hotizontal-col .row-container{
+    display: flex;
+ 
+}
+
+
+.bottom-part .hotizontal-col .row-container .vertical-col-2{
+    width: 2em;
+    overflow: hidden;
+    border: 1px solid black;
+    height: 8em;
+ 
+}
+
+.bottom-part .hotizontal-col .row-container .vertical-col-2 span{
+    display: inline-block;
+    text-orientation: sideways;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: x-small;
+}
+
+.row-numbers {
+    display: flex;
+    
+    max-height: 2em;
+}
+
+.row-numbers span {
+    text-align: center;
+}
+
