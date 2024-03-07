@@ -3,3 +3,7 @@
     display: flex;
     justify-content: space-between;
 }
+
+.client-container {
+    min-width: 20em;
+}
