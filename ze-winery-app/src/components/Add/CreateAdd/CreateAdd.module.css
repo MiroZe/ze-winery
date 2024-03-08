@@ -1,7 +1,8 @@
 .add-form-container {
     flex-grow: 1;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 7em;
 }
 
 .client-container {
