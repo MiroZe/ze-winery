@@ -17,7 +17,7 @@ const CreateAdd = () => {
           
             <h3>Номер</h3>
             <div className={styles['company-container']}>
-                <h3>Издател</h3>
+                <h5>Издател</h5>
                 <Form>
                     <Form.Group className="mb-3" >
                         <FloatingLabel label="Име">
