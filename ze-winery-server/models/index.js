@@ -3,7 +3,7 @@ const tokenBlacklistModel = require('./TokenBlacklistModel');
 const companyModel = require('./companyModel');
 const productModel = require('./productModel');
 const declarationModel = require('./declarationModel');
-
+const clientCompanyModel = require('./clientCompanyModel')
 
 
 
@@ -14,6 +14,7 @@ module.exports = {
     tokenBlacklistModel,
     companyModel,
     productModel,
-    declarationModel
+    declarationModel,
+    clientCompanyModel
 
 }
