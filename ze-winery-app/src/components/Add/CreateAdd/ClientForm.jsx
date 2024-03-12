@@ -41,21 +41,22 @@ const ClientForm = () => {
 
             <Form>
                 <Row className="mb-3">
-                    <Form.Group>
+                    <Form.Group as={Col}>
                         <FloatingLabel label="Име">
                             <Form.Control type="text" />
                         </FloatingLabel>
                     </Form.Group>
-
-                    <Form.Select required name='companyType' >
-                        <option value="">Изберете...</option>
-                        <option value="ЕТ">ЕТ</option>
-                        <option value="ЕООД">ЕООД</option>
-                        <option value="ООД">ООД</option>
-                        <option value="ЕАД">ЕАД</option>
-                        <option value="АД">АД</option>
-                        <option value="СД">СД</option>
-                    </Form.Select>
+                    <Form.Group as={Col}>
+                        <Form.Select required name='companyType' >
+                            <option value="">Изберете...</option>
+                            <option value="ЕТ">ЕТ</option>
+                            <option value="ЕООД">ЕООД</option>
+                            <option value="ООД">ООД</option>
+                            <option value="ЕАД">ЕАД</option>
+                            <option value="АД">АД</option>
+                            <option value="СД">СД</option>
+                        </Form.Select>
+                    </Form.Group>
                 </Row>
                 <FloatingLabel label='ЕИК'>
                     <Form.Control type="text" />
