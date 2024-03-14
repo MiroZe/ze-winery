@@ -6,5 +6,11 @@
 }
 
 .client-container {
-    min-width: 20em;
+   width: 22em;
 }
+.client-container select {
+    padding: 1em;
+    max-width: 7.2em;
+}
+
+

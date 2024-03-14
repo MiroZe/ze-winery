@@ -14,10 +14,25 @@ import { useState } from 'react';
 const ClientForm = () => {
 
     const { formValues, onChangeHandler } = useForm();
-    const [showClientForm, setShowClientForm] = useState(false)
+    const [showClientForm, setShowClientForm] = useState(false);
+    const [checked, setChecked] = useState(true);
+
+    const changeCompany = () => {
+        setChecked(!checked)
+    }
+
+    console.log(checked);
 
     return (
         <div className={styles['client-container']}>
+
+            <Form.Switch
+
+                type="switch"
+                id="mySwitch"
+                label={checked ? 'Юридическо лице':'Физическо лице'}
+                onClick={changeCompany}
+            />
             <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
                 <Form.Label column sm="2">
                     Търси
@@ -37,7 +52,9 @@ const ClientForm = () => {
                 </ListGroup.Item>
                 <ListGroup.Item as="li">Porta ac consectetur ac</ListGroup.Item>
             </ListGroup>
+
             <h3>Получател</h3>
+
 
             <Form>
                 <Row className="mb-3">
@@ -46,21 +63,25 @@ const ClientForm = () => {
                             <Form.Control type="text" />
                         </FloatingLabel>
                     </Form.Group>
-                    <Form.Group as={Col}>
-                        <Form.Select required name='companyType' >
-                            <option value="">Изберете...</option>
-                            <option value="ЕТ">ЕТ</option>
-                            <option value="ЕООД">ЕООД</option>
-                            <option value="ООД">ООД</option>
-                            <option value="ЕАД">ЕАД</option>
-                            <option value="АД">АД</option>
-                            <option value="СД">СД</option>
-                        </Form.Select>
-                    </Form.Group>
+                    {checked && <>
+                        <Form.Group as={Col}>
+
+                            <Form.Select name='companyType' >
+                                <option value="">Изберете</option>
+                                <option value="ЕТ">ЕТ</option>
+                                <option value="ЕООД">ЕООД</option>
+                                <option value="ООД">ООД</option>
+                                <option value="ЕАД">ЕАД</option>
+                                <option value="АД">АД</option>
+                                <option value="СД">СД</option>
+                            </Form.Select>
+                        </Form.Group>
+
+                        <FloatingLabel label='ЕИК'>
+                            <Form.Control type="text" />
+                        </FloatingLabel>
+                    </>}
                 </Row>
-                <FloatingLabel label='ЕИК'>
-                    <Form.Control type="text" />
-                </FloatingLabel>
                 <FloatingLabel label='Адрес'>
                     <Form.Control type="text" />
                 </FloatingLabel>
