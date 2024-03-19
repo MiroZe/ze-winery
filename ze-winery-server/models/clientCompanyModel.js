@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { ObjectId } = mongoose.Schema.Types;
 
 
 const clientCompanySchema = new mongoose.Schema ({
@@ -30,6 +31,11 @@ postalCode : {
     type: String,
     required:true
 },
+owner: {
+    type:ObjectId,
+    ref:'Company',
+    required:true
+}
 
 
 });
