@@ -13,15 +13,26 @@ import { useState } from 'react';
 
 const ClientForm = () => {
 
-    const { formValues, onChangeHandler } = useForm();
-    const [showClientForm, setShowClientForm] = useState(false);
-    const [checked, setChecked] = useState(true);
+    const { formValues, onChangeHandler } = useForm({
+        name: '',
+        address: '',
+        city: '',
+        companyType: '',
+        companyId: '',
+
+    });
+
+    const [isCompany, setIsCompany] = useState(true);
 
     const changeCompany = () => {
-        setChecked(!checked)
+        setIsCompany(!isCompany)
     }
 
-    console.log(checked);
+    const onSubmitClientHandler = (e) => {
+        e.preventDefault();
+        console.log('hello');
+    }
+   
 
     return (
         <div className={styles['client-container']}>
@@ -30,7 +41,7 @@ const ClientForm = () => {
 
                 type="switch"
                 id="mySwitch"
-                label={checked ? 'Юридическо лице':'Физическо лице'}
+                label={isCompany ? 'Юридическо лице' : 'Физическо лице'}
                 onClick={changeCompany}
             />
             <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
@@ -56,17 +67,17 @@ const ClientForm = () => {
             <h3>Получател</h3>
 
 
-            <Form>
+            <Form onSubmit={onSubmitClientHandler}>
                 <Row className="mb-3">
                     <Form.Group as={Col}>
                         <FloatingLabel label="Име">
-                            <Form.Control type="text" />
+                            <Form.Control type="text" name='name' value={formValues.name} onChange={onChangeHandler} />
                         </FloatingLabel>
                     </Form.Group>
-                    {checked && <>
+                    {isCompany && <>
                         <Form.Group as={Col}>
 
-                            <Form.Select name='companyType' >
+                            <Form.Select name='companyType' value={formValues.companyType} onChange={onChangeHandler} >
                                 <option value="">Изберете</option>
                                 <option value="ЕТ">ЕТ</option>
                                 <option value="ЕООД">ЕООД</option>
@@ -78,19 +89,19 @@ const ClientForm = () => {
                         </Form.Group>
 
                         <FloatingLabel label='ЕИК'>
-                            <Form.Control type="text" />
+                            <Form.Control type="text" name='companyId' value={formValues.companyId} onChange={onChangeHandler} />
                         </FloatingLabel>
                     </>}
                 </Row>
                 <FloatingLabel label='Адрес'>
-                    <Form.Control type="text" />
+                    <Form.Control type="text" name='address' value={formValues.address} onChange={onChangeHandler} />
                 </FloatingLabel>
                 <FloatingLabel label='Град'>
-                    <Form.Control type="text" />
+                    <Form.Control type="text" name='city' value={formValues.city} onChange={onChangeHandler} />
                 </FloatingLabel>
 
 
-                <Button variant="outline-success">Запиши</Button>
+                <Button variant="outline-success" type='submit'>Запиши</Button>
             </Form>
 
 
