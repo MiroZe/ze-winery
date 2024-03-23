@@ -12,7 +12,7 @@ const CreateAdd = () => {
 
     return (
         <div className={styles['add-form-container']}>
-            <ClientForm/>
+            <ClientForm id={company._id}/>
 
           
             <h3>Номер</h3>

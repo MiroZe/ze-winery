@@ -19,4 +19,4 @@ router.post('/declarations', auth(), declarationController.createDeclaration);
 
 
 
-module.exports = router
+module.exports = router;

@@ -8,11 +8,13 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row';
 import { useForm } from '../../../hooks/useForm';
 import { useState } from 'react';
+import { clientCreate } from '../../../services/addService';
 
 
 
-const ClientForm = () => {
+const ClientForm = ({id}) => {
 
+    
     const { formValues, onChangeHandler } = useForm({
         name: '',
         address: '',
@@ -28,9 +30,11 @@ const ClientForm = () => {
         setIsCompany(!isCompany)
     }
 
-    const onSubmitClientHandler = (e) => {
+    const onSubmitClientHandler = async (e) => {
         e.preventDefault();
-        console.log('hello');
+        const clientData = {...formValues,isCompany,ownerId: id};
+        const result = await clientCreate(clientData);
+        console.log(result);
     }
    
 
