@@ -9,6 +9,7 @@ import Row from 'react-bootstrap/Row';
 import { useForm } from '../../../hooks/useForm';
 import { useState } from 'react';
 import { clientCreate } from '../../../services/addService';
+import { formFieldCheckFn } from '../../../utils/formsFieldCheckFn';
 
 
 
@@ -25,13 +26,18 @@ const ClientForm = ({id}) => {
     });
 
     const [isCompany, setIsCompany] = useState(true);
-
+    const [validated, setValidated] = useState(true);
     const changeCompany = () => {
         setIsCompany(!isCompany)
     }
 
     const onSubmitClientHandler = async (e) => {
         e.preventDefault();
+        const form = e.currentTarget;
+        if(form.checkValidity() === false) {
+            setValidated(false);
+            return
+          }
         const clientData = {...formValues,isCompany,ownerId: id};
         const result = await clientCreate(clientData);
         console.log(result);
@@ -71,17 +77,18 @@ const ClientForm = ({id}) => {
             <h3>Получател</h3>
 
 
-            <Form onSubmit={onSubmitClientHandler}>
-                <Row className="mb-3">
+            <Form onSubmit={onSubmitClientHandler} noValidate validated={!validated}>
+                
                     <Form.Group as={Col}>
-                        <FloatingLabel label="Име">
-                            <Form.Control type="text" name='name' value={formValues.name} onChange={onChangeHandler} />
+                        <FloatingLabel label="Име" controlId="floatingInput" className="mb-3">
+                            <Form.Control type="text" name='name' value={formValues.name} onChange={onChangeHandler} required />
                         </FloatingLabel>
                     </Form.Group>
                     {isCompany && <>
+                <Row className="mb-3">
                         <Form.Group as={Col}>
 
-                            <Form.Select name='companyType' value={formValues.companyType} onChange={onChangeHandler} >
+                            <Form.Select name='companyType' value={formValues.companyType} onChange={onChangeHandler} required>
                                 <option value="">Изберете</option>
                                 <option value="ЕТ">ЕТ</option>
                                 <option value="ЕООД">ЕООД</option>
@@ -92,20 +99,24 @@ const ClientForm = ({id}) => {
                             </Form.Select>
                         </Form.Group>
 
+                        <Form.Group as={Col}>
                         <FloatingLabel label='ЕИК'>
-                            <Form.Control type="text" name='companyId' value={formValues.companyId} onChange={onChangeHandler} />
+                            <Form.Control type="text" name='companyId' value={formValues.companyId} onChange={onChangeHandler} required />
                         </FloatingLabel>
-                    </>}
+                        </Form.Group>
+                  
                 </Row>
+                          </>}
                 <FloatingLabel label='Адрес'>
-                    <Form.Control type="text" name='address' value={formValues.address} onChange={onChangeHandler} />
+                    <Form.Control type="text" name='address' value={formValues.address} onChange={onChangeHandler} required/>
                 </FloatingLabel>
-                <FloatingLabel label='Град'>
-                    <Form.Control type="text" name='city' value={formValues.city} onChange={onChangeHandler} />
+                <FloatingLabel label='Град' >
+                    <Form.Control  type="text" name='city' value={formValues.city} onChange={onChangeHandler} required/>
                 </FloatingLabel>
+               
 
 
-                <Button variant="outline-success" type='submit'>Запиши</Button>
+                <Button variant="outline-success" type='submit' disabled={formFieldCheckFn(formValues)}>Запиши</Button>
             </Form>
 
 

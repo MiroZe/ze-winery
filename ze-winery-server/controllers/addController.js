@@ -9,9 +9,9 @@ let createdClient;
 
 try {
     if(isCompany) {
-     createdClient = await clientCompanyModel.create({name,address,city,companyType,companyId,ownerId});
+     createdClient = await clientCompanyModel.create({name,address,city,companyType,companyId,isCompany,owner:ownerId});
     } else {
-        createdClient = await clientModel.create({name,address,city,ownerId});
+     createdClient = await clientModel.create({name,address,city,isCompany,owner:ownerId});
     }
     
     return res.status(201).json(createdClient) ;

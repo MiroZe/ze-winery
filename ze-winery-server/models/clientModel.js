@@ -18,8 +18,8 @@ const clientSchema = new mongoose.Schema({
         type: String,
         required:true
     },
-    postalCode : {
-        type: String,
+    isCompany: {
+        type: Boolean,
         required:true
     },
     owner: {
