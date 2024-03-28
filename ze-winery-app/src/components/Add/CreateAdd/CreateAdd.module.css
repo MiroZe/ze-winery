@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center;
     gap: 7em;
+    flex-wrap: wrap;
 }
 
 .client-container {

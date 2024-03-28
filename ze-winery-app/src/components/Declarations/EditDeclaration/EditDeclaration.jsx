@@ -34,8 +34,6 @@ const EditDeclaration = () => {
     }));
   };
 
-  console.log(updatedValues);
-
   
 
   const onChangeHandler = (e) => {
@@ -69,7 +67,7 @@ const EditDeclaration = () => {
   }, [declarationId, errorMessageDispatch, setFormValues])
 
 
-  
+  console.log(currentDeclaration.exciseGoods);
 
   const onEditSubmitHandler = async (declarationId) => {
 

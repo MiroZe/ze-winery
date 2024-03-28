@@ -3,6 +3,7 @@ import styles from './CreateAdd.module.css';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import ClientForm from './ClientForm';
+import ProductsList from '../../Products/ProductsList';
 
 const CreateAdd = () => {
 
@@ -33,10 +34,9 @@ const CreateAdd = () => {
                             <Form.Control type="text" disabled defaultValue={company.city} />
                         </FloatingLabel>
                     </Form.Group>
-
-                    
                 </Form>
             </div>
+            <ProductsList/>
 
         </div>
 

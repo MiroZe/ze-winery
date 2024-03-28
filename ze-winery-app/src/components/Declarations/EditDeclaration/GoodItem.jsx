@@ -6,7 +6,7 @@ const GoodItem = (
     {
     
         index,
-        product,
+        exciseGood,
         numberOfPackages,
         quantityOfGoods,
         onUpdate
@@ -30,10 +30,10 @@ const GoodItem = (
 
         <tr>
             <td>{index + 1}</td>
-            <td>{product.trademark}</td>
-            <td>{product.CNCode}</td>
-            <td>{product.additionalCode}</td>
-            <td>{product.pieces}</td>
+            <td>{exciseGood.trademark}</td>
+            <td>{exciseGood.CNCode}</td>
+            <td>{exciseGood.additionalCode}</td>
+            <td>{exciseGood.pieces}</td>
             <td><Form.Control type='number' name='numberOfPackages'
                 value={formValues.numberOfPackages}
                 onChange={onChangeHandler}
