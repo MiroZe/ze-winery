@@ -65,7 +65,7 @@ const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, edit
       exciseNumber: currentCompany.exciseNumber,
       SIC: currentCompany.companyId,
       egn: currentCompany.owner.ownerId,
-      documentDate: Object.values(selectedMonthData).reverse().join('')
+      documentDate: formatDateAsString(formValues.endDate)
       
     }
 
@@ -77,6 +77,8 @@ const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, edit
         setValidated(false);
         return;
       }
+      console.log(declarationData.documentDate);
+      console.log(declarationData.documentDate);
    
       await createDeclaration(declarationData);
       navigate(`/my-companies/${companyId}/my-declarations`)

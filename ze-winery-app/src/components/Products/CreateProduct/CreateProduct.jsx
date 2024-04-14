@@ -69,6 +69,9 @@ const CreateProduct = () => {
               <option value="">Изберете...</option>
               <option value="22042180">22042180</option>
               <option value="22042179">22042179</option>
+              <option value="22042279">22042279</option>
+              <option value="22042280">22042280</option>
+              <option value="22042980">22042980</option>
 
             </Form.Select>
           </Form.Group>

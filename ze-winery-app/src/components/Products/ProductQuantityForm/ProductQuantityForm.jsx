@@ -22,7 +22,7 @@ const ProductQuantityForm = (
  });
 
 
-
+console.log(currentItem);
 
  const onSubmitQuantityValue = (e) => {
  e.preventDefault();
@@ -38,7 +38,7 @@ const ProductQuantityForm = (
       <>
       <Modal show={showModal} >
       <Modal.Header closeButton onClick={closeModal}>
-        <Modal.Title>{currentItem.trademarkName} {currentItem.pieces}</Modal.Title>
+        <Modal.Title>{currentItem.trademark} {currentItem.pieces}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
 
