@@ -29,7 +29,9 @@ useEffect(() => {
   })
   
   
-},[user?._id,dispatch])
+},[user?._id,dispatch]);
+
+console.log(user?._id);
 
 return (
 

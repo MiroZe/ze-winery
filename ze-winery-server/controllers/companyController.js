@@ -43,8 +43,10 @@ const createCompany = async (req, res, next) => {
 const getMyCompanies = async(req,res,next) => {
 
     const userId = req.query['userId'];
+    
     try {
         const companies = await companyModel.find({users : {$in: userId}})
+       
         return res.status(200).json(companies)
         
     } catch (error) {
@@ -115,22 +117,24 @@ const getCompanyXMLDeclarationById = async (req,res,next) => {
     
 
     try {
-       const declaration =  await declarationModel.findById ({_id:declarationId}).populate('exciseGoods.exciseGood').exec();
+       const declaration =  await declarationModel.findById ({_id:declarationId}).populate('exciseGoods.exciseGood').lean().exec();
        const builder = new Builder({
         rootName:'Declaration'
        });
 
-       const declarationObj = declaration.toObject();
-       const raw = removeUnnecessaryFields(declarationObj)
+       
+       const raw = removeUnnecessaryFields(declaration)
        const rawU = capitalizeKeys(raw)
        const xml = builder.buildObject(rawU);
-     
-       console.log('===========================');
-       console.log(declarationObj);
+   
     
-    //    res.attachment('declaration.xml');
-    //    res.type('xml');
-    //    res.send(xml);
+       console.log(xml);
+       console.log('===========================');
+      
+    
+       res.attachment('declaration.xml');
+       res.type('xml');
+       res.send(xml);
     } catch (error) {
         next(error)
     }
