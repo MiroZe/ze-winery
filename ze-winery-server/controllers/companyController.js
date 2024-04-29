@@ -125,11 +125,12 @@ const getCompanyXMLDeclarationById = async (req,res,next) => {
        const rawU = capitalizeKeys(raw)
        const xml = builder.buildObject(rawU);
      
-       
+       console.log('===========================');
+       console.log(declarationObj);
     
-       res.attachment('declaration.xml');
-       res.type('xml');
-       res.send(xml);
+    //    res.attachment('declaration.xml');
+    //    res.type('xml');
+    //    res.send(xml);
     } catch (error) {
         next(error)
     }
