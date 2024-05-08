@@ -9,6 +9,7 @@ import CompanyCard from '../MyCompanies/CompanyCard';
 import Button from 'react-bootstrap/esm/Button';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import BackButton from '../../Common/BackButton/BackButton';
 
 
 const CompanyDetails = () => {
@@ -41,7 +42,7 @@ const CompanyDetails = () => {
                 <Button as={Link} to={`/my-companies/${companyId}/create-declaration`}variant="primary">Създай декларация</Button>
                 <Button as={Link} to={`/my-companies/${companyId}/my-declarations`} variant="primary">Подадени декларации</Button>
             </div>
-
+            <BackButton path={'/dashboard'}/>
         </div>
     )
 

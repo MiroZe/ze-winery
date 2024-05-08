@@ -8,6 +8,7 @@ import { createNewProduct } from '../../../services/productService';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import BackButton from '../../Common/BackButton/BackButton';
 
 
 const CreateProduct = () => {
@@ -98,10 +99,12 @@ const CreateProduct = () => {
 
 
         </Row>
-
+        <div className={styles['actions']}>
         <Button variant="primary" type="submit" className={styles['save-btn']}>
           Запази
         </Button>
+        <BackButton path={'/dashboard'}/>
+        </div>
       </Form>
 
 

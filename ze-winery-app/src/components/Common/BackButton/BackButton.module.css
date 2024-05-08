@@ -1,0 +1,10 @@
+.back-button {
+    background-color: #42777b ;
+    border:none;
+}
+
+.back-button:hover {
+    color: #42777b ;
+    background-color: #fff;
+    border:1px solid #42777b;
+}
