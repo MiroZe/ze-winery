@@ -25,12 +25,11 @@ const productSchema = new mongoose.Schema({
             type: String,
             required: true
         },
-        maeasure: {
+        measure: {
             type: Number,
             required: true,
             default: 3
         },
-
         additionalCode: {
             type: String,
             required: true

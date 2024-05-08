@@ -3,6 +3,9 @@ const {Builder} = require('xml2js');
 const removeUnnecessaryFields = require('../utils/removeFromXML');
 const { rawListeners } = require('../models/TokenBlacklistModel');
 const capitalizeKeys = require('../utils/capitalizeKeys');
+const {desiredOrder} = require('../constants/declarationOrderExample');
+const reorderProperties = require ('../utils/reorder')
+
 
 
 
@@ -123,13 +126,20 @@ const getCompanyXMLDeclarationById = async (req,res,next) => {
        });
 
        
-       const raw = removeUnnecessaryFields(declaration)
-       const rawU = capitalizeKeys(raw)
-       const xml = builder.buildObject(rawU);
+       
+       const raw = removeUnnecessaryFields(declaration);
+       const rawU = capitalizeKeys(raw);
+       const rawDeclaration = reorderProperties(rawU,desiredOrder);
+       
+       
+
+      
+    //    console.log('=============2==============');
+    //    console.log(rawDeclaration);
+       const xml = builder.buildObject(rawDeclaration);
    
     
-       console.log(xml);
-       console.log('===========================');
+     
       
     
        res.attachment('declaration.xml');

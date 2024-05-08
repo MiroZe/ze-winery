@@ -47,6 +47,7 @@ const declarationSchema = new mongoose.Schema({
   },
   preparationDate: {
     type:String,
+
     default: function() {
      
       const currentDate = new Date();
