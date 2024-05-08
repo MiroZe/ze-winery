@@ -12,6 +12,7 @@ import { formatDateAsString } from '../../../utils/formatDateAsString';
 import { formFieldCheckFn } from '../../../utils/formsFieldCheckFn';
 import { useErrorMessageDispatch } from '../../../hooks/useErrorMessageDispatch';
 import { useNavigate, useParams } from 'react-router-dom';
+import BackButton from '../../Common/BackButton/BackButton';
 
 
 const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, editItemFromDeclarationList}) => {
@@ -125,6 +126,7 @@ return (
       <MonthYPicker  selectedMonthData={selectedMonthData} setSelectedMonthData={setSelectedMonthData}/>
       <Declarer validated={validated} formValues = {formValues} onChangeHandler = {onChangeHandler}/>
       <Button variant="success" onClick={ () => handleDeclarationSubmit(declarationItems,selectedMonthData)}>Запази</Button>
+      <BackButton path={`/my-companies/${companyId}`}/>
 
       
     </div>
