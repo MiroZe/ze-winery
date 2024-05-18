@@ -19,6 +19,7 @@ import CreateDecration from './components/Declarations/CreateDeclaration/CreateD
 import SubmittedDeclarations from './components/Declarations/SubmittedDeclarations/SubbmittedDeclarations';
 import EditDeclaration from './components/Declarations/EditDeclaration/EditDeclaration';
 import CreateAdd from './components/Add/CreateAdd/CreateAdd';
+import NoPageFound from './components/NoPageFound/NoPageFound';
 
 function App() {
 
@@ -44,7 +45,7 @@ function App() {
         <Route path='/my-companies/:companyId/my-declarations' element={<SubmittedDeclarations/>}/>
         <Route path='/my-companies/:companyId/createAdd' element={<CreateAdd/>}/>
 
-
+        <Route path="*" element={<NoPageFound/>} />
       </Routes>
       <Footer/>
 
