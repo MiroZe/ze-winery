@@ -7,13 +7,17 @@
 .main{
    
     flex-grow: 1;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   
 }
 
 .fof{
 	  display: flex;
 	  align-items: center;
       margin: 0 auto;
+      justify-content: center;
 }
 
 .fof h1{
