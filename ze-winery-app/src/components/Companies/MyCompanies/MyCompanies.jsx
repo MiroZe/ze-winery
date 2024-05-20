@@ -31,12 +31,14 @@ useEffect(() => {
   
 },[user?._id,dispatch]);
 
-console.log(user?._id);
+console.log(myCompanies.length);
 
 return (
 
     <div className={styles['companies-container']}>
-    {myCompanies.map( c => <CompanyCard key={c._id} {...c}/>)}
+      
+    {myCompanies.length > 0 ? myCompanies.map( c => <CompanyCard key={c._id} {...c}/>) :
+    <h3>Все още нямате регистрирана компания!</h3>}
 
     </div>
   
