@@ -10,8 +10,8 @@ const RouteUserGuard = ({
     const {user} = useSelector(state => state.user);
     const error = {message : 'You do not have access to this resources.Please log in!'}
    
-    
-    if (!user._id) {
+
+    if (!user?._id) {
         dispatchErrorMessage(error);
         return <Navigate to="/login" />;
     }
