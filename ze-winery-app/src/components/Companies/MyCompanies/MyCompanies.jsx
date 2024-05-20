@@ -31,7 +31,7 @@ useEffect(() => {
   
 },[user?._id,dispatch]);
 
-console.log(myCompanies.length);
+
 
 return (
 
