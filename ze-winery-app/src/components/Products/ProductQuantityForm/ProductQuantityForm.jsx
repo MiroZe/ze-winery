@@ -22,7 +22,7 @@ const ProductQuantityForm = (
  });
 
 
-console.log(currentItem);
+
 
  const onSubmitQuantityValue = (e) => {
  e.preventDefault();

@@ -132,15 +132,8 @@ const getCompanyXMLDeclarationById = async (req,res,next) => {
        const rawDeclaration = reorderProperties(rawU,desiredOrder);
        
        
-
-      
-    //    console.log('=============2==============');
-    //    console.log(rawDeclaration);
        const xml = builder.buildObject(rawDeclaration);
    
-    
-     
-      
     
        res.attachment('declaration.xml');
        res.type('xml');

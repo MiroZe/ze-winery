@@ -79,7 +79,7 @@ const createCompanySubmitHandler = async (e) => {
    
   } catch (error) {
     setErrorMessage(error)
-    console.log(error.message);
+    
     
   }
 };

@@ -39,8 +39,8 @@ const ClientForm = ({id}) => {
             return
           }
         const clientData = {...formValues,isCompany,ownerId: id};
-        const result = await clientCreate(clientData);
-        console.log(result);
+        await clientCreate(clientData);
+       
     }
    
 
