@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from './EditDeclaration.module.css'
 import { editCompanyDeclarationById, getCompanyDeclarationById } from '../../../services/companyService';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useErrorMessageDispatch } from '../../../hooks/useErrorMessageDispatch';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
@@ -15,6 +15,7 @@ import Button from 'react-bootstrap/Button';
 const EditDeclaration = () => {
 
   const [currentDeclaration, setCurrentDeclaration] = useState({});
+  const navigate = useNavigate();
   const [updatedValues, setUpdatedValues] = useState({});
   const { companyId,declarationId } = useParams();
   const errorMessageDispatch = useErrorMessageDispatch();
@@ -26,6 +27,7 @@ const EditDeclaration = () => {
     documentNumber: '',
    
   });
+ 
 
   const handleUpdate = (id, updatedData) => {
     setUpdatedValues(prevState => ({
@@ -67,13 +69,13 @@ const EditDeclaration = () => {
   }, [declarationId, errorMessageDispatch, setFormValues])
 
 
-  console.log(currentDeclaration.exciseGoods);
+  
 
   const onEditSubmitHandler = async (declarationId) => {
 
     try {
-     const decl = await editCompanyDeclarationById(declarationId,{...formValues,newGoodsValues:updatedValues});
-     console.log(decl);
+     await editCompanyDeclarationById(declarationId,{...formValues,newGoodsValues:updatedValues});
+     navigate(`/my-companies/${companyId}/my-declarations`)
       
     } catch (error) {
       errorMessageDispatch(error)
