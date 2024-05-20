@@ -6,6 +6,7 @@ import { Link, useParams } from 'react-router-dom';
 import { getCompanyProducts } from '../../services/productService';
 import SearchBar from '../SearchBar/SearchBar';
 import { useSearch } from '../../hooks/useSearch';
+import BackButton from '../Common/BackButton/BackButton';
 
 
 
@@ -32,8 +33,12 @@ const ProductsList = ({viewChooseBtn, showQuantityModal,isItemSelected}) => {
   return (
 
     <div className={styles['products-container']}>
-
+      <div className={styles['actions']}>
+        
       <SearchBar updateSearchValue={updateSearchValue} searchValue={searchValue} />
+      <BackButton path={`/my-companies/${companyId}`}/>
+      
+      </div>
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -49,6 +54,7 @@ const ProductsList = ({viewChooseBtn, showQuantityModal,isItemSelected}) => {
         <tbody>
           {found.map(p => <ProductItem key={p._id} {...p} viewChooseBtn={viewChooseBtn} showQuantityModal={showQuantityModal} isItemSelected={isItemSelected}/>)}
           <tr><td><Link to={'/create-product'}>Създай нов</Link></td> </tr>
+          
         </tbody>
       </Table>
     </div>

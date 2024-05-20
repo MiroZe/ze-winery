@@ -20,36 +20,39 @@ import SubmittedDeclarations from './components/Declarations/SubmittedDeclaratio
 import EditDeclaration from './components/Declarations/EditDeclaration/EditDeclaration';
 import CreateAdd from './components/Add/CreateAdd/CreateAdd';
 import NoPageFound from './components/NoPageFound/NoPageFound';
+import RouteUserGuard from './components/RouteGuards/RouteUserGuard';
 
 function App() {
 
 
   return (
     <>
-    <Provider store={store}>
-      <Header />
-      <Routes>
+      <Provider store={store}>
+        <Header />
+        <Routes>
 
-        <Route path='/' element={<HomePage/>}/>
-        <Route path='/login' element={<LoginForm/>}/>
-        <Route path='/logout' element={<Logout/>}/>
-        <Route path='/register' element={<RegisterForm/>}/>
-        <Route path='/dashboard' element={<Dashboard/>}/>
-        <Route path='/create-company' element={<CreateCompany/>}/>
-        <Route path='/my-companies' element={<MyCompanies/>}/>
-        <Route path='/my-companies/:companyId/products' element={<ProductsList/>}/>
-        <Route path='/create-product' element={<CreateProduct/>}/>
-        <Route path='/my-companies/:companyId' element={<CompanyDetails/>}/>
-        <Route path='/my-companies/:companyId/create-declaration' element={<CreateDecration/>}/>
-        <Route path='/my-companies/:companyId/edit-declaration/:declarationId' element={<EditDeclaration/>}/>
-        <Route path='/my-companies/:companyId/my-declarations' element={<SubmittedDeclarations/>}/>
-        <Route path='/my-companies/:companyId/createAdd' element={<CreateAdd/>}/>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/login' element={<LoginForm />} />
+          <Route path='/logout' element={<Logout />} />
+          <Route path='/register' element={<RegisterForm />} />
+          <Route element={<RouteUserGuard />}>
+            <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/create-company' element={<CreateCompany />} />
+            <Route path='/my-companies' element={<MyCompanies />} />
+            <Route path='/my-companies/:companyId/products' element={<ProductsList />} />
+            <Route path='/create-product' element={<CreateProduct />} />
+            <Route path='/my-companies/:companyId' element={<CompanyDetails />} />
+            <Route path='/my-companies/:companyId/create-declaration' element={<CreateDecration />} />
+            <Route path='/my-companies/:companyId/edit-declaration/:declarationId' element={<EditDeclaration />} />
+            <Route path='/my-companies/:companyId/my-declarations' element={<SubmittedDeclarations />} />
+            <Route path='/my-companies/:companyId/createAdd' element={<CreateAdd />} />
+          </Route>
 
-        <Route path="*" element={<NoPageFound/>} />
-      </Routes>
-      <Footer/>
+          <Route path="*" element={<NoPageFound />} />
+        </Routes>
+        <Footer />
 
-    </Provider>
+      </Provider>
     </>
 
 
