@@ -10,6 +10,7 @@ import { useForm } from '../../../hooks/useForm';
 import { useState } from 'react';
 import { clientCreate } from '../../../services/addService';
 import { formFieldCheckFn } from '../../../utils/formsFieldCheckFn';
+import { useErrorMessageDispatch } from '../../../hooks/useErrorMessageDispatch';
 
 
 
@@ -24,6 +25,7 @@ const ClientForm = ({id}) => {
         companyId: '',
 
     });
+    const dispatchErrorMessage = useErrorMessageDispatch();
 
     const [isCompany, setIsCompany] = useState(true);
     const [validated, setValidated] = useState(true);
@@ -33,13 +35,21 @@ const ClientForm = ({id}) => {
 
     const onSubmitClientHandler = async (e) => {
         e.preventDefault();
+        console.log('fafasf');
+        console.log(formValues);
+        
         const form = e.currentTarget;
         if(form.checkValidity() === false) {
             setValidated(false);
             return
           }
         const clientData = {...formValues,isCompany,ownerId: id};
-        await clientCreate(clientData);
+        try {
+            await clientCreate(clientData);
+            
+        } catch (error) {
+            dispatchErrorMessage(error)
+        }
        
     }
    
@@ -101,7 +111,7 @@ const ClientForm = ({id}) => {
 
                         <Form.Group as={Col}>
                         <FloatingLabel label='ЕИК'>
-                            <Form.Control type="text" name='companyId' value={formValues.companyId} onChange={onChangeHandler} required />
+                            <Form.Control type="number" name='companyId' value={formValues.companyId} onChange={onChangeHandler} required />
                         </FloatingLabel>
                         </Form.Group>
                   
@@ -116,7 +126,7 @@ const ClientForm = ({id}) => {
                
 
 
-                <Button variant="outline-success" type='submit' disabled={formFieldCheckFn(formValues)}>Запиши</Button>
+                <Button variant="outline-success" type='submit' >Запиши</Button>
             </Form>
 
 

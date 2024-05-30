@@ -36,7 +36,7 @@ const LoginForm = () => {
             
         } catch (error) {
             dispatchErrorMessage(error)
-            console.log(error);
+            
         }
 
 
