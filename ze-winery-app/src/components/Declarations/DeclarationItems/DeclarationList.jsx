@@ -12,6 +12,7 @@ import { formatDateAsString } from '../../../utils/formatDateAsString';
 import { formFieldCheckFn } from '../../../utils/formsFieldCheckFn';
 import { useErrorMessageDispatch } from '../../../hooks/useErrorMessageDispatch';
 import { useNavigate, useParams } from 'react-router-dom';
+import BackButton from '../../Common/BackButton/BackButton';
 
 
 const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, editItemFromDeclarationList}) => {
@@ -65,7 +66,7 @@ const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, edit
       exciseNumber: currentCompany.exciseNumber,
       SIC: currentCompany.companyId,
       egn: currentCompany.owner.ownerId,
-      documentDate: Object.values(selectedMonthData).reverse().join('')
+      documentDate: formatDateAsString(formValues.endDate)
       
     }
 
@@ -77,6 +78,8 @@ const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, edit
         setValidated(false);
         return;
       }
+      console.log(declarationData.documentDate);
+      console.log(declarationData.documentDate);
    
       await createDeclaration(declarationData);
       navigate(`/my-companies/${companyId}/my-declarations`)
@@ -123,6 +126,7 @@ return (
       <MonthYPicker  selectedMonthData={selectedMonthData} setSelectedMonthData={setSelectedMonthData}/>
       <Declarer validated={validated} formValues = {formValues} onChangeHandler = {onChangeHandler}/>
       <Button variant="success" onClick={ () => handleDeclarationSubmit(declarationItems,selectedMonthData)}>Запази</Button>
+      <BackButton path={`/my-companies/${companyId}`}/>
 
       
     </div>

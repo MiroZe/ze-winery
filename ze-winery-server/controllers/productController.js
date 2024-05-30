@@ -7,7 +7,7 @@ const createProduct = async (req,res,next) => {
 
 const {trademark, CNCode,additionalCode,pieces,companyId} = req.body;
 
-console.log(req.body);
+
 
 const productData = {
     trademark, 

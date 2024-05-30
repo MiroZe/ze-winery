@@ -6,3 +6,16 @@
 
 }
 
+.create-company-container a {
+    background-color: #42777b;
+    margin: 10px 0 0 10px;
+    border-color: #42777b;
+}
+
+.create-company-container a:hover {
+    background-color: #fff;
+    border-color: #42777b;
+    color: #42777b;
+
+}
+

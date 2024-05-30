@@ -8,3 +8,14 @@
     display: flex;
     gap:0.2em
 }
+
+.declaration-container a {
+    background-color: red;
+    margin-left: 5px;
+    border: none;
+}
+
+.declaration-container a:hover{
+    background-color: red;
+    border: none;
+}

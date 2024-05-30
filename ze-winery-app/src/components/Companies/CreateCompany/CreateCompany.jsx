@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useErrorMessageDispatch } from '../../../hooks/useErrorMessageDispatch';
+import BackButton from '../../Common/BackButton/BackButton';
 
 const CreateCompany = () => {
 
@@ -78,7 +79,7 @@ const createCompanySubmitHandler = async (e) => {
    
   } catch (error) {
     setErrorMessage(error)
-    console.log(error.message);
+    
     
   }
 };
@@ -207,6 +208,7 @@ const onChangeDeclarerHandler = () => {
         <Button variant="primary" type="submit" style={{marginTop:'10px'}}>
           Запази
         </Button>
+        <BackButton path={'/dashboard'}/>
       </Form>
 
     </div>

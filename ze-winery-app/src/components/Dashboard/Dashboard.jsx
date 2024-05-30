@@ -11,6 +11,7 @@ const Dashboard = () => {
             <aside>
             <ul className={styles['aside-list-items']}>
                 <li><Link to={'/create-company'}>Добави компания</Link></li>
+              
                 <li><Link to={'/my-companies'}>Мои компании</Link></li>
                
                 <li><Link to={'/logout'}>Излез</Link></li>

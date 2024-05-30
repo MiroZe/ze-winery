@@ -15,5 +15,26 @@
 
 .new-product-form-container .save-btn {
     display: block;
-    margin: 20px auto;
+  
 }
+
+.actions {
+    display: flex;
+    justify-content: center;
+    margin: 17px auto;
+    gap: 0.2em;
+}
+
+.actions a {
+ 
+        background-color: #42777b ;
+        border:none;
+    }
+    
+    .actions a:hover {
+        color: #42777b ;
+        background-color: #fff;
+        border:1px solid #42777b;
+    } 
+
+

@@ -1,0 +1,20 @@
+.add-form-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    gap: 7em;
+    flex-wrap: wrap;
+}
+
+.client-container {
+   width: 22em;
+}
+.client-container select {
+    padding: 1em;
+    max-width: 7.2em;
+}
+
+.form-floating{
+    height: 15px;
+}
+

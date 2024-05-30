@@ -8,6 +8,7 @@ import { createNewProduct } from '../../../services/productService';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import BackButton from '../../Common/BackButton/BackButton';
 
 
 const CreateProduct = () => {
@@ -69,6 +70,9 @@ const CreateProduct = () => {
               <option value="">Изберете...</option>
               <option value="22042180">22042180</option>
               <option value="22042179">22042179</option>
+              <option value="22042279">22042279</option>
+              <option value="22042280">22042280</option>
+              <option value="22042980">22042980</option>
 
             </Form.Select>
           </Form.Group>
@@ -95,10 +99,12 @@ const CreateProduct = () => {
 
 
         </Row>
-
+        <div className={styles['actions']}>
         <Button variant="primary" type="submit" className={styles['save-btn']}>
           Запази
         </Button>
+        <BackButton path={'/dashboard'}/>
+        </div>
       </Form>
 
 

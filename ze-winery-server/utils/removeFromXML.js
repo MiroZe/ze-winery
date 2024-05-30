@@ -16,7 +16,7 @@ const removeUnnecessaryFields = (data) => {
 
     const cleanedExciseGoods = exciseGoods.
     map(({ exciseGood: { _id, owner, __v, ...cleanedProduct },sequenceNumber,quantityOfGoods,numberOfPackages}) => ({
-        exciseGood: {...cleanedProduct,sequenceNumber,quantityOfGoods,numberOfPackages}
+        exciseGood: {sequenceNumber,...cleanedProduct,quantityOfGoods,numberOfPackages}
         
       }));
       

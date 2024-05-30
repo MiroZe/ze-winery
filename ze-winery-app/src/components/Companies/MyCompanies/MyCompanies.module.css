@@ -1,7 +1,7 @@
 .companies-container {
     flex-grow: 1;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 1em;
     padding: 2em;
 }
@@ -14,4 +14,8 @@
 .button-container {
     display: flex;
     gap: 0.5em;
+}
+
+.companies-container h3 {
+    text-align: center;
 }

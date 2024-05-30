@@ -5,6 +5,7 @@
 
 }
 
+
 .products-container a {
     background-color: yellowgreen;
     color: #000;
@@ -12,3 +13,25 @@
     padding: 0.5em;
     border-radius: 0.3em;
 }
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: self-start;
+    gap: 2em;
+}
+
+.actions a {
+ 
+    background-color: #42777b ;
+    border:none;
+    margin-bottom: 15px;
+}
+
+.actions a:hover {
+    color: #42777b ;
+    background-color: #fff;
+    border:1px solid #42777b;
+} 
+
