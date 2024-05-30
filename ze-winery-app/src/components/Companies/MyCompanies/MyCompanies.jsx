@@ -5,6 +5,7 @@ import { getMyCompanies } from '../../../services/companyService';
 import CompanyCard from './CompanyCard';
 import styles from './MyCompanies.module.css';
 import { setMessage } from '../../../reducers/message';
+import GlassWineLoader from '../../Common/GlassWineLoader/GlassWineLoader';
 
 
 
@@ -12,6 +13,7 @@ import { setMessage } from '../../../reducers/message';
 const MyCompanies = () => {
 
   const [myCompanies,setMyCompanies] = useState([]);
+  const [isLoader, setIsLoader] = useState(true)
   const dispatch = useDispatch();
 
   
@@ -19,7 +21,10 @@ const MyCompanies = () => {
 const {user} = useSelector(state => state.user);
 useEffect(() => {
   getMyCompanies(user?._id)
-  .then(setMyCompanies)
+  .then(companies => {
+    setMyCompanies(companies)
+    setIsLoader(false)
+  })
   .catch((error) => {
     if(error.message === 'Invalid token!') {
       error.message = 'Моля, впишете се отново!'
@@ -36,10 +41,10 @@ useEffect(() => {
 return (
 
     <div className={styles['companies-container']}>
-      
-    {myCompanies.length > 0 ? myCompanies.map( c => <CompanyCard key={c._id} {...c}/>) :
-    <h3>Все още нямате регистрирана компания!</h3>}
-
+      {isLoader ? <GlassWineLoader/> : (
+    myCompanies.length > 0 ? myCompanies.map(c => <CompanyCard key={c._id} {...c}/>) :
+    <h3>Все още нямате регистрирана компания!</h3>
+  )}
     </div>
   
 )
