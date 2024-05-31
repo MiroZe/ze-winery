@@ -1,15 +1,16 @@
 
-import Form from 'react-bootstrap/Form';
-import FloatingLabel from 'react-bootstrap/FloatingLabel';
-import styles from './CreateAdd.module.css';
-import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import ListGroup from 'react-bootstrap/ListGroup';
-import Row from 'react-bootstrap/Row';
 import { useForm } from '../../../hooks/useForm';
-import { useState } from 'react';
-import { clientCreate } from '../../../services/addService';
+import { useCallback, useState } from 'react';
+import { clientCreate, clientSearch } from '../../../services/addService';
 import { useErrorMessageDispatch } from '../../../hooks/useErrorMessageDispatch';
+import { debouncedFetchResults } from '../../../utils/debounceSearch';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import Button from 'react-bootstrap/Button';
+import ListGroup from 'react-bootstrap/ListGroup';
+import styles from './CreateAdd.module.css';
 
 
 
@@ -28,7 +29,8 @@ const ClientForm = ({id}) => {
 
     const [isCompany, setIsCompany] = useState(true);
     const [validated, setValidated] = useState(true);
-    const [searchCompanyValue, setSearchCompanyValue] = useState('')
+    const [searchCompanyValue, setSearchCompanyValue] = useState('');
+    const [foundClient, setFoundClient] = useState([])
     const changeCompany = () => {
         setIsCompany(!isCompany)
     }
@@ -51,10 +53,24 @@ const ClientForm = ({id}) => {
        
     };
 
-    const clientSearchOnchangeHandler = (e) => {
+    const debouncedFetchResultsMemoized = useCallback(
+        (query) => debouncedFetchResults(query,clientSearch ),
+        []
+      );
+
+    const clientSearchOnchangeHandler = async(e) => {
         
         setSearchCompanyValue(e.currentTarget.value);
-        console.log(searchCompanyValue);
+        try {
+            const query = searchCompanyValue;
+            const result = await debouncedFetchResultsMemoized(query);
+            setFoundClient(result);
+            console.log(foundClient);
+            
+        } catch (error) {
+            console.log(error);
+        }
+     
     }
    
 
