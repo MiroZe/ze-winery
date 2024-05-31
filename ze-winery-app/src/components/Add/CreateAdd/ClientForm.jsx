@@ -30,7 +30,11 @@ const ClientForm = ({id}) => {
     const [isCompany, setIsCompany] = useState(true);
     const [validated, setValidated] = useState(true);
     const [searchCompanyValue, setSearchCompanyValue] = useState('');
-    const [foundClient, setFoundClient] = useState([])
+    const [foundClient, setFoundClient] = useState([]);
+
+    
+   
+
     const changeCompany = () => {
         setIsCompany(!isCompany)
     }
@@ -54,7 +58,7 @@ const ClientForm = ({id}) => {
     };
 
     const debouncedFetchResultsMemoized = useCallback(
-        (query) => debouncedFetchResults(query,clientSearch ),
+        (query,_id) => debouncedFetchResults(query,_id,clientSearch ),
         []
       );
 
@@ -62,8 +66,9 @@ const ClientForm = ({id}) => {
         
         setSearchCompanyValue(e.currentTarget.value);
         try {
+           const companyId = id
             const query = searchCompanyValue;
-            const result = await debouncedFetchResultsMemoized(query);
+            const result = await debouncedFetchResultsMemoized(query,companyId);
             setFoundClient(result);
             console.log(foundClient);
             

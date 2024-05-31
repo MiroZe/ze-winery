@@ -24,8 +24,18 @@ try {
 
 const clientSearch = async (req,res,next) => {
 
-    const clientNameQuery = req.query;
-    console.log(clientNameQuery);
+    const {name,companyId} = req.query;
+
+    try {
+        //const foundClients = await clientModel.find({ name: name, owner: companyId });
+        const foundClients = await clientModel.find({owner:companyId})
+                            .where({name: { $regex: new RegExp(name, 'i') }})
+        console.log(foundClients);
+        return res.status(200).json(foundClients)
+    } catch (error) {
+        next(error)
+    }
+   
     
     }
 

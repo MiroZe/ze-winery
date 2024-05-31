@@ -9,8 +9,8 @@ export const clientCreate = (clientData) => {
 };
 
 
-export const clientSearch = (query) => {
-
-    const result = request.get(`${baseURL}/client/search?name=${query}`);
+export const clientSearch = (query,id) => {
+    const queryString = `?name=${encodeURIComponent(query)}&companyId=${encodeURIComponent(id)}`;
+    const result = request.get(`${baseURL}/client/search${queryString}`);
     return result;
 }

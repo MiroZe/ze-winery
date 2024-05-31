@@ -1,12 +1,12 @@
 import _ from 'lodash'
 
 
-export const debouncedFetchResults = _.debounce(async (query, clientSearch) => {
+export const debouncedFetchResults = _.debounce(async (query,id, clientSearch) => {
     try {
-    const result = await clientSearch(query);
+    const result = await clientSearch(query,id);
     return result;
    
     } catch (error) {
       console.error(error);
     }
-  }, 3000); 
+  }, 1000); 
