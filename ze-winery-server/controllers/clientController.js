@@ -19,10 +19,18 @@ try {
     next(error)
 }
 
-
 }
 
 
+const clientSearch = async (req,res,next) => {
+
+    const clientNameQuery = req.query;
+    console.log(clientNameQuery);
+    
+    }
+
+
 module.exports = {
-    clientCreate
+    clientCreate,
+    clientSearch
 }

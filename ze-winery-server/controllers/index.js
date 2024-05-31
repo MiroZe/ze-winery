@@ -2,7 +2,8 @@ const authController = require('./authController');
 const companyController = require('./companyController');
 const productController = require('./productController');
 const declarationController = require('./declarationsController');
-const addController = require('./addController')
+const clientController = require('./clientController');
+
 
 
 
@@ -12,7 +13,7 @@ module.exports = {
     companyController,
     productController,
     declarationController,
-    addController
+    clientController
     
 
 }
