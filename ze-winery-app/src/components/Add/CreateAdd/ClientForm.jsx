@@ -72,6 +72,7 @@ const ClientForm = ({id}) => {
             setFoundClient(result);
             console.log(foundClient);
             
+            
         } catch (error) {
             console.log(error);
         }
@@ -99,19 +100,15 @@ const ClientForm = ({id}) => {
                 </Col>
             </Form.Group>
             <ListGroup as="ul">
-                <ListGroup.Item as="li" active>
-                    Cras justo odio
-                </ListGroup.Item>
-                <ListGroup.Item as="li">Dapibus ac facilisis in</ListGroup.Item>
-                <ListGroup.Item as="li" disabled>
-                    Morbi leo risus
-                </ListGroup.Item>
-                <ListGroup.Item as="li">Porta ac consectetur ac</ListGroup.Item>
+                {foundClient.length > 0 ? foundClient.map(f =>  <ListGroup.Item as="li" active key={f._index} {...f}>
+                   { f.name}
+                </ListGroup.Item>) : <ListGroup.Item as="li" active>
+                    Няма резултат. Създайте нов.
+                </ListGroup.Item>}
+               
             </ListGroup>
 
             <h3>Получател</h3>
-
-
             <Form onSubmit={onSubmitClientHandler} noValidate validated={!validated}>
                 
                     <Form.Group as={Col}>

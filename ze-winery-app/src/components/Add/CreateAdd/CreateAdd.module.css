@@ -18,3 +18,9 @@
     height: 15px;
 }
 
+.client-container li  {
+   margin-bottom: 2px;
+   font-weight: 500;
+   cursor: pointer;
+   
+}
