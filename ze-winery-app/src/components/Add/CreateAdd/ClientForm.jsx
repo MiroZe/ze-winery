@@ -31,6 +31,7 @@ const ClientForm = ({ id }) => {
     const [validated, setValidated] = useState(true);
     const [searchCompanyValue, setSearchCompanyValue] = useState('');
     const [foundClient, setFoundClient] = useState([]);
+    const [showClientForm, setShowClientForm] = useState(false)
 
 
 
@@ -76,9 +77,7 @@ const ClientForm = ({ id }) => {
           }
         };
     
-        if (searchCompanyValue.trim() === '' ) {
-            setFoundClient([]);
-        }
+
         fetchResults()
       }, [searchCompanyValue,foundClient, id, debouncedFetchResultsMemoized]);
 
@@ -86,8 +85,19 @@ const ClientForm = ({ id }) => {
 
         setSearchCompanyValue(e.currentTarget.value);
   
+    };
+
+    const chooseClientHandler = (id) => {
+
+        if(id) {
+            
+
+        } else {
+            console.log(id);
+        }
+        setShowClientForm(true)
     }
-    console.log(foundClient);
+    
 
 
     return (
@@ -105,14 +115,16 @@ const ClientForm = ({ id }) => {
             </Form.Group>
             {searchCompanyValue === '' ? <></> :
             <ListGroup as="ul">
-                {foundClient?.length > 0 ? foundClient.map(f => <ListGroup.Item as="li" active key={f._index} >
+                {foundClient?.length > 0 ? foundClient.map(f => <ListGroup.Item as="li" active key={f._id} {...f}onClick={() => chooseClientHandler(f._id)} >
                     {f.name}
-                </ListGroup.Item>) : <ListGroup.Item as="li" active>
+                </ListGroup.Item>) : <ListGroup.Item as="li" active onClick={() => chooseClientHandler()}>
                     Няма резултат. Създайте нов.
                 </ListGroup.Item>}
 
             </ListGroup>
             }
+
+            {showClientForm && ( <>
 
             <h3>Получател</h3>
             <Form.Switch
@@ -163,6 +175,7 @@ const ClientForm = ({ id }) => {
 
                 <Button variant="outline-success" type='submit' >Запиши</Button>
             </Form>
+            </>)}
 
 
         </div>
