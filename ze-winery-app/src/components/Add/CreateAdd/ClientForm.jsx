@@ -90,7 +90,7 @@ const ClientForm = ({ id }) => {
     const chooseClientHandler = (id) => {
 
         if(id) {
-            
+        console.log('1');
 
         } else {
             console.log(id);
