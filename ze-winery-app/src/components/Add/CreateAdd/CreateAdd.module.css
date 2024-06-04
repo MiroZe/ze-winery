@@ -8,6 +8,7 @@
 
 .client-container {
    width: 22em;
+   padding-top: 2em;
 }
 .client-container select {
     padding: 1em;

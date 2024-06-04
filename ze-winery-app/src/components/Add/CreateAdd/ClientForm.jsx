@@ -1,6 +1,6 @@
 
 import { useForm } from '../../../hooks/useForm';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { clientCreate, clientSearch } from '../../../services/addService';
 import { useErrorMessageDispatch } from '../../../hooks/useErrorMessageDispatch';
 import { debouncedFetchResults } from '../../../utils/debounceSearch';
@@ -14,9 +14,9 @@ import styles from './CreateAdd.module.css';
 
 
 
-const ClientForm = ({id}) => {
+const ClientForm = ({ id }) => {
 
-    
+
     const { formValues, onChangeHandler } = useForm({
         name: '',
         address: '',
@@ -32,8 +32,8 @@ const ClientForm = ({id}) => {
     const [searchCompanyValue, setSearchCompanyValue] = useState('');
     const [foundClient, setFoundClient] = useState([]);
 
-    
-   
+
+
 
     const changeCompany = () => {
         setIsCompany(!isCompany)
@@ -41,55 +41,59 @@ const ClientForm = ({id}) => {
 
     const onSubmitClientHandler = async (e) => {
         e.preventDefault();
-      
+
         const form = e.currentTarget;
-        if(form.checkValidity() === false) {
+        if (form.checkValidity() === false) {
             setValidated(false);
             return
-          }
-        const clientData = {...formValues,isCompany,ownerId: id};
+        }
+        const clientData = { ...formValues, isCompany, ownerId: id };
         try {
             await clientCreate(clientData);
-            
+
         } catch (error) {
             dispatchErrorMessage(error)
         }
-       
+
     };
 
-    const debouncedFetchResultsMemoized = useCallback(
-        (query,_id) => debouncedFetchResults(query,_id,clientSearch ),
-        []
-      );
 
-    const clientSearchOnchangeHandler = async(e) => {
-        
-        setSearchCompanyValue(e.currentTarget.value);
-        try {
-           const companyId = id
-            const query = searchCompanyValue;
-            const result = await debouncedFetchResultsMemoized(query,companyId);
+
+    const debouncedFetchResultsMemoized = useCallback(
+        (query, _id) => debouncedFetchResults(query, _id, clientSearch),
+        []
+    );
+
+    useEffect(() => {
+        const fetchResults = async () => {
+          try {
+            
+            const result = await debouncedFetchResultsMemoized(searchCompanyValue, id);
             setFoundClient(result);
-            console.log(foundClient);
-            
-            
-        } catch (error) {
+          
+          } catch (error) {
             console.log(error);
+          }
+        };
+    
+        if (searchCompanyValue.trim() === '' ) {
+            setFoundClient([]);
         }
-     
+        fetchResults()
+      }, [searchCompanyValue,foundClient, id, debouncedFetchResultsMemoized]);
+
+    const clientSearchOnchangeHandler =  (e) => {
+
+        setSearchCompanyValue(e.currentTarget.value);
+  
     }
-   
+    console.log(foundClient);
+
 
     return (
         <div className={styles['client-container']}>
 
-            <Form.Switch
 
-                type="switch"
-                id="mySwitch"
-                label={isCompany ? 'Юридическо лице' : 'Физическо лице'}
-                onClick={changeCompany}
-            />
             <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
                 <Form.Label column sm="2">
                     Търси
@@ -99,25 +103,34 @@ const ClientForm = ({id}) => {
 
                 </Col>
             </Form.Group>
+            {searchCompanyValue === '' ? <></> :
             <ListGroup as="ul">
-                {foundClient.length > 0 ? foundClient.map(f =>  <ListGroup.Item as="li" active key={f._index} {...f}>
-                   { f.name}
+                {foundClient?.length > 0 ? foundClient.map(f => <ListGroup.Item as="li" active key={f._index} >
+                    {f.name}
                 </ListGroup.Item>) : <ListGroup.Item as="li" active>
                     Няма резултат. Създайте нов.
                 </ListGroup.Item>}
-               
+
             </ListGroup>
+            }
 
             <h3>Получател</h3>
+            <Form.Switch
+
+                type="switch"
+                id="mySwitch"
+                label={isCompany ? 'Юридическо лице' : 'Физическо лице'}
+                onClick={changeCompany}
+            />
             <Form onSubmit={onSubmitClientHandler} noValidate validated={!validated}>
-                
-                    <Form.Group as={Col}>
-                        <FloatingLabel label="Име" controlId="floatingInput" className="mb-3">
-                            <Form.Control type="text" name='name' value={formValues.name} onChange={onChangeHandler} required />
-                        </FloatingLabel>
-                    </Form.Group>
-                    {isCompany && <>
-                <Row className="mb-3">
+
+                <Form.Group as={Col}>
+                    <FloatingLabel label="Име" controlId="floatingInput" className="mb-3">
+                        <Form.Control type="text" name='name' value={formValues.name} onChange={onChangeHandler} required />
+                    </FloatingLabel>
+                </Form.Group>
+                {isCompany && <>
+                    <Row className="mb-3">
                         <Form.Group as={Col}>
 
                             <Form.Select name='companyType' value={formValues.companyType} onChange={onChangeHandler} required>
@@ -132,20 +145,20 @@ const ClientForm = ({id}) => {
                         </Form.Group>
 
                         <Form.Group as={Col}>
-                        <FloatingLabel label='ЕИК'>
-                            <Form.Control type="number" name='companyId' value={formValues.companyId} onChange={onChangeHandler} required />
-                        </FloatingLabel>
+                            <FloatingLabel label='ЕИК'>
+                                <Form.Control type="number" name='companyId' value={formValues.companyId} onChange={onChangeHandler} required />
+                            </FloatingLabel>
                         </Form.Group>
-                  
-                </Row>
-                          </>}
+
+                    </Row>
+                </>}
                 <FloatingLabel label='Адрес'>
-                    <Form.Control type="text" name='address' value={formValues.address} onChange={onChangeHandler} required/>
+                    <Form.Control type="text" name='address' value={formValues.address} onChange={onChangeHandler} required />
                 </FloatingLabel>
                 <FloatingLabel label='Град' >
-                    <Form.Control  type="text" name='city' value={formValues.city} onChange={onChangeHandler} required/>
+                    <Form.Control type="text" name='city' value={formValues.city} onChange={onChangeHandler} required />
                 </FloatingLabel>
-               
+
 
 
                 <Button variant="outline-success" type='submit' >Запиши</Button>

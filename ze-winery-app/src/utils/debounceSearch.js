@@ -9,4 +9,4 @@ export const debouncedFetchResults = _.debounce(async (query,id, clientSearch) =
     } catch (error) {
       console.error(error);
     }
-  }, 1000); 
+  }, 100); 
