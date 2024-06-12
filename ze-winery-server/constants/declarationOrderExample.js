@@ -10,7 +10,7 @@ const desiredOrder = [
   'Declarer',
   'ReportingPeriod',
   'AppliedDocuments',
-  'ExciseGoods',
+  'ExciseGoods', // This will be handled specially
   'LegalEntity',
   'SIC',
   'ExciseNumber',
@@ -24,7 +24,6 @@ const desiredOrder = [
   'Description',
   'DocumentNumber',
   'DocumentDate',
-  
 ];
 
 const goodsOrder = [
@@ -45,6 +44,6 @@ const goodsOrder = [
   'NumberOfPackages',
   'TaxBase',
   'ExciseDuty'
-]
+];
 
-module.exports = {desiredOrder,goodsOrder};
+module.exports = { desiredOrder, goodsOrder };

@@ -74,7 +74,8 @@ const createDeclaration = async (req, res, next) => {
                 exciseGood: _id,
                 numberOfPackages:packsQuantity,
                 quantityOfGoods:quantity,
-                sequenceNumber
+                sequenceNumber,
+                taxBase:quantity
             })),
         })
         

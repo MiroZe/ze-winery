@@ -107,6 +107,9 @@ const getCompanyDeclarationById = async (req,res,next) => {
     try {
        const declaration =  await declarationModel.findById ({_id:declarationId}).populate('exciseGoods.exciseGood').exec();
       
+
+
+
        return res.status(200).json(declaration)
         
     } catch (error) {
@@ -121,6 +124,9 @@ const getCompanyXMLDeclarationById = async (req,res,next) => {
 
     try {
        const declaration =  await declarationModel.findById ({_id:declarationId}).populate('exciseGoods.exciseGood').lean().exec();
+      
+       
+      
        const builder = new Builder({
         rootName:'Declaration'
        });
@@ -133,12 +139,13 @@ const getCompanyXMLDeclarationById = async (req,res,next) => {
        
        
        const xml = builder.buildObject(rawDeclaration);
-   
-    
-       res.attachment('declaration.xml');
-       res.type('xml');
-       res.send(xml);
-    } catch (error) {
+      console.log(rawDeclaration);
+      console.log(xml);
+       
+    //    res.attachment('declaration.xml');
+    //    res.type('xml');
+    //    res.send(xml);
+     } catch (error) {
         next(error)
     }
 

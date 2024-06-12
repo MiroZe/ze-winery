@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 
 
 const CompanyCard = ({
-    // eslint-disable-next-line react/prop-types
+  
     _id, companyName, companyType, companyId, city,hidebtn
 }) => {
 
@@ -17,7 +17,7 @@ const role = user.user.role
 
 
 return (
-    <Card>
+    <Card className={styles['single-card']}>
       <Card.Header as="h5">{companyName} {companyType}</Card.Header>
       <Card.Body>
         <Card.Title>ЕИК : {companyId}</Card.Title>
