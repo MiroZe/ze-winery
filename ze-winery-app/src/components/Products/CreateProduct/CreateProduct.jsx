@@ -81,7 +81,7 @@ const CreateProduct = () => {
         <Row>
           <Form.Group as={Col} controlId="formGridPassword">
             <Form.Label>Допълнителен Код</Form.Label>
-            <Form.Control type="number" name='additionalCode' 
+            <Form.Control type="text" name='additionalCode' 
             value={formValues.additionalCode}
             onChange={(e) => onChangeHandler(e)}
             required

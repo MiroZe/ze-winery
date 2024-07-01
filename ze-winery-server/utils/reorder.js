@@ -47,7 +47,7 @@ function reorderExciseGoods(exciseGoods, order) {
     });
 
    
-    return {'ExciseGood':reorderedExciseGood};
+    return reorderedExciseGood;
   });
   
   

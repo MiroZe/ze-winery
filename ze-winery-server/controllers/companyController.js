@@ -136,15 +136,22 @@ const getCompanyXMLDeclarationById = async (req,res,next) => {
        const raw = removeUnnecessaryFields(declaration);
        const rawU = capitalizeKeys(raw);
        const rawDeclaration = reorderProperties(rawU,desiredOrder);
+
+      
        
        
-       const xml = builder.buildObject(rawDeclaration);
-      console.log(rawDeclaration);
-      console.log(xml);
-       
-    //    res.attachment('declaration.xml');
-    //    res.type('xml');
-    //    res.send(xml);
+       const wrappedDeclaration = {
+           ...rawDeclaration,
+           ExciseGoods: {
+               ExciseGood: rawDeclaration.ExciseGoods
+               }
+               };
+            const xml = builder.buildObject(wrappedDeclaration);
+ 
+      
+       res.attachment('declaration.xml');
+       res.type('xml');
+       res.send(xml);
      } catch (error) {
         next(error)
     }
