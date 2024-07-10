@@ -6,16 +6,18 @@ import MonthYPicker from '../../MonthYPicker/MonthYPicker';
 import { useState } from 'react';
 import { createDeclaration } from '../../../services/companyService';
 import Declarer from '../Declarer/Declarer';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from '../../../hooks/useForm';
 import { formatDateAsString } from '../../../utils/formatDateAsString';
 import { formFieldCheckFn } from '../../../utils/formsFieldCheckFn';
 import { useErrorMessageDispatch } from '../../../hooks/useErrorMessageDispatch';
 import { useNavigate, useParams } from 'react-router-dom';
 import BackButton from '../../Common/BackButton/BackButton';
+import { clearDeclarationDraft } from '../../../reducers/declarationDraft';
 
 
-const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, editItemFromDeclarationList}) => {
+const DeclarationList = (
+  {declarationItems, deleteItemFromDecalarationList, editItemFromDeclarationList,loadDraftDeclaration}) => {
 
   const [validated,setValidated] = useState(true);
   const errorMessageDispatch = useErrorMessageDispatch();
@@ -29,7 +31,11 @@ const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, edit
     day:newDate.getDate()
   });
 
-  const currentCompany = useSelector(state => state.company)
+  const dispatch = useDispatch()
+  const currentCompany = useSelector(state => state.company);
+  const {declarationDraft} = useSelector(state => state.declarationDraft)
+  
+  console.log(declarationDraft);
  
 
   const declarerData = {
@@ -80,6 +86,7 @@ const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, edit
       }
    
       await createDeclaration(declarationData);
+      dispatch(clearDeclarationDraft())
       navigate(`/my-companies/${companyId}/my-declarations`)
       
 
@@ -89,6 +96,9 @@ const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, edit
     }
 
   }
+
+
+ 
  
 
 return (
@@ -97,6 +107,7 @@ return (
 
      
       <Table striped bordered hover>
+      {declarationDraft.length > 0 && <Button variant="secondary" onClick={loadDraftDeclaration}>Зареди чернова</Button>}
         <thead>
           <tr>
            
@@ -123,7 +134,7 @@ return (
       
       <MonthYPicker  selectedMonthData={selectedMonthData} setSelectedMonthData={setSelectedMonthData}/>
       <Declarer validated={validated} formValues = {formValues} onChangeHandler = {onChangeHandler}/>
-      <Button variant="success" onClick={ () => handleDeclarationSubmit(declarationItems,selectedMonthData)}>Запази</Button>
+      <Button variant="success" onClick={ () => handleDeclarationSubmit(declarationItems,selectedMonthData)}>Запиши декларацията</Button>
       <BackButton path={`/my-companies/${companyId}`}/>
 
       

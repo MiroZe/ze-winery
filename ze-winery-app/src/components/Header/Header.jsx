@@ -8,9 +8,7 @@ const Header = () => {
 
     const {user} = useSelector(state => state.user);
     const {companyName,companyType} = useSelector(state => state.company)
-   //  const {message,isMessage} = useSelector(state => state.message);
-   //  console.log(isMessage);
-    
+
   
     const username = user?.username;
     

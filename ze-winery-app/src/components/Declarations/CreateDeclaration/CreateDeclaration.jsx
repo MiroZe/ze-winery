@@ -3,6 +3,8 @@ import ProductsList from '../../Products/ProductsList'
 import DeclarationList from '../DeclarationItems/DeclarationList'
 import styles from './CreateDeclaration.module.css'
 import ProductQuantityForm from '../../Products/ProductQuantityForm/ProductQuantityForm';
+import { useDispatch, useSelector } from 'react-redux';
+import {setDeclarationDraft} from '../../../reducers/declarationDraft'
 
 
 
@@ -12,6 +14,8 @@ const CreateDecration = () => {
     const [showModal, setShowModal] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
     const [isItemSelected, setisItemSelected] = useState(false);
+    const dispatch = useDispatch();
+    const {declarationDraft} = useSelector(state => state.declarationDraft);
    
 
     const showQuantityModal = (data) => {
@@ -35,6 +39,9 @@ const CreateDecration = () => {
             setDeclarationItems((prevD) => [...prevD, { ...currentItem, quantity: +itemQuantity,packsQuantity,sequenceNumber:prevD.length + 1  }]);
 
         }
+        dispatch(setDeclarationDraft(declarationItems));
+        
+
 
 
     }
@@ -43,7 +50,14 @@ const CreateDecration = () => {
 
         setDeclarationItems(prevState => prevState.filter(f => f._id !== id))
 
-    }
+    };
+
+    const loadDraftDeclaration = () => {
+        setDeclarationItems(declarationDraft)
+       
+    
+      }
+    
 
   
 
@@ -66,6 +80,7 @@ const CreateDecration = () => {
             <DeclarationList
                 declarationItems={declarationItems}
                 deleteItemFromDecalarationList={deleteItemFromDecalarationList}
+                loadDraftDeclaration = {loadDraftDeclaration}
                />
 
                </div>

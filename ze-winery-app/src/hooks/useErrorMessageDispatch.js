@@ -1,6 +1,6 @@
 
 import { useDispatch } from 'react-redux';
-import { useCallback } from 'react'; // Import useCallback to memoize the action creator
+import { useCallback } from 'react'; 
 
 import { setMessage } from '../reducers/message'; 
 
