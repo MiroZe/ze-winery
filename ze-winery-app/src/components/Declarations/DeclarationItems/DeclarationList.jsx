@@ -35,7 +35,7 @@ const DeclarationList = (
   const currentCompany = useSelector(state => state.company);
   const {declarationDraft} = useSelector(state => state.declarationDraft)
   
-  console.log(declarationDraft);
+
  
 
   const declarerData = {
