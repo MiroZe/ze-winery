@@ -78,8 +78,6 @@ const DeclarationList = ({declarationItems, deleteItemFromDecalarationList, edit
         setValidated(false);
         return;
       }
-      console.log(declarationData.documentDate);
-      console.log(declarationData.documentDate);
    
       await createDeclaration(declarationData);
       navigate(`/my-companies/${companyId}/my-declarations`)
