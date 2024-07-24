@@ -64,12 +64,6 @@ const productSchema = new mongoose.Schema({
             required: true,
 
         },
-        taxBase: {
-            type: Number,
-            required: true,
-            default:1
-            
-        },
         exciseDuty: {
             type: Number,
             required: true,

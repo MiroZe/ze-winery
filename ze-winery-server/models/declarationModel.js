@@ -21,7 +21,11 @@ const productSchema = new mongoose.Schema({
   numberOfPackages : {
     type: Number,
     required: true,
-  }
+  },
+  taxBase: {
+    type: Number,
+    required: true,  
+},
 });
 
 const declarationSchema = new mongoose.Schema({
