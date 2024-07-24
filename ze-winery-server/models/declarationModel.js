@@ -160,11 +160,23 @@ const declarationSchema = new mongoose.Schema({
 
 declarationSchema.index({ year: 1, month: 1, ownerCompanyId: 1 }, { unique: true });
 declarationSchema.pre('save', async function (next) {
+
+  
+
+  if (!this.isModified('year') && !this.isModified('month') && !this.isModified('ownerCompanyId')) {
+    return next();
+  }
+
+
+
   const existingDoc = await this.constructor.findOne({
     year: this.year,
     month: this.month,
     ownerCompanyId: this.ownerCompanyId
   });
+
+  console.log(existingDoc);
+
 
   if (existingDoc) {
     const error = new Error('Year and month combination must be unique');
