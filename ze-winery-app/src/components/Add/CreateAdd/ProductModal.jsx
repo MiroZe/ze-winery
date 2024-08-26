@@ -1,12 +1,12 @@
-import { useState } from "react";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import ProductsList from '../../Products/ProductsList';
 
 const ProductModal = ({showProductModal, setShowProductModal}) => {
-   // const [show, setShow] = useState(false);
+ 
 
     const handleClose = () =>  setShowProductModal(false)
-   // const handleShow = () => setShowProductModal(true);
+
 
    
     
@@ -19,11 +19,10 @@ const ProductModal = ({showProductModal, setShowProductModal}) => {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Modal title</Modal.Title>
+          <Modal.Title>Продукти</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          I will not close if you click outside me. Do not even try to press
-          escape key.
+       <h3>Component here...</h3>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
