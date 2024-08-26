@@ -11,6 +11,7 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
 import styles from './CreateAdd.module.css';
+import ProductModal from './ProductModal';
 
 
 
@@ -33,6 +34,7 @@ const ClientForm = ({ id }) => {
     const [foundClient, setFoundClient] = useState([]);
     const [showClientForm, setShowClientForm] = useState(false);
     const [newClient, setNewClient] = useState(false);
+    const [showProductModal, setShowProductModal] = useState(false);
 
 
 
@@ -121,6 +123,13 @@ const ClientForm = ({ id }) => {
         setShowClientForm(true)
     }
 
+    const showModal = () => {
+        console.log(showProductModal);
+        
+        
+        setShowProductModal(true)
+    }
+
 
 
     return (
@@ -201,7 +210,8 @@ const ClientForm = ({ id }) => {
                     <Button variant="outline-success" type='submit' disabled={!newClient} >Запиши</Button>
 
                 </Form>
-                <Button variant="outline-success" type='button' >Към стоки</Button>
+                <Button variant="outline-success" type='button' onClick={showModal}>Към продукти</Button>
+                {showProductModal && <ProductModal showProductModal={showProductModal} setShowProductModal={setShowProductModal}/>}
             </>)}
 
 
