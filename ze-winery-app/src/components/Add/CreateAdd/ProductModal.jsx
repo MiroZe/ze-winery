@@ -1,5 +1,6 @@
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import AddProducts from '../AddProducts/AddProducts';
 
 const ProductModal = ({showProductModal, setShowProductModal}) => {
  
@@ -22,6 +23,7 @@ const ProductModal = ({showProductModal, setShowProductModal}) => {
         </Modal.Header>
         <Modal.Body>
        <h3>Component here...</h3>
+       <AddProducts/>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
