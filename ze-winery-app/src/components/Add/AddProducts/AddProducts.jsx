@@ -22,11 +22,19 @@ const AddProducts = () => {
       }, [companyId])
 
 
+
       return (
       
         <div >
           
         <SearchBar updateSearchValue={updateSearchValue} searchValue={searchValue} />
+        <ul>
+            {found.map(f => 
+            <li key={f._id}>
+                <span>{f.trademark}</span>
+                <span>   {f.additionalCode}</span>
+            </li>)}
+        </ul>
         
         </div>
 

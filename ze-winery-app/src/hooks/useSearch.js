@@ -8,21 +8,27 @@ export const useSearch = (initialState) => {
 
 
     const filterByName = (item, value) => {
+      console.log(item);
+      
       return Object.keys(item).some(
         (key) =>
-          key.includes("Name") &&
-          item[key] &&
-          item[key].toString().toLowerCase().includes(value.toLowerCase())
+          key.includes("trademark") &&
+          item[key] 
+          && item[key].toString().toLowerCase().includes(value.toLowerCase())
       );
     };
 
     const filterByDigits = (item, value) => {
+   
+      
         return Object.keys(item).some(
           (key) =>
-        
+            
+            
             (key.includes('additional') &&
             item[key] &&
             item[key].includes(value)))
+            
         
       };
     
@@ -34,6 +40,8 @@ export const useSearch = (initialState) => {
         return initialState.filter((x) => filterByDigits(x, searchValue));
       }
       else {
+       
+        
         return initialState.filter((x) => filterByName(x, searchValue));
       }
     }
