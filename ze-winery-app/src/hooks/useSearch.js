@@ -8,7 +8,7 @@ export const useSearch = (initialState) => {
 
 
     const filterByName = (item, value) => {
-      console.log(item);
+    
       
       return Object.keys(item).some(
         (key) =>

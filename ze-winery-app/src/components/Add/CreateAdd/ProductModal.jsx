@@ -22,14 +22,14 @@ const ProductModal = ({showProductModal, setShowProductModal}) => {
           <Modal.Title>Продукти</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-       <h3>Component here...</h3>
+       <h3>Търси продукт...</h3>
        <AddProducts/>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary">Understood</Button>
+          
         </Modal.Footer>
       </Modal>
     )
