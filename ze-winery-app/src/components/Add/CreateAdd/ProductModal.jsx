@@ -29,7 +29,6 @@ const ProductModal = ({showProductModal, setShowProductModal}) => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          
         </Modal.Footer>
       </Modal>
     )
