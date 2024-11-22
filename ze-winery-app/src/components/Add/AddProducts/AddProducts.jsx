@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getCompanyProducts } from "../../../services/productService";
+
 import SearchBar from "../../SearchBar/SearchBar";
 import { useSearch } from "../../../hooks/useSearch";
 import AddProductList from "../AddProductList/AddProductList";
@@ -11,20 +9,13 @@ import Col from 'react-bootstrap/Col';
 
 
 
-const AddProducts = () => {
+const AddProducts = ({products}) => {
 
-    const { companyId } = useParams();
-    const [products, setProducts] = useState([]);
+   
+    
     const { found, updateSearchValue, searchValue } = useSearch(products);
 
-    useEffect(() => {
-
-        getCompanyProducts(companyId)
-            .then(setProducts)
-            .catch(err => console.log(err))
-
-
-    }, [companyId])
+   
 
 
 
@@ -45,7 +36,7 @@ const AddProducts = () => {
                 </Row>
 
                 {found.map(f =>
-                    <AddProductList key={f._id} product={f} />)}
+                    <AddProductList key={f._id} products={f} />)}
             </Container >
 
 

@@ -11,7 +11,7 @@ import { useForm } from '../../../hooks/useForm';
 
 
 
-const AddProductList = ({ product }) => {
+const AddProductList = ({ products }) => {
 
     const {formValues,onChangeHandler,} = useForm({
         quantity:0
@@ -25,14 +25,14 @@ const AddProductList = ({ product }) => {
         
             <Row className={styles["r-3"]}>
                
-                <Col>{product.trademark}</Col>
-                <Col>{product.additionalCode}</Col>
-                <Col>{`${product.pieces} l`}</Col>
+                <Col>{products.trademark}</Col>
+                <Col>{products.additionalCode}</Col>
+                <Col>{`${products.pieces} l`}</Col>
                 <Col>
                     <InputGroup className={styles["mb-3"]}>
                        
                         <Form.Control value={formValues.quantity} onChange={onChangeHandler} name='quantity'/>
-                        <Form.Control  disabled value={formValues.quantity * product.pieces} name='totalQuantity'/>
+                        <Form.Control  disabled value={formValues.quantity * products.pieces} name='totalQuantity'/>
                     </InputGroup>
                 </Col>
                 <Col>

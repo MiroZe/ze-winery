@@ -3,15 +3,35 @@ import styles from './CreateAdd.module.css';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import ClientForm from './ClientForm';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import AddItemsList from '../AddList/AddItemsLIst';
+import { getCompanyProducts } from '../../../services/productService';
+import { useParams } from "react-router-dom";
 
 
 
 const CreateAdd = () => {
 
     const company = useSelector(state => state.company);
-    const [addItem, setAddItem] = useState([])
+    const [addItem, setAddItem] = useState([]);
+    const [products, setProducts] = useState([]);
+    const { companyId } = useParams();
+
+
+    useEffect(() => {
+
+        getCompanyProducts(companyId)
+            .then(setProducts)
+            .catch(err => console.log(err))
+
+
+    }, [companyId])
+
+
+    const setItemToList = (itemId) => {
+
+        setAddItem(prevState => [...prevState,])
+    }
   
  
 
@@ -19,7 +39,7 @@ const CreateAdd = () => {
     return (
         <div className={styles['add-container']}>
         <div className={styles['add-form-container']}>
-            <ClientForm id={company._id}/>
+            <ClientForm id={company._id} products={products}/>
 
           
             <h3>Номер</h3>

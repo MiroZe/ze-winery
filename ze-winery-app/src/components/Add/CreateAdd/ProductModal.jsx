@@ -2,7 +2,9 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import AddProducts from '../AddProducts/AddProducts';
 
-const ProductModal = ({showProductModal, setShowProductModal}) => {
+const ProductModal = ({products, showProductModal, setShowProductModal}) => {
+  console.log(products);
+  
  
 
     const handleClose = () =>  setShowProductModal(false)
@@ -24,7 +26,7 @@ const ProductModal = ({showProductModal, setShowProductModal}) => {
         </Modal.Header>
         <Modal.Body>
        <h3>Търси продукт...</h3>
-       <AddProducts/>
+       <AddProducts products={products}/>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
