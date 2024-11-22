@@ -3,15 +3,21 @@ import styles from './CreateAdd.module.css';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import ClientForm from './ClientForm';
+import { useState } from 'react';
+import AddItemsList from '../AddList/AddItemsLIst';
+
 
 
 const CreateAdd = () => {
 
     const company = useSelector(state => state.company);
+    const [addItem, setAddItem] = useState([])
+  
  
 
 
     return (
+        <div className={styles['add-container']}>
         <div className={styles['add-form-container']}>
             <ClientForm id={company._id}/>
 
@@ -37,9 +43,10 @@ const CreateAdd = () => {
                 </Form>
             </div>
          
-
+          
         </div>
-
+        {addItem.length > 0 ? <AddItemsList/> : <h3>Добавете продукт</h3>}
+        </div>
     )
 
 

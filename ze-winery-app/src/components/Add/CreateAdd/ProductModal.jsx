@@ -17,6 +17,7 @@ const ProductModal = ({showProductModal, setShowProductModal}) => {
         onHide={handleClose}
         backdrop="static"
         keyboard={false}
+        
       >
         <Modal.Header closeButton>
           <Modal.Title>Продукти</Modal.Title>

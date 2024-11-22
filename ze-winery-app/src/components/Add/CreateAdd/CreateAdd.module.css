@@ -1,5 +1,11 @@
-.add-form-container {
+.add-container {
+
     flex-grow: 1;
+    text-align: center;
+}
+
+
+.add-form-container {
     display: flex;
     justify-content: center;
     gap: 7em;

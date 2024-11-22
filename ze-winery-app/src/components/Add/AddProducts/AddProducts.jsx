@@ -10,6 +10,7 @@ import Col from 'react-bootstrap/Col';
 
 
 
+
 const AddProducts = () => {
 
     const { companyId } = useParams();
