@@ -36,7 +36,7 @@ const AddProducts = ({products}) => {
                 </Row>
 
                 {found.map(f =>
-                    <AddProductList key={f._id} products={f} />)}
+                    <AddProductList key={f._id} product={f} />)}
             </Container >
 
 

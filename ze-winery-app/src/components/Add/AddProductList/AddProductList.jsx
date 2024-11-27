@@ -8,16 +8,32 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import styles from './AddProductList.module.css'
 
 import { useForm } from '../../../hooks/useForm';
+import {setItemToAdd} from '../../../reducers/add'
+import { useDispatch } from 'react-redux';
 
 
 
-const AddProductList = ({ products }) => {
+
+const AddProductList = ({ product }) => {
 
     const {formValues,onChangeHandler,} = useForm({
-        quantity:0
+        quantity:0,
+        totalQuantity:0
     });
 
-    
+
+
+    const dispatch = useDispatch();
+
+    const handleAddClick = () => {
+      
+        dispatch(setItemToAdd({
+          currentProduct: product,
+          itemPackages: +formValues.quantity,
+          itemTotalQuanity: +formValues.quantity * product.pieces,
+        }));
+      };
+
 
     
 
@@ -25,18 +41,19 @@ const AddProductList = ({ products }) => {
         
             <Row className={styles["r-3"]}>
                
-                <Col>{products.trademark}</Col>
-                <Col>{products.additionalCode}</Col>
-                <Col>{`${products.pieces} l`}</Col>
+                <Col>{product.trademark}</Col>
+                <Col>{product.additionalCode}</Col>
+                <Col>{`${product.pieces} l`}</Col>
                 <Col>
                     <InputGroup className={styles["mb-3"]}>
                        
                         <Form.Control value={formValues.quantity} onChange={onChangeHandler} name='quantity'/>
-                        <Form.Control  disabled value={formValues.quantity * products.pieces} name='totalQuantity'/>
+                        <Form.Control  disabled value={formValues.quantity * product.pieces} name='totalQuantity'/>
                     </InputGroup>
+
                 </Col>
                 <Col>
-                    <Button>Добави</Button>
+                    <Button onClick={handleAddClick}>Добави</Button>
                 </Col>
             </Row>
 

@@ -13,7 +13,9 @@ import { useParams } from "react-router-dom";
 const CreateAdd = () => {
 
     const company = useSelector(state => state.company);
-    const [addItem, setAddItem] = useState([]);
+    const currentProduct = useSelector(state => state.add);
+   
+    const [addProducts, setAddProducts] = useState([]);
     const [products, setProducts] = useState([]);
     const { companyId } = useParams();
 
@@ -25,15 +27,16 @@ const CreateAdd = () => {
             .catch(err => console.log(err))
 
 
-    }, [companyId])
+    }, [companyId]);
+
+    console.log(currentProduct);
+    
 
 
-    const setItemToList = (choosenProduct) => {
-        console.log(choosenProduct);
-        
 
-        setAddItem(prevState => [...prevState,])
-    }
+
+
+  
   
  
 
@@ -67,7 +70,7 @@ const CreateAdd = () => {
          
           
         </div>
-        {addItem.length > 0 ? <AddItemsList/> : <h3>Добавете продукт</h3>}
+        {addProducts.length > 0 ? <AddItemsList/> : <h3>Добавете продукт</h3>}
         </div>
     )
 
