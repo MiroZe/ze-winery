@@ -29,6 +29,8 @@ const CreateAdd = () => {
 
 
     const setItemToList = (itemId) => {
+        console.log(itemId);
+        
 
         setAddItem(prevState => [...prevState,])
     }
