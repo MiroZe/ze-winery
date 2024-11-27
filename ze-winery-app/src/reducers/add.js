@@ -2,8 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = {
-itemPackages:0,
-totalQuanity:0
+    currentProduct: {},
+    itemPackages: 0,
+    itemTotalQuanity: 0
 
 }
 
@@ -12,20 +13,22 @@ export const addItemToAddSlice = createSlice({
     initialState,
     reducers: {
         setItemToAdd: (state, action) => {
-            const {itemPackages,totalQuanity} = action.payload
-          state.itemPackages = itemPackages;
-          state.totalQuanity = totalQuanity;
-          
+            const { currentProduct, itemPackages, itemTotalQuanity, } = action.payload
+            state.currentProduct = currentProduct
+            state.itemPackages = itemPackages;
+            state.itemTotalQuanity = itemTotalQuanity;
+
         },
         clearItemFromAdd: (state) => {
-          state.itemPackages = 0;
-          state.totalQuanity = 0;
+            state.currentProduct = {}
+            state.itemPackages = 0;
+            state.itemTotalQuanity = 0;
         },
-      },
+    },
 });
 
 
-export const { setItemToAdd,clearItemFromAdd } = addItemToAddSlice.actions
+export const { setItemToAdd, clearItemFromAdd } = addItemToAddSlice.actions
 
 
 
