@@ -28,8 +28,8 @@ const CreateAdd = () => {
     }, [companyId])
 
 
-    const setItemToList = (itemId) => {
-        console.log(itemId);
+    const setItemToList = (choosenProduct) => {
+        console.log(choosenProduct);
         
 
         setAddItem(prevState => [...prevState,])
