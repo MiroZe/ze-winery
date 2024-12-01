@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 
 
 
-const AddItemsList = ({item}) => {
+const AddItemsList = ({addProducts}) => {
 
 
 return (
@@ -13,7 +13,7 @@ return (
  
         <Container>
           <Row>
-            <Col>{item.tradeName}</Col>
+            <Col>adadad{addProducts.quantity}</Col>
             <Col>2 of 2</Col>
           </Row>
          

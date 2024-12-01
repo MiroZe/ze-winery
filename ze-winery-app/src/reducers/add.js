@@ -4,7 +4,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     currentProduct: {},
     itemPackages: 0,
-    itemTotalQuanity: 0
+    itemTotalQuanity: 0,
+    addProducts:[]
 
 }
 
@@ -13,11 +14,22 @@ export const addItemToAddSlice = createSlice({
     initialState,
     reducers: {
         setItemToAdd: (state, action) => {
-            const { currentProduct, itemPackages, itemTotalQuanity, } = action.payload
-            state.currentProduct = currentProduct
-            state.itemPackages = itemPackages;
-            state.itemTotalQuanity = itemTotalQuanity;
-
+            const { currentProduct, itemPackages, itemTotalQuanity, } = action.payload;
+            const alreadyAdded = state.addProducts.some((f) => f._id === currentProduct._id);
+            if (alreadyAdded) {
+                state.addProducts = state.addProducts.map((f) =>
+                  f.additionalCode === currentProduct.currentAdditionalCode
+                    ? { ...f, packsQuantity: f.packsQuantity + +itemPackages, quantity: f.quantity + +itemTotalQuanity }
+                    : f
+                );
+            } else {
+                    state.addProducts.push({
+                        ...currentProduct,
+                        quantity: +itemTotalQuanity,
+                        itemPackages,
+                        sequenceNumber: state.addProducts.length + 1,
+                      });
+                }
         },
         clearItemFromAdd: (state) => {
             state.currentProduct = {}

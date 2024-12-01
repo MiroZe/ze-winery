@@ -21,6 +21,8 @@ const AddProductList = ({ product }) => {
         totalQuantity:0
     });
 
+   
+
 
 
     const dispatch = useDispatch();
@@ -32,6 +34,7 @@ const AddProductList = ({ product }) => {
           itemPackages: +formValues.quantity,
           itemTotalQuanity: +formValues.quantity * product.pieces,
         }));
+        
       };
 
 

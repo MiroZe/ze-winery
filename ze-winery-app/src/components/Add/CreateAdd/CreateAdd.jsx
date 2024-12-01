@@ -10,41 +10,37 @@ import { useParams } from "react-router-dom";
 
 
 
+
 const CreateAdd = () => {
 
     const company = useSelector(state => state.company);
-    const currentProduct = useSelector(state => state.add);
    
-    const [addProducts, setAddProducts] = useState([]);
-    const [products, setProducts] = useState([]);
+    const [allCompanyProducts, setAllCompanyProducts] = useState([]);
+    const {addProducts} = useSelector(state => state.add)   
+ 
     const { companyId } = useParams();
+
 
 
     useEffect(() => {
 
         getCompanyProducts(companyId)
-            .then(setProducts)
+            .then(setAllCompanyProducts)
             .catch(err => console.log(err))
 
 
     }, [companyId]);
 
-    console.log(currentProduct);
-    
-
-
-
-
-
-  
-  
+   
+   console.log(addProducts);
+   
  
 
 
     return (
         <div className={styles['add-container']}>
         <div className={styles['add-form-container']}>
-            <ClientForm id={company._id} products={products}/>
+            <ClientForm id={company._id} products={allCompanyProducts}/>
 
           
             <h3>Номер</h3>
@@ -70,7 +66,7 @@ const CreateAdd = () => {
          
           
         </div>
-        {addProducts.length > 0 ? <AddItemsList/> : <h3>Добавете продукт</h3>}
+        {addProducts.length > 0 ? <AddItemsList addProducts={addProducts}/> : <h3>Добавете продукт</h3>}
         </div>
     )
 
