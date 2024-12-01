@@ -8,7 +8,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import styles from './AddProductList.module.css'
 
 import { useForm } from '../../../hooks/useForm';
-import {setItemToAdd} from '../../../reducers/add'
+import {setItemToAddProductList} from '../../../reducers/add'
 import { useDispatch } from 'react-redux';
 
 
@@ -29,7 +29,7 @@ const AddProductList = ({ product }) => {
 
     const handleAddClick = () => {
       
-        dispatch(setItemToAdd({
+        dispatch(setItemToAddProductList({
           currentProduct: product,
           itemPackages: +formValues.quantity,
           itemTotalQuanity: +formValues.quantity * product.pieces,

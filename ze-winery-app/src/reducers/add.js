@@ -13,7 +13,7 @@ export const addItemToAddSlice = createSlice({
     name: 'add',
     initialState,
     reducers: {
-        setItemToAdd: (state, action) => {
+        setItemToAddProductList: (state, action) => {
             const { currentProduct, itemPackages, itemTotalQuanity, } = action.payload;
             const alreadyAdded = state.addProducts.some((f) => f._id === currentProduct._id);
             if (alreadyAdded) {
@@ -31,16 +31,22 @@ export const addItemToAddSlice = createSlice({
                       });
                 }
         },
-        clearItemFromAdd: (state) => {
+        clearItemFromAddProductList: (state) => {
             state.currentProduct = {}
             state.itemPackages = 0;
             state.itemTotalQuanity = 0;
         },
+        clearAddProductList: (state) => {
+            state.addProducts = []
+            state.currentProduct = {}
+            state.itemPackages = 0;
+            state.itemTotalQuanity = 0;
+        }
     },
 });
 
 
-export const { setItemToAdd, clearItemFromAdd } = addItemToAddSlice.actions
+export const { setItemToAddProductList, clearItemFromAddProductList,clearAddProductList } = addItemToAddSlice.actions
 
 
 
