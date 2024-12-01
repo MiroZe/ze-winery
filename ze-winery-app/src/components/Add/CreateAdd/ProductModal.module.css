@@ -1,0 +1,17 @@
+.content-container {
+    display: flex;
+   
+    gap: 2em;
+    justify-content: space-between;
+    font-size: 0.9em;
+    flex-grow: 1;
+   
+}
+
+.products-container {
+    flex: 2;
+}
+
+.items-container {
+    flex: 1;
+}

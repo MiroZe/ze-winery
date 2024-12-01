@@ -1,6 +1,8 @@
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import AddProducts from '../AddProducts/AddProducts';
+import styles from './ProductModal.module.css'
+import AddItemsList from '../AddList/AddItemsLIst';
 
 const ProductModal = ({products, showProductModal, setShowProductModal}) => {
  
@@ -13,23 +15,24 @@ const ProductModal = ({products, showProductModal, setShowProductModal}) => {
    
     
     return (
-
+   
         <Modal
         show={showProductModal}
         onHide={handleClose}
         backdrop="static"
         keyboard={false}
-        size='lg'
+        fullscreen
         centered
       
         
       >
-        <Modal.Header closeButton>
+        <Modal.Header >
           <Modal.Title>Продукти</Modal.Title>
         </Modal.Header>
-        <Modal.Body >
-       <h3>Търси продукт...</h3>
-       <AddProducts products={products}/>
+        <Modal.Body className={styles['content-container']} >
+       
+       <AddProducts className={styles['products-container']} products={products}/>
+       <AddItemsList className={styles['items-container']}/>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
@@ -37,8 +40,11 @@ const ProductModal = ({products, showProductModal, setShowProductModal}) => {
           </Button>
         </Modal.Footer>
       </Modal>
-    )
+    
 
+  
+    
+    )
 
 
 }

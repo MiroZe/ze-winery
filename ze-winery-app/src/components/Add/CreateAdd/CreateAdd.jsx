@@ -4,7 +4,6 @@ import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import ClientForm from './ClientForm';
 import { useEffect, useState } from 'react';
-import AddItemsList from '../AddList/AddItemsLIst';
 import { getCompanyProducts } from '../../../services/productService';
 import { useParams } from "react-router-dom";
 
@@ -16,7 +15,7 @@ const CreateAdd = () => {
     const company = useSelector(state => state.company);
    
     const [allCompanyProducts, setAllCompanyProducts] = useState([]);
-    const {addProducts} = useSelector(state => state.add)   
+
  
     const { companyId } = useParams();
 
@@ -30,11 +29,6 @@ const CreateAdd = () => {
 
 
     }, [companyId]);
-
-   
-   console.log(addProducts);
-   
- 
 
 
     return (
@@ -66,7 +60,7 @@ const CreateAdd = () => {
          
           
         </div>
-        {addProducts.length > 0 ? <AddItemsList addProducts={addProducts}/> : <h3>Добавете продукт</h3>}
+      
         </div>
     )
 
