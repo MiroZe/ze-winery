@@ -3,6 +3,7 @@ const companyController = require('./companyController');
 const productController = require('./productController');
 const declarationController = require('./declarationsController');
 const clientController = require('./clientController');
+const addController = require('./addController');
 
 
 
@@ -13,7 +14,7 @@ module.exports = {
     companyController,
     productController,
     declarationController,
-    clientController
+    clientController,
+    addController
     
-
 }

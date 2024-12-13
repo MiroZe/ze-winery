@@ -11,8 +11,8 @@ const AddItem = ({itemData}) => {
             
             <Col>{itemData.sequenceNumber}</Col>
             <Col>{itemData.trademark}</Col>
-            <Col>{itemData.itemPackages}</Col>
-            <Col>{itemData.quantity}</Col>
+            <Col>{itemData.itemPackages} опаковки</Col>
+            <Col>{itemData.quantity} л</Col>
           </Row>
     )
 }
