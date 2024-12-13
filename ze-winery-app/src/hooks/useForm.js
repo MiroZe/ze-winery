@@ -11,6 +11,11 @@ export const useForm = (initialValues) => {
   
         setFormValues(state => ({ ...state, [e.target.name]: e.target.value }));
     };
+
+    const clearFormValues = () => {
+        setFormValues(initialValues);
+
+    }
     
     
     
@@ -18,7 +23,8 @@ export const useForm = (initialValues) => {
     return {
         formValues,
         onChangeHandler,
-        setFormValues
+        setFormValues,
+        clearFormValues
         
     };
 };

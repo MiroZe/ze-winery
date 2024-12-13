@@ -16,7 +16,7 @@ import { useDispatch } from 'react-redux';
 
 const AddProductList = ({ product }) => {
 
-    const {formValues,onChangeHandler,} = useForm({
+    const {formValues,onChangeHandler,clearFormValues} = useForm({
         quantity:0,
         totalQuantity:0
     });
@@ -34,6 +34,7 @@ const AddProductList = ({ product }) => {
           itemPackages: +formValues.quantity,
           itemTotalQuanity: +formValues.quantity * product.pieces,
         }));
+        clearFormValues()
         
       };
 
