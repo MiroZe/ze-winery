@@ -67,7 +67,14 @@ const addSchema = new mongoose.Schema({
         type: ObjectId,
         ref: 'Company',
         required: true
+    },
+    intendedUseOfProduct: {
+        type:String,
+        required:true,
+        default: '401'
     }
+    
+
 
 });
 
