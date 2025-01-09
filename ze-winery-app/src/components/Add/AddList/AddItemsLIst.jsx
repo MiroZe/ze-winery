@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import { useSelector } from 'react-redux';
 import AddItem from './AddItem';
 import Button from 'react-bootstrap/esm/Button';
+import styles from './AddItemList.module.css'
 
 
 
@@ -17,7 +18,8 @@ const AddItemsList = () => {
 return (
 
  
-        <Container>
+        <Container className={styles['add-product-list-container']}>
+         
          
             {addProducts.map(r => <AddItem key={r._id} itemData={r}/>)}
            

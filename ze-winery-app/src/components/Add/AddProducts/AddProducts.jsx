@@ -26,11 +26,11 @@ const AddProducts = ({products}) => {
             <SearchBar updateSearchValue={updateSearchValue} searchValue={searchValue} />
             <Container >
                 <Row className="fw-bold mb-2">
-                    <Col>Име</Col>
-                    <Col>Доп.код</Col>
-                    <Col>Вместимост</Col>
-                    <Col>К-во</Col>
-                    <Col>Общо К-во</Col>
+                    <Col sm={true}>Име</Col>
+                    <Col sm={true}> Kод</Col>
+                    <Col sm={true}>vol</Col>
+                    <Col sm={true}>К-во</Col>
+                    <Col sm={true}>Общо К-во</Col>
                     <Col></Col>
                     
                 </Row>

@@ -9,7 +9,7 @@ const AddItem = ({itemData}) => {
 
     return(
        
-
+       
         <Row>
             
             <Col>{itemData.sequenceNumber}</Col>
@@ -18,6 +18,7 @@ const AddItem = ({itemData}) => {
             <Col>{itemData.quantity} л</Col>
             <Col><Button>Изтрий</Button></Col>
           </Row>
+       
        
     )
 }

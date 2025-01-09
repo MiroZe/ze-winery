@@ -45,10 +45,10 @@ const AddProductList = ({ product }) => {
         
             <Row className={styles["r-3"]}>
                
-                <Col>{product.trademark}</Col>
-                <Col>{product.additionalCode}</Col>
-                <Col>{`${product.pieces} l`}</Col>
-                <Col>
+                <Col sm={true}>{product.trademark}</Col>
+                <Col sm={1}>{product.additionalCode}</Col>
+                <Col sm={true}>{`${product.pieces} l`}</Col>
+                <Col sm={4} className={styles['input-container']}>
                     <InputGroup className={styles["mb-3"]}>
                        
                         <Form.Control value={formValues.quantity} onChange={onChangeHandler} name='quantity'/>
