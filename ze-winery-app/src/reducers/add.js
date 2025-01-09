@@ -17,9 +17,11 @@ export const addItemToAddSlice = createSlice({
             const { currentProduct, itemPackages, itemTotalQuanity, } = action.payload;
             const alreadyAdded = state.addProducts.some((f) => f._id === currentProduct._id);
             if (alreadyAdded) {
+                
+                
                 state.addProducts = state.addProducts.map((f) =>
-                  f.additionalCode === currentProduct.currentAdditionalCode
-                    ? { ...f, packsQuantity: f.packsQuantity + +itemPackages, quantity: f.quantity + +itemTotalQuanity }
+                  f.additionalCode === currentProduct.additionalCode
+                    ? { ...f, itemPackages: f.itemPackages + +itemPackages, quantity: f.quantity + +itemTotalQuanity }
                     : f
                 );
             } else {
