@@ -5,6 +5,7 @@ const productModel = require('./productModel');
 const declarationModel = require('./declarationModel');
 const clientModel = require('./clientModel')
 const clientCompanyModel = require('./clientCompanyModel');
+const counterModel = require('./counterModel');
 
 
 
@@ -17,6 +18,7 @@ module.exports = {
     productModel,
     declarationModel,
     clientModel,
-    clientCompanyModel
+    clientCompanyModel,
+    counterModel
 
 }

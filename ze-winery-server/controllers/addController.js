@@ -3,9 +3,12 @@
 
 const createAdd = async(req,res,next) => {
 
-    const addData = req.body
+    const {companyId,addProductList} = req.body
 
-console.log('addd',addData);
+
+
+console.log(addProductList);
+
 
 }
 

@@ -36,7 +36,6 @@ export const addItemToAddSlice = createSlice({
         clearItemFromAddProductList: (state,action) => {
             
             const {id} = action.payload
-            console.log(id);
             state.addProducts = state.addProducts.filter(p => p._id !== id)
         },
         clearAddProductList: (state) => {
