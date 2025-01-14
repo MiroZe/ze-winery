@@ -33,10 +33,11 @@ export const addItemToAddSlice = createSlice({
                       });
                 }
         },
-        clearItemFromAddProductList: (state) => {
-            state.currentProduct = {}
-            state.itemPackages = 0;
-            state.itemTotalQuanity = 0;
+        clearItemFromAddProductList: (state,action) => {
+            
+            const {id} = action.payload
+            console.log(id);
+            state.addProducts = state.addProducts.filter(p => p._id !== id)
         },
         clearAddProductList: (state) => {
             state.addProducts = []

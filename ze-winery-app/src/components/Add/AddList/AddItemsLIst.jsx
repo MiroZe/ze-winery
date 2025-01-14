@@ -23,7 +23,7 @@ return (
          
             {addProducts.map(r => <AddItem key={r._id} itemData={r}/>)}
            
-            <Button>Запиши</Button>
+            {addProducts.length > 0 && <Button>Запиши</Button>}
         </Container>
       );
 
