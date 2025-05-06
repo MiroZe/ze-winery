@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { ObjectId } = mongoose.Schema.Types;
-const { counterModel } = require('./index');  // Ensure this path is correct
+const { counterModel } = require('./index');  
 
 const addProductSchema = new mongoose.Schema({
     sequenceNumber: {
