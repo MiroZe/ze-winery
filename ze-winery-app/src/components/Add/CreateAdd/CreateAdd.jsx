@@ -6,6 +6,7 @@ import ClientForm from './ClientForm';
 import { useEffect, useState } from 'react';
 import { getCompanyProducts } from '../../../services/productService';
 import { useParams } from "react-router-dom";
+import SavedAddProductList from '../SavedAddProductList/SaveAddProductList';
 
 
 
@@ -60,6 +61,7 @@ const CreateAdd = () => {
          
           
         </div>
+        <SavedAddProductList/>
       
         </div>
     )

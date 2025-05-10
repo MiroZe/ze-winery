@@ -18,7 +18,7 @@ export const clientSearch = (query,id) => {
 export const createAdd = (companyId,addProductList) => {
    
    
-    console.log(addProductList);
+ 
     
 
     const result = request.post(`${baseURL}/add/create`,{companyId,addProductList} )
