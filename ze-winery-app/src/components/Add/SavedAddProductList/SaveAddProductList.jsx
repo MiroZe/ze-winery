@@ -1,5 +1,6 @@
 
 import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
 import { useSelector } from 'react-redux';
 import SavedAddProductListSingleRow from './SavedAddProductListSingleRow';
 
@@ -13,7 +14,7 @@ const SavedAddProductList = () => {
 
 
 return(
-
+<>
     <Table striped>
       <thead>
         <tr>
@@ -29,7 +30,12 @@ return(
         {addProducts.map(r => <SavedAddProductListSingleRow key={r._id} addProductItem={r}/>)}
        
       </tbody>
+
     </Table>
+    <div className="text-center mt-3">
+    <Button>Save</Button>
+  </div>
+  </>
 
 )
 
