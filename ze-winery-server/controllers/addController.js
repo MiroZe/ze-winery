@@ -7,7 +7,7 @@ const createAdd = async(req,res,next) => {
 
 
 
-console.log(addProductList);
+console.log('addProductList');
 
 
 }

@@ -15,7 +15,7 @@ import ProductModal from './ProductModal';
 
 
 
-const ClientForm = ({ id,products }) => {
+const ClientForm = ({ id,products,showAddProductListTable }) => {
 
 
     const { formValues, onChangeHandler, setFormValues } = useForm({
@@ -211,7 +211,7 @@ const ClientForm = ({ id,products }) => {
 
                 </Form>
                 <Button variant="outline-success" type='button' onClick={showModal}>Към продукти</Button>
-                {showProductModal && <ProductModal products={products} showProductModal={showProductModal} setShowProductModal={setShowProductModal}/>}
+                {showProductModal && <ProductModal products={products} showProductModal={showProductModal} setShowProductModal={setShowProductModal} showAddProductListTable={showAddProductListTable}/>}
             </>)}
 
 

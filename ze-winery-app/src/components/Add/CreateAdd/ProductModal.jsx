@@ -4,7 +4,7 @@ import AddProducts from '../AddProducts/AddProducts';
 import styles from './ProductModal.module.css'
 import AddItemsList from '../AddList/AddItemsLIst';
 
-const ProductModal = ({products, showProductModal, setShowProductModal}) => {
+const ProductModal = ({products, showProductModal, setShowProductModal,showAddProductListTable}) => {
  
   
  
@@ -32,7 +32,7 @@ const ProductModal = ({products, showProductModal, setShowProductModal}) => {
         <Modal.Body className={styles['content-container']} >
        
        <AddProducts className={styles['products-container']} products={products}/>
-       <AddItemsList className={styles['items-container']}/>
+       <AddItemsList className={styles['items-container']} handleClose={handleClose} showAddProductListTable={showAddProductListTable}/>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

@@ -1,19 +1,25 @@
-import SavedAddProductList from "./SaveAddProductList"
+
 
 
 
 
 const SavedAddProductListSingleRow = ({addProductItem}) => {
 
+  console.log(addProductItem);
+  
+
 
 
 return (
 
     <tr>
-          <td>{addProductItem.}</td>
+          <td>{addProductItem.sequenceNumber}</td>
           <td>{addProductItem.trademark}</td>
-          <td>Otto</td>
-          <td>@mdo</td>
+          <td>{addProductItem.additionalCode}</td>
+          <td>{`${addProductItem.pieces} литра`}</td>
+          <td>{addProductItem.itemPackages}</td>
+          <td>{addProductItem.quantity}</td>
+         
         </tr>
 
 )

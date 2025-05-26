@@ -16,9 +16,15 @@ const CreateAdd = () => {
     const company = useSelector(state => state.company);
    
     const [allCompanyProducts, setAllCompanyProducts] = useState([]);
+    const [showAddSummaryProductList, setShowAddSummaryProductList]= useState(false)
 
  
     const { companyId } = useParams();
+
+    const showAddProductListTable = () => {
+
+        setShowAddSummaryProductList(true)
+    }
 
 
 
@@ -35,7 +41,7 @@ const CreateAdd = () => {
     return (
         <div className={styles['add-container']}>
         <div className={styles['add-form-container']}>
-            <ClientForm id={company._id} products={allCompanyProducts}/>
+            <ClientForm id={company._id} products={allCompanyProducts} showAddProductListTable={showAddProductListTable}/>
 
           
             <h3>Номер</h3>
@@ -61,7 +67,8 @@ const CreateAdd = () => {
          
           
         </div>
-        <SavedAddProductList/>
+        {showAddSummaryProductList && <SavedAddProductList/>}
+        
       
         </div>
     )

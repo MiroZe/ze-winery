@@ -1,10 +1,12 @@
 
 import Table from 'react-bootstrap/Table';
 import { useSelector } from 'react-redux';
+import SavedAddProductListSingleRow from './SavedAddProductListSingleRow';
 
 const SavedAddProductList = () => {
 
-    const addProducts = useSelector(state => state.add?.addProducts)
+    const addProducts = useSelector(state => state.add?.addProducts);
+  
     
     
 
@@ -24,12 +26,7 @@ return(
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
+        {addProducts.map(r => <SavedAddProductListSingleRow key={r._id} addProductItem={r}/>)}
        
       </tbody>
     </Table>
